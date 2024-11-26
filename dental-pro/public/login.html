@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Estilo para el fondo con gradiente */
+    body {
+      background: linear-gradient(to top right, #5eead4, #c4b5fd, #a5b4fc), url('https://via.placeholder.com/1920x1080') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 1); /* Fondo blanco translúcido */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .login-container h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4f46e5;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .login-container input {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .login-container button {
+      width: 100%;
+      background-color: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background-color: #4338ca;
+      transform: scale(1.05);
+    }
+
+    .login-container p {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .login-container p a {
+      color: #4f46e5;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .login-container p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="h-full absolute top-0 left-0 z-0">
+        <img src="images/cover-bg.jpg" alt="" class="w-full h-full opacity-20">
+      </div>
+    <h1>Inicia sesión</h1>
+    <form action="#">
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="password" placeholder="Contraseña" required>
+      <button type="submit">Ingresar</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+  </div>
+</body>
+</html>

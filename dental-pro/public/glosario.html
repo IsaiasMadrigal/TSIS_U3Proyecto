@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="glosario.css">
+    <link rel="stylesheet" href="build/tailwind.css">
+    <title>Diccionario Médico</title>
+</head>
+<body>
+        <!-- start header -->
+        <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+            <!-- Barra superior con dirección y teléfono -->
+            <div class="hidden md:flex justify-between items-center py-2 border-b text-sm py-3" style="border-color: rgba(255,255,255,.25)">
+              <div class="flex items-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                  <path d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
+                </svg>
+                <span class="ml-2">+52 443 733 2074</span>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+                  </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+                  </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+                  </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+                    <circle cx="12" cy="12" r="2.813" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          
+            <!-- Barra inferior con las opciones -->
+            <div class="flex items-center justify-between py-4">
+              <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
+                <a href="#" class="hover:underline">Sobre Nosotros</a>
+                <a href="#" class="hover:underline">Tratamientos</a>
+                <a href="#" class="hover:underline">Investigación</a>
+                <a href="#" class="hover:underline">Noticias</a>
+                <a href="#" class="hover:underline">Contactos</a>
+                <a href="glosario.html" class="hover:underline">Glosario</a>
+              </nav>
+              <div class="flex items-center space-x-4">
+                <a href="login.html" class="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition">Iniciar Sesión</a>
+                <a href="index.html" class="text-white text-2xl font-bold">OncoCare</a>
+              </div>
+            </div>
+          </header>
+          
+          <!-- end header -->
+    
+    <div class="container mt-56 mb-16">
+        <h1 class="title text-center">Diccionario Médico</h1>
+        <table id="medicalDictionary" class="table table-striped table-bordered animate-table w-full" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Término Médico</th>
+                    <th>Definición</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ejemplo de términos -->
+                <tr>
+                    <td>1</td>
+                    <td>Metástasis</td>
+                    <td>Diseminación del cáncer desde su sitio original a otras partes del cuerpo.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Quimioterapia</td>
+                    <td>Uso de medicamentos para destruir células cancerosas.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Radioterapia</td>
+                    <td>Tratamiento que utiliza radiación para destruir células cancerosas.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Carcinoma</td>
+                    <td>Un tipo de cáncer que comienza en las células epiteliales que recubren los órganos y tejidos.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Sarcoma</td>
+                    <td>Un tipo de cáncer que se desarrolla en tejidos como huesos, músculos, grasa o cartílago.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Leucemia</td>
+                    <td>Cáncer de la sangre y la médula ósea que afecta la producción de glóbulos blancos.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Linfoma</td>
+                    <td>Cáncer que comienza en las células del sistema linfático.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Melanoma</td>
+                    <td>Un tipo de cáncer de piel que comienza en los melanocitos, las células que producen pigmento.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Metástasis</td>
+                    <td>La propagación de células cancerosas desde el sitio original a otras partes del cuerpo.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Biopsia</td>
+                    <td>Extracción de tejido para examinarlo y determinar la presencia de cáncer.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Oncología</td>
+                    <td>La rama de la medicina que se ocupa del diagnóstico y tratamiento del cáncer.</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Radioterapia</td>
+                    <td>Tratamiento que utiliza radiación para destruir células cancerosas.</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Quimioterapia</td>
+                    <td>Uso de medicamentos para destruir o inhibir el crecimiento de células cancerosas.</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Inmunoterapia</td>
+                    <td>Tratamiento que estimula el sistema inmunitario para combatir el cáncer.</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Neoplasia</td>
+                    <td>Crecimiento anormal de tejido que puede ser benigno o maligno.</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Carcinogénesis</td>
+                    <td>El proceso de desarrollo del cáncer.</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Angiogénesis</td>
+                    <td>Formación de nuevos vasos sanguíneos, a menudo inducida por tumores para obtener nutrientes.</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Remisión</td>
+                    <td>Periodo durante el cual los síntomas del cáncer disminuyen o desaparecen.</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Tumor</td>
+                    <td>Masa anormal de tejido que puede ser benigna o maligna.</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Benigno</td>
+                    <td>Tumor no canceroso que no invade tejidos cercanos.</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>Maligno</td>
+                    <td>Tumor canceroso que puede invadir y destruir tejidos cercanos.</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>Oncogén</td>
+                    <td>Gen que, cuando está mutado, puede provocar el desarrollo de cáncer.</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>Quiste</td>
+                    <td>Saco lleno de líquido que puede confundirse con un tumor.</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>Carcinógeno</td>
+                    <td>Agente químico, físico o biológico que puede causar cáncer.</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>Resección</td>
+                    <td>Extirpación quirúrgica de un tumor.</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>Histopatología</td>
+                    <td>Estudio microscópico de tejidos para diagnosticar enfermedades como el cáncer.</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>Mutación</td>
+                    <td>Cambio en el ADN que puede contribuir al desarrollo de cáncer.</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Estadiaje</td>
+                    <td>Clasificación del cáncer según su tamaño y grado de propagación.</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>Marcadores tumorales</td>
+                    <td>Sustancias producidas por células cancerosas que se usan para el diagnóstico.</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>Radiología</td>
+                    <td>Técnica de diagnóstico por imágenes utilizada para detectar cáncer.</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td>Adenocarcinoma</td>
+                    <td>Tipo de cáncer que se forma en las células glandulares.</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Epitelio</td>
+                    <td>Tejido que recubre superficies internas y externas del cuerpo, donde pueden originarse carcinomas.</td>
+                </tr>
+                <tr>
+                    <td>33</td>
+                    <td>Células madre cancerosas</td>
+                    <td>Subgrupo de células dentro de un tumor que tiene la capacidad de regenerar el cáncer.</td>
+                </tr>
+                <tr>
+                    <td>34</td>
+                    <td>Apoptosis</td>
+                    <td>Proceso de muerte celular programada que puede estar alterado en el cáncer.</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>Oncovirus</td>
+                    <td>Virus que puede causar el desarrollo de ciertos tipos de cáncer.</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td>Proliferación celular</td>
+                    <td>Multiplicación de células, que en el cáncer ocurre de manera incontrolada.</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>Citotóxico</td>
+                    <td>Agente que destruye células, utilizado en tratamientos de cáncer.</td>
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td>Quimiorresistencia</td>
+                    <td>Capacidad de las células cancerosas para resistir la quimioterapia.</td>
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td>Citología</td>
+                    <td>Estudio de células para diagnosticar cáncer.</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>Cirugía oncológica</td>
+                    <td>Procedimiento quirúrgico para extirpar tumores.</td>
+                </tr>
+                <tr>
+                    <td>41</td>
+                    <td>Terapia dirigida</td>
+                    <td>Tratamiento que utiliza medicamentos para atacar moléculas específicas del cáncer.</td>
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td>Radiodermatitis</td>
+                    <td>Inflamación de la piel causada por radioterapia.</td>
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td>Neoadyuvante</td>
+                    <td>Terapia administrada antes de la cirugía para reducir el tamaño del tumor.</td>
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td>Adyuvante</td>
+                    <td>Terapia administrada después de la cirugía para reducir el riesgo de recurrencia.</td>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td>Inmunosupresión</td>
+                    <td>Debilitamiento del sistema inmunológico, que puede ocurrir en pacientes con cáncer.</td>
+                </tr>
+                <tr>
+                    <td>46</td>
+                    <td>Hiperplasia</td>
+                    <td>Incremento en el número de células en un tejido.</td>
+                </tr>
+                <tr>
+                    <td>47</td>
+                    <td>Displasia</td>
+                    <td>Alteración en el crecimiento celular que puede preceder al cáncer.</td>
+                </tr>
+                <tr>
+                    <td>48</td>
+                    <td>Gen supresor de tumores</td>
+                    <td>Gen que regula el crecimiento celular y puede prevenir el cáncer.</td>
+                </tr>
+                <tr>
+                    <td>49</td>
+                    <td>PET (Tomografía por Emisión de Positrones)</td>
+                    <td>Prueba de diagnóstico por imágenes utilizada para detectar cáncer y su extensión.</td>
+                </tr
+                
+
+                <!-- Agrega más términos aquí -->
+            </tbody>
+        </table>
+    </div>
+
+ 
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#medicalDictionary').DataTable({
+                language: {
+                    processing: "Procesando...",
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ términos",
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ términos",
+                    infoEmpty: "No hay términos disponibles.",
+                    infoFiltered: "(filtrado de _MAX_ términos en total)",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron términos coincidentes",
+                    emptyTable: "No hay datos disponibles.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Último"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            });
+        });
+    </script>
+</body>
+</html>
