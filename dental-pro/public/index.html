@@ -394,7 +394,17 @@
     </section>
     <!-- end blog -->
 
-    <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
+    <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-blue-100">
+      <!-- Barra de búsqueda -->
+      <div class="flex justify-center mt-8">
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Buscar por tipo de cáncer..."
+          class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+        />
+      </div>
+
       <!-- Sección de Tratamientos -->
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold">Tratamientos</h2>
@@ -403,9 +413,10 @@
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
         <!-- Cáncer de Pulmón -->
          
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de pulmon pulmón">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/pulmon1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -423,7 +434,7 @@
         </div>
     
         <!-- Cáncer de Próstata -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de prostata próstata">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/prostata1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -441,7 +452,7 @@
         </div>
     
         <!-- Cáncer de Mama -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de mama">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/mama1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -459,7 +470,7 @@
         </div>
     
         <!-- Cáncer de Piel -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de piel">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/piel1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -478,7 +489,7 @@
         </div>
 
         <!-- Leucemia -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de leucemia">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/leucemia1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -495,18 +506,21 @@
           </div>
         </div>
       </div>
-    
-      <!-- Sección de Estudios -->
 
+      <div class="m-32"></div>
+      <div class="border-b-4 border-indigo-200 border-b-blue-100"></div>
+      
+      <!-- Sección de Estudios -->
+      
       <div class="text-center mt-16 mb-12">
         <h2 class="text-3xl font-bold">Estudios Necesarios</h2>
         <p class="text-gray-600 mt-4">
           Los estudios recomendados para diagnosticar y monitorear diferentes tipos de cáncer.
         </p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 col">
         <!-- Estudios para Cáncer de Pulmón -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de pulmon pulmón">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center overflow-hidden p-2">
             <img src="./images/est-trat/pulmon2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -525,7 +539,7 @@
         </div>
     
         <!-- Estudios para Cáncer de Próstata -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de prostata próstata">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/prostata2.png" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -543,7 +557,7 @@
         </div>
     
         <!-- Estudios para Cáncer de Mama -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de mama">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/mama2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -560,7 +574,7 @@
           </div>
         </div>
         <!-- Estudios para Cáncer de Piel -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de piel">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/piel2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -577,7 +591,7 @@
         </div>
     
         <!-- Estudios para Leucemia -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de leucemia">
           <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
             <img src="./images/est-trat/leucemia2.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
           </div>
@@ -595,6 +609,25 @@
         </div>
       </div>
     </section>
+
+    <script>
+      const searchBar = document.getElementById('searchBar');
+      const cards = document.querySelectorAll('[data-cancer]');
+  
+      searchBar.addEventListener('input', (event) => {
+        const searchText = event.target.value.toLowerCase();
+  
+        cards.forEach((card) => {
+          const cancerType = card.getAttribute('data-cancer').toLowerCase();
+  
+          if (cancerType.includes(searchText)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    </script>
     
     
     <!-- start footer -->
