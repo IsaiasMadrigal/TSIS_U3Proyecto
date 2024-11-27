@@ -1,0 +1,44 @@
+/* Estilo general */
+body {
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    display: flex;
+    flex-direction: column; /* Asegura que los hijos se apilen verticalmente */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe toda la altura */
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1; /* Expande este contenedor para ocupar el espacio disponible */
+    align-items: center;
+}
+
+/* Contenedor del contenido */
+.container {
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    width: 80%;
+    max-width: 1200px;
+    margin: auto; /* Centra horizontalmente */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Footer */
+.footer {
+    background-color: #00796b;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Coloca el footer al final de la vista */
+}
