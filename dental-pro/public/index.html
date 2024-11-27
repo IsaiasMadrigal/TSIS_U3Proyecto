@@ -88,7 +88,7 @@
   </style>
 </head>
 
-<body class="antialiased bg-white font-sans text-gray-900">
+<body class="antialiased bg-white font-montserrat text-gray-900">
 
   <main class="w-full">
 
@@ -131,10 +131,10 @@
       <!-- Barra inferior con las opciones -->
       <div class="flex items-center justify-between py-4">
         <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
-          <a href="#" class="hover:underline">Sobre Nosotros</a>
-          <a href="#tratamientos" class="hover:underline">Tratamientos</a>
-          <a href="#estudios" class="hover:underline">Estudios</a>
-          <a href="#noticias" class="hover:underline">Noticias</a>
+          <a href="#" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="tratamientos.html#estudios" class="hover:underline">Estudios</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
           <a href="#footer" class="hover:underline">Contactos</a>
           <a href="glosario.html" class="hover:underline">Glosario</a>
         </nav>
@@ -277,6 +277,28 @@
       </div>
     </section>
     <!-- end testimonials -->
+     
+    <!-- Aqui esta la BD -->
+<h2 class="text-3xl leading-tight font-bold mt-4">Lista de medicamentos</h2>
+<table id="medicamentos-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Tipo de Medicamento</th>
+      <th>Ingrediente Activo</th>
+      <th>Tipo Cáncer ID</th>
+      <th>Laboratorio</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí se llenarán los datos dinámicamente -->
+  </tbody>
+</table>
+
+<!-- Aqui termina la BD -->
 
     <!-- start blog -->
     <section class="relative bg-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-32">
@@ -334,321 +356,6 @@
       </div>
     </section>
     <!-- end blog -->
-
-    <section id="tratamientos" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-blue-100">
-      <!-- Barra de búsqueda -->
-      <div class="flex justify-center mt-8">
-        <input
-          type="text"
-          id="searchBar"
-          placeholder="Buscar por tipo de cáncer..."
-          class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
-        />
-      </div>
-
-      <!-- Sección de Tratamientos -->
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold">Tratamientos</h2>
-        <p class="text-gray-600 mt-4">
-          Descubre los tratamientos más avanzados para diferentes tipos de cáncer.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Cáncer de Pulmón -->
-         
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de pulmon pulmón">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/pulmon1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Tratamientos</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Pulmón</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Quimioterapia</li>
-              <li>Radioterapia</li>
-              <li>Cirugía</li>
-              <li>Inmunoterapia</li>
-              <li>Terapias dirigidas</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Cáncer de Próstata -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de prostata próstata">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/prostata1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Tratamientos</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Próstata</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Vigilancia activa</li>
-              <li>Terapia hormonal</li>
-              <li>Radioterapia</li>
-              <li>Cirugía</li>
-              <li>Quimioterapia</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Cáncer de Mama -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de mama">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/mama1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Tratamientos</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Mama</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Cirugía conservadora</li>
-              <li>Radioterapia</li>
-              <li>Terapia hormonal</li>
-              <li>Quimioterapia</li>
-              <li>Terapias dirigidas</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Cáncer de Piel -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de piel">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/piel1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Tratamientos</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Piel</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Cirugía de Mohs</li>
-              <li>Excisión quirúrgica</li>
-              <li>Radioterapia</li>
-              <li>Crioterapia</li>
-              <li>Inmunoterapia</li>
-              <li>Terapias tópicas</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Leucemia -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de leucemia">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/leucemia1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Tratamientos</span>
-            <h3 class="text-lg font-bold text-gray-800">Leucemia</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Quimioterapia</li>
-              <li>Radioterapia</li>
-              <li>Terapia dirigida</li>
-              <li>Inmunoterapia</li>
-              <li>Trasplante de médula ósea</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="m-32"></div>
-      <div class="border-b-4 border-indigo-200 border-b-blue-100"></div>
-      
-      <!-- Sección de Estudios -->
-      
-      <div id="estudios" class="text-center mt-16 mb-12">
-        <h2 class="text-3xl font-bold">Estudios Necesarios</h2>
-        <p class="text-gray-600 mt-4">
-          Los estudios recomendados para diagnosticar y monitorear diferentes tipos de cáncer.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 col">
-        <!-- Estudios para Cáncer de Pulmón -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de pulmon pulmón">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center overflow-hidden p-2">
-            <img src="./images/est-trat/pulmon2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Pulmón</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Tomografía computarizada (TC)</li>
-              <li>Broncoscopia con biopsia</li>
-              <li>Biopsia por aspiración con aguja fina</li>
-              <li>Pruebas moleculares</li>
-              <li>Radiografías de tórax</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Cáncer de Próstata -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de prostata próstata">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/prostata2.png" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Próstata</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Pruebas de PSA</li>
-              <li>Biopsias guiadas por ultrasonido</li>
-              <li>Resonancia magnética multiparamétrica</li>
-              <li>Gammagrafía ósea</li>
-              <li>Tomografía computarizada</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Cáncer de Mama -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de mama">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/mama2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Mama</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Mamografía</li>
-              <li>Ultrasonido mamario</li>
-              <li>Resonancia magnética</li>
-              <li>Biopsias guiadas por imágenes</li>
-              <li>Pruebas genéticas</li>
-            </ul>
-          </div>
-        </div>
-        <!-- Estudios para Cáncer de Piel -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de piel">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/piel2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold text-center">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Piel</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Dermatoscopia</li>
-              <li>Biopsia de piel</li>
-              <li>Mapeo corporal total</li>
-              <li>Pruebas genéticas (en casos específicos)</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Leucemia -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de leucemia">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/leucemia2.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold text-center">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Leucemia</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Hemograma completo</li>
-              <li>Biopsia de médula ósea</li>
-              <li>Cariotipo y pruebas genéticas</li>
-              <li>Citometría de flujo</li>
-              <li>Tomografía computarizada (en casos avanzados)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      const searchBar = document.getElementById('searchBar');
-      const cards = document.querySelectorAll('[data-cancer]');
-  
-      searchBar.addEventListener('input', (event) => {
-        const searchText = event.target.value.toLowerCase();
-  
-        cards.forEach((card) => {
-          const cancerType = card.getAttribute('data-cancer').toLowerCase();
-  
-          if (cancerType.includes(searchText)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    </script>
-
-    <!-- Noticias -->
-
-    <section id="noticias" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-purple-200">
-      <div class="text-left mt-16 mb-12">
-        <h2 class="text-4xl font-bold">Noticias Recientes</h2>
-      </div>
-      <div class="flex mb-10">
-        <div class="w-3/5 pl-10 pr-10">
-          <a href="#tratamientos" class="font-bold text-2xl hover:underline">Un cromosoma humano artificial contra el cáncer</a>
-          <p class="text-blue-900 text-lg leading-snug mt-4">
-            Investigadores están desarrollando un cromosoma humano artificial 
-            diseñado para equipar a las células inmunes con herramientas avanzadas 
-            para combatir el cáncer. Este avance podría revolucionar los tratamientos 
-            en oncología, proporcionando terapias más eficaces y específicas
-          </p>
-        </div>
-        <div class="w-2/5 p-10 pt-0">
-          <figure class="max-w-lg">
-            <a href="https://google.com">
-              <img class="h-auto max-w-full rounded-lg" src="./images/cromosomas.jpg" alt="image description">
-            </a>
-            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Eventos científicos que 
-              debes seguir en 2024, según Nature
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="flex mb-10">
-        <div class="w-2/5 p-10 pt-0">
-          <figure class="max-w-lg">
-            <a href="https://google.com">
-              <img class="h-auto max-w-full rounded-lg" src="./images/est-trat/mama2.webp" alt="image description">
-            </a>
-            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Eventos científicos que 
-              debes seguir en 2024, según Nature</figcaption>
-          </figure>
-        </div>
-        <div class="w-3/5 pl-20 pr-10">
-          <a href="#tratamientos" class="font-bold text-2xl hover:underline">Exploración Espacial</a>
-          <p class="text-blue-900 text-lg leading-snug mt-4">
-            Artemis II y másLa NASA lanzará la misión Artemis II en noviembre de 2024, llevando astronautas a orbitar la Luna, marcando el primer paso hacia una nueva era de exploración lunar. Además, China planea recolectar muestras de la cara oculta de la Luna con su misión Chang'e 6​
-          </p>
-        </div>
-      </div>
-      <div class="flex mb-10">
-        <div class="w-3/5 pl-10">
-          <a href="#tratamientos" class="font-bold text-2xl hover:underline">Materia oscura bajo la lupa</a>
-          <p class="text-blue-900 text-lg leading-snug mt-4">
-            El experimento BabyIAXO publicará resultados sobre la detección de axiones, partículas teóricas clave para entender la materia oscura, que constituye el 70% del universo conocido​
-          </p>
-        </div>
-        <div class="w-2/5 p-10 pt-0">
-          <figure class="max-w-lg">
-            <a href="https://google.com">
-              <img class="h-auto max-w-full rounded-lg" src="./images/est-trat/mama2.webp" alt="image description">
-            </a>
-            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Eventos científicos que 
-              debes seguir en 2024, según Nature</figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="flex mb-10">
-        <div class="w-2/5 p-10 pt-0">
-          <figure class="max-w-lg">
-            <a href="https://google.com">
-              <img class="h-auto max-w-full rounded-lg" src="./images/est-trat/mama2.webp" alt="image description">
-            </a>
-            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Eventos científicos que 
-              debes seguir en 2024, según Nature</figcaption>
-          </figure>
-        </div>
-        <div class="w-3/5 pl-20 pr-10">
-          <a href="#tratamientos" class="font-bold text-2xl hover:underline">Supercomputadoras en medicina</a>
-          <p class="text-blue-900 text-lg leading-snug mt-4">
-            La supercomputadora europea "Júpiter" iniciará operaciones en 2024, modelando órganos humanos en detalle para mejorar diagnósticos y tratamientos médicos. También se espera que facilite simulaciones climáticas y estudios sobre circuitos neuronales
-          </p>
-        </div>
-      </div>
-    </section>
 
     <!-- start footer -->
     <footer class="bg-gray-900 text-white">
@@ -750,6 +457,33 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
+  <script>
+    // Solicita los datos de la API
+    fetch('http://localhost:3000/api/medicamentos')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#medicamentos-table tbody');
+        tableBody.innerHTML = ''; // Limpia el contenido previo
+
+        data.forEach(medicamento => {
+          const row = `
+            <tr>
+              <td>${medicamento.id}</td>
+              <td>${medicamento.nombre}</td>
+              <td>${medicamento.tipo_medicamento}</td>
+              <td>${medicamento.ingrediente_activo}</td>
+              <td>${medicamento.tipo_cancer_id}</td>
+              <td>${medicamento.laboratorio}</td>
+              <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
+              <td>${medicamento.precio}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+        });
+      })
+      .catch(error => console.error('Error al cargar los datos:', error));
+  </script>
+
 
 </body>
 
