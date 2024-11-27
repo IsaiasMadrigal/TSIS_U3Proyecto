@@ -336,7 +336,27 @@
       </div>
     </section>
     <!-- end testimonials -->
+<!-- Aqui esta la BD -->
+<h2 class="text-3xl leading-tight font-bold mt-4">Lista de medicamentos</h2>
+<table id="medicamentos-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Tipo de Medicamento</th>
+      <th>Ingrediente Activo</th>
+      <th>Tipo Cáncer ID</th>
+      <th>Laboratorio</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí se llenarán los datos dinámicamente -->
+  </tbody>
+</table>
 
+<!-- Aqui termina la BD -->
     <!-- start blog -->
     <section class="relative bg-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-32">
       <div class="">
@@ -564,6 +584,32 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
+    <script>
+      // Solicita los datos de la API
+      fetch('http://localhost:3000/api/medicamentos')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.querySelector('#medicamentos-table tbody');
+          tableBody.innerHTML = ''; // Limpia el contenido previo
+  
+          data.forEach(medicamento => {
+            const row = `
+              <tr>
+                <td>${medicamento.id}</td>
+                <td>${medicamento.nombre}</td>
+                <td>${medicamento.tipo_medicamento}</td>
+                <td>${medicamento.ingrediente_activo}</td>
+                <td>${medicamento.tipo_cancer_id}</td>
+                <td>${medicamento.laboratorio}</td>
+                <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
+                <td>${medicamento.precio}</td>
+              </tr>
+            `;
+            tableBody.innerHTML += row;
+          });
+        })
+        .catch(error => console.error('Error al cargar los datos:', error));
+    </script>
 
 </body>
 
