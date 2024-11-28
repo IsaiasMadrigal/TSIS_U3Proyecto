@@ -294,18 +294,13 @@
 
 
     <!-- Aqui esta la BD -->
-<h2 class="text-3xl leading-tight font-bold mt-4">Lista de medicamentos</h2>
-<table id="medicamentos-table">
+<h2 class="text-3xl leading-tight font-bold mt-4">Tipos de Cáncer</h2>
+<table id="tiposcancer-table">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Nombre</th>
-      <th>Tipo de Medicamento</th>
-      <th>Ingrediente Activo</th>
-      <th>Tipo Cáncer ID</th>
-      <th>Laboratorio</th>
-      <th>Imagen</th>
-      <th>Precio</th>
+      <th>Descripción</th>
+      <th>Síntomas</th>
     </tr>
   </thead>
   <tbody>
@@ -475,23 +470,18 @@
   <script>
     
     // Solicita los datos de la API
-    fetch('http://localhost:3000/api/medicamentos')
+    fetch('http://localhost:3000/api/tiposcancer')
       .then(response => response.json())
       .then(data => {
-        const tableBody = document.querySelector('#medicamentos-table tbody');
+        const tableBody = document.querySelector('#tiposcancer-table tbody');
         tableBody.innerHTML = ''; // Limpia el contenido previo
 
-        data.forEach(medicamento => {
+        data.forEach(tiposcancer => {
           const row = `
             <tr>
-              <td>${medicamento.id}</td>
-              <td>${medicamento.nombre}</td>
-              <td>${medicamento.tipo_medicamento}</td>
-              <td>${medicamento.ingrediente_activo}</td>
-              <td>${medicamento.tipo_cancer_nombre}</td>
-              <td>${medicamento.laboratorio}</td>
-              <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
-              <td>${medicamento.precio}</td>
+              <td>${tiposcancer.nombre}</td>
+              <td>${tiposcancer.descripcion}</td>
+              <td>${tiposcancer.sintomas}</td>
             </tr>
           `;
           tableBody.innerHTML += row;
