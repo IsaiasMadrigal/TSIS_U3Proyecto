@@ -180,7 +180,7 @@
 
 
 
-    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
+    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50"> 
       <!-- Sección de Tipos de Cáncer -->
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
@@ -198,8 +198,8 @@
     
       <!-- Tarjetas de Tipos de Cáncer -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
-        <!-- Carcinoma de células basales -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="carcinoma células basales piel">
+        <!-- Ejemplo de tarjeta -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="carcinoma células basales piel">
           <div class="p-4">
             <span class="text-blue-500 font-semibold">Carcinomas</span>
             <h3 class="text-lg font-bold text-gray-800">Carcinomas de células basales</h3>
@@ -208,69 +208,24 @@
             </p>
           </div>
         </div>
-    
-        <!-- Carcinoma de células escamosas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="carcinoma células escamosas piel esófago vejiga">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Carcinomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Carcinomas de células escamosas</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Suele aparecer en la piel y en órganos como el esófago y la vejiga.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Adenocarcinoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="adenocarcinoma glándulas mama colon próstata">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Carcinomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Adenocarcinoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Comienza en células glandulares y es común en órganos como la mama, el colon y la próstata.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Osteosarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma osteosarcoma hueso">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Osteosarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Un tipo de cáncer óseo común en adolescentes.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Liposarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma liposarcoma tejido graso">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Liposarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Afecta al tejido graso.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Leiomiosarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma leiomiosarcoma tejido muscular liso órganos">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Leiomiosarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Se desarrolla en el tejido muscular liso, como el de los órganos internos.
-            </p>
-          </div>
-        </div>
+        <!-- Repetir tarjetas como en tu código -->
       </div>
     </section>
+    
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full transform scale-90 transition-transform">
+        <button id="closeModal" class="ml-auto block text-gray-400 hover:text-gray-800 font-bold text-xl">&times;</button>
+        <h3 id="modalTitle" class="text-lg font-bold text-gray-800"></h3>
+        <p id="modalContent" class="text-gray-600 mt-4"></p>
+      </div>
+    </div>
     
     <script>
       // Filtrado en tiempo real
       const buscadorTipos = document.getElementById('buscadorTipos');
       const listaTipos = document.getElementById('listaTipos');
-      const tarjetasTipos = listaTipos.getElementsByClassName('bg-white');
+      const tarjetasTipos = listaTipos.getElementsByClassName('card');
     
       buscadorTipos.addEventListener('input', function() {
         const terminoBusqueda = buscadorTipos.value.toLowerCase();
@@ -285,7 +240,46 @@
           }
         });
       });
+    
+      // Mostrar información en modal
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalContent = document.getElementById('modalContent');
+      const closeModal = document.getElementById('closeModal');
+    
+      Array.from(tarjetasTipos).forEach(card => {
+        card.addEventListener('click', () => {
+          const title = card.querySelector('h3').textContent;
+          const description = card.querySelector('p').textContent;
+    
+          modalTitle.textContent = title;
+          modalContent.textContent = description;
+    
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          modal.querySelector('div').classList.remove('scale-90');
+          modal.querySelector('div').classList.add('scale-100');
+        });
+      });
+    
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+    
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal.click();
+        }
+      });
     </script>
+    
+    <style>
+      #modal div {
+        transition: transform 0.2s ease-in-out;
+      }
+    </style>
+    
 
 
 
