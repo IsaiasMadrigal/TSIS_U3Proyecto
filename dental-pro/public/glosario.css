@@ -1,17 +1,28 @@
+/* Estilo general */
 body {
     background: linear-gradient(to bottom, #e0f7fa, #ffffff);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column; /* Asegura que los hijos se apilen verticalmente */
     margin: 0;
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe toda la altura */
 }
 
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1; /* Expande este contenedor para ocupar el espacio disponible */
+    align-items: center;
+}
+
+/* Contenedor del contenido */
 .container {
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
     width: 80%;
-    height: 80%;
+    max-width: 1200px;
+    margin: auto; /* Centra horizontalmente */
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,62 +31,14 @@ body {
     animation: fadeIn 1.5s ease;
 }
 
-h1 {
+/* Footer */
+.footer {
+    background-color: #00796b;
+    color: white;
     text-align: center;
-    color: #00796b;
-    margin-bottom: 20px;
-}
-
-.table {
+    padding: 10px 0;
+    font-size: 14px;
     width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.table thead {
-    background-color: #b2dfdb;
-    color: #004d40;
-
-}
-
-.table th,
-.table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    height: 3vh;
-}
-
-.table tbody tr:nth-child(odd) {
-    background-color: #f1f1f1;
-}
-
-.table tbody tr:hover {
-    background-color: #e0f7fa;
-    transform: scale(1.01);
-    transition: transform 0.3s;
-}
-
-/* Animación de cambio de página */
-.fade-out {
-    animation: fadeOut 0.3s;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Coloca el footer al final de la vista */
 }

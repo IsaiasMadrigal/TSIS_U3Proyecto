@@ -5,8 +5,9 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="build/tailwind.css">
 
   <title>OncoCare</title>
@@ -85,6 +86,19 @@
         border-bottom-right-radius: 256px;
       }
     } */
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -133,9 +147,9 @@
         <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
           <a href="#" class="hover:underline">Inicio</a>
           <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
-          <a href="tratamientos.html#estudios" class="hover:underline">Estudios</a>
+          <a href="estudios.html" class="hover:underline">Estudios</a>
           <a href="noticias.html" class="hover:underline">Noticias</a>
-          <a href="#footer" class="hover:underline">Contactos</a>
+          <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
           <a href="glosario.html" class="hover:underline">Glosario</a>
         </nav>
         <div class="flex items-center space-x-4">
@@ -174,110 +188,116 @@
     </div>
     <!-- end hero -->
 
-    <!-- start about -->
-    <section class="relative px-4 py-16 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 lg:py-32">
-      <div class="flex flex-col lg:flex-row lg:-mx-8">
-        <div class="w-full lg:w-1/2 lg:px-8">
-          <h2 class="text-3xl leading-tight font-bold mt-4">Welcome to the Dentist Office of Dr. Thomas Dooley</h2>
-          <p class="text-lg mt-4 font-semibold">Excellence in Dentistry in the Heart of NY</p>
-          <p class="mt-2 leading-relaxed">Donec convallis sollicitudin facilisis. Integer nisl ligula, accumsan non
-            tincidunt ac, imperdiet in enim.
-            Donec efficitur ullamcorper metus, eu venenatis nunc. Nam eget neque tempus, mollis sem a, faucibus mi.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 lg:px-8 mt-12 lg:mt-0">
-          <div class="md:flex">
-            <div>
-              <div class="w-16 h-16 bg-blue-600 rounded-full"></div>
-            </div>
-            <div class="md:ml-8 mt-4 md:mt-0">
-              <h4 class="text-xl font-bold leading-tight">Everything You Need Under One Roof</h4>
-              <p class="mt-2 leading-relaxed">Our comprehensive services allow you to receive all needed dental care
-                right here in our state-of-art
-                office – from dental cleanings and fillings to dental implants and extractions.</p>
-            </div>
-          </div>
-
-          <div class="md:flex mt-8">
-            <div>
-              <div class="w-16 h-16 bg-blue-600 rounded-full"></div>
-            </div>
-            <div class="md:ml-8 mt-4 md:mt-0">
-              <h4 class="text-xl font-bold leading-tight">Our Patient-Focused Approach</h4>
-              <p class="mt-2 leading-relaxed">Your treatment plan will perfectly match your needs, lifestyle, and goals.
-                Even if it’s been years
-                since you last visited the dentist, we can help. Our comfortable office, compassionate team, and
-                minimally-invasive treatments will help you feel completely at ease.</p>
-            </div>
-          </div>
-        </div>
+    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
+      <!-- Sección de Tipos de Cáncer -->
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
       </div>
-
-      <div class="md:flex md:flex-wrap mt-24 text-center md:-mx-4">
-        <div class="md:w-1/2 md:px-4 lg:w-1/4">
-          <div class="bg-white rounded-lg border border-gray-300 p-8">
-            <img src="images/teeth-whitening.svg" alt="" class="h-20 mx-auto">
-
-            <h4 class="text-xl font-bold mt-4">Teeth Whitening</h4>
-            <p class="mt-1">Let us show you how our experience.</p>
-            <a href="#" class="block mt-4">Read More</a>
-          </div>
-        </div>
-
-        <div class="md:w-1/2 md:px-4 mt-4 md:mt-0 lg:w-1/4">
-          <div class="bg-white rounded-lg border border-gray-300 p-8">
-            <img src="images/oral-surgery.svg" alt="" class="h-20 mx-auto">
-
-            <h4 class="text-xl font-bold mt-4">Oral Surgery</h4>
-            <p class="mt-1">Let us show you how our experience.</p>
-            <a href="#" class="block mt-4">Read More</a>
-          </div>
-        </div>
-
-        <div class="md:w-1/2 md:px-4 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
-          <div class="bg-white rounded-lg border border-gray-300 p-8">
-            <img src="images/painless-dentistry.svg" alt="" class="h-20 mx-auto">
-
-            <h4 class="text-xl font-bold mt-4">Painless Dentistry</h4>
-            <p class="mt-1">Let us show you how our experience.</p>
-            <a href="#" class="block mt-4">Read More</a>
-          </div>
-        </div>
-
-        <div class="md:w-1/2 md:px-4 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
-          <div class="bg-white rounded-lg border border-gray-300 p-8">
-            <img src="images/periodontics.svg" alt="" class="h-20 mx-auto">
-
-            <h4 class="text-xl font-bold mt-4">Periodontics</h4>
-            <p class="mt-1">Let us show you how our experience.</p>
-            <a href="#" class="block mt-4">Read More</a>
-          </div>
-        </div>
+    
+      <!-- Barra de búsqueda -->
+      <div class="flex justify-center mb-12">
+        <input
+          type="text"
+          id="buscadorTipos"
+          placeholder="Buscar..."
+          class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        />
       </div>
-    </section>
-    <!-- end about -->
-
-    <!-- start testimonials -->
-    <section class="relative bg-gray-100 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-16 lg:py-32">
-      <div class="flex flex-col lg:flex-row lg:-mx-8">
-        <div class="w-full lg:w-1/2 lg:px-8">
-          <h2 class="text-3xl leading-tight font-bold mt-4">Why choose the Mesothelioma Center?</h2>
-          <p class="mt-2 leading-relaxed">Aenean ut tellus tellus. Suspendisse potenti. Nullam tincidunt lacus tellus,
-            sed aliquam est vehicula a. Pellentesque consectetur condimentum nulla, eleifend condimentum purus vehicula
-            in. Donec convallis sollicitudin facilisis. Integer nisl ligula, accumsan non tincidunt ac, imperdiet in
-            enim. Donec efficitur ullamcorper metus, eu venenatis nunc. Nam eget neque tempus, mollis sem a, faucibus
-            mi.</p>
+    
+      <!-- Tarjetas de Tipos de Cáncer -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
+        <!-- Carcinoma de células basales -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="carcinoma células basales piel">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Carcinomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Carcinomas de células basales</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Generalmente se originan en la piel y es uno de los tipos de cáncer más comunes.
+            </p>
+          </div>
         </div>
-
-        <div class="w-full md:max-w-md md:mx-auto lg:w-1/2 lg:px-8 mt-12 mt:md-0">
-          <div class="bg-gray-400 w-full h-72 rounded-lg"></div>
-
-          <p class="italic text-sm mt-2 text-center">Aenean ante nisi, gravida non mattis semper.</p>
+    
+        <!-- Carcinoma de células escamosas -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="carcinoma células escamosas piel esófago vejiga">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Carcinomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Carcinomas de células escamosas</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Suele aparecer en la piel y en órganos como el esófago y la vejiga.
+            </p>
+          </div>
+        </div>
+    
+        <!-- Adenocarcinoma -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="adenocarcinoma glándulas mama colon próstata">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Carcinomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Adenocarcinoma</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Comienza en células glandulares y es común en órganos como la mama, el colon y la próstata.
+            </p>
+          </div>
+        </div>
+    
+        <!-- Osteosarcoma -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma osteosarcoma hueso">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Sarcomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Osteosarcoma</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Un tipo de cáncer óseo común en adolescentes.
+            </p>
+          </div>
+        </div>
+    
+        <!-- Liposarcoma -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma liposarcoma tejido graso">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Sarcomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Liposarcoma</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Afecta al tejido graso.
+            </p>
+          </div>
+        </div>
+    
+        <!-- Leiomiosarcoma -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-tipo="sarcoma leiomiosarcoma tejido muscular liso órganos">
+          <div class="p-4">
+            <span class="text-blue-500 font-semibold">Sarcomas</span>
+            <h3 class="text-lg font-bold text-gray-800">Leiomiosarcoma</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Se desarrolla en el tejido muscular liso, como el de los órganos internos.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    <!-- end testimonials -->
-     
+    
+    <script>
+      // Filtrado en tiempo real
+      const buscadorTipos = document.getElementById('buscadorTipos');
+      const listaTipos = document.getElementById('listaTipos');
+      const tarjetasTipos = listaTipos.getElementsByClassName('bg-white');
+    
+      buscadorTipos.addEventListener('input', function() {
+        const terminoBusqueda = buscadorTipos.value.toLowerCase();
+    
+        Array.from(tarjetasTipos).forEach(card => {
+          const tipoCancer = card.getAttribute('data-tipo').toLowerCase();
+    
+          if (tipoCancer.includes(terminoBusqueda)) {
+            card.style.display = 'block'; // Mostrar tarjeta
+          } else {
+            card.style.display = 'none'; // Ocultar tarjeta
+          }
+        });
+      });
+    </script>
+
+
+
+    
     <!-- Aqui esta la BD -->
 <h2 class="text-3xl leading-tight font-bold mt-4">Lista de medicamentos</h2>
 <table id="medicamentos-table">
@@ -300,62 +320,7 @@
 
 <!-- Aqui termina la BD -->
 
-    <!-- start blog -->
-    <section class="relative bg-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-32">
-      <div class="">
-        <h2 class="text-3xl leading-tight font-bold">Health Blog</h2>
-        <p class="text-gray-600 mt-2 md:max-w-lg">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-          turpis egestas.</p>
 
-        <a href="#" title="" class="inline-block text-teal-500 font-semibold mt-6 mt:md-0">View All Posts</a>
-      </div>
-
-      <div class="md:flex mt-12 md:-mx-4">
-        <div class="md:px-4 md:w-1/2 xl:w-1/4">
-          <div class="bg-white rounded border border-gray-300">
-            <div class="w-full h-48 overflow-hidden bg-gray-300"></div>
-            <div class="p-4">
-              <div class="flex items-center text-sm">
-                <span class="text-teal-500 font-semibold">Business</span>
-                <span class="ml-4 text-gray-600">29 Nov, 2019</span>
-              </div>
-              <p class="text-lg font-semibold leading-tight mt-4">Card Title</p>
-              <p class="text-gray-600 mt-1">This card has supporting text below as a natural lead-in to additional content.
-              </p>
-              <div class="flex items-center mt-4">
-                <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300"></div>
-                <div class="ml-4">
-                  <p class="text-gray-600">By <span class="text-gray-900 font-semibold">Abby Sims</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="md:px-4 md:w-1/2 xl:w-1/4 mt-4 md:mt-0">
-          <div class="bg-white rounded border border-gray-300 ">
-            <div class="w-full h-48 overflow-hidden bg-gray-300"></div>
-            <div class="p-4">
-              <div class="flex items-center text-sm">
-                <span class="text-teal-500 font-semibold">Business</span>
-                <span class="ml-4 text-gray-600">29 Nov, 2019</span>
-              </div>
-              <p class="text-lg font-semibold leading-tight mt-4">Card Title</p>
-              <p class="text-gray-600 mt-1">This card has supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <div class="flex items-center mt-4">
-                <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300"></div>
-                <div class="ml-4">
-                  <p class="text-gray-600">By <span class="text-gray-900 font-semibold">Abby Sims</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end blog -->
 
     <!-- start footer -->
     <footer class="bg-gray-900 text-white">

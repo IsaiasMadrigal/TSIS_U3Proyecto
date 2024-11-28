@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
-const port = 3000;
+const port = 3306;
 
 // Middleware para permitir solicitudes desde el cliente
 app.use(cors());
