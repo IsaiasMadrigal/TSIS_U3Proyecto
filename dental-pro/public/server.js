@@ -38,6 +38,24 @@ app.get("/api/medicamentos", (req, res) => {
   });
 });
 
+// Ruta para obtener los datos de la tabla "tiposcancer"
+app.get("/api/tiposcancer", (req, res) => {
+  const query = "SELECT * FROM tiposcancer";
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Error al obtener datos:", err);
+      res.status(500).send("Error al obtener datos de la base de datos");
+    } else {
+      res.json(results); // Devuelve los resultados en formato JSON
+    }
+  });
+});
+
+
+
+
+
+
 // Inicia el servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
