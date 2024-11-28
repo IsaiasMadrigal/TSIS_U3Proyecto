@@ -397,6 +397,7 @@
     <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-blue-100">
     
       <!-- Sección de Tratamientos -->
+<div>
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold">Tratamientos</h2>
         <p class="text-gray-600 mt-4">
@@ -405,7 +406,7 @@
       </div>
       
        <!-- Barra de búsqueda -->
-       <div class="flex justify-center mt-8">
+       <div class="flex justify-end mt-8">
         <input
         type="text"
         id="searchBarTreatments"
@@ -509,8 +510,6 @@
         </div>
       </div>
 
-      <div class="m-32"></div>
-      <div class="border-b-4 border-indigo-200 border-b-blue-100"></div> 
 
     <script>
       const searchBarTreatments = document.getElementById('searchBarTreatments');
@@ -529,10 +528,16 @@
           }
         });
       });
-    </script>    
+    </script>  
+</div>  
+</section>
 
+<div class="m-1"></div>
+
+
+<section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-blue-100">
       <!-- Sección de Estudios -->
-    
+<div>    
       <div class="text-center mt-16 mb-12">
         <h2 class="text-3xl font-bold">Estudios Necesarios</h2>
         <p class="text-gray-600 mt-4">
@@ -542,7 +547,7 @@
 
       
        <!-- Barra de búsqueda -->
-       <div class="flex justify-center mt-8">
+       <div class="flex justify-end mt-8">
         <!-- Barra de búsqueda para Estudios -->
         <input
         type="text"
@@ -662,17 +667,19 @@
         });
       });
     </script>
-    
+</section>
+</div>    
     <div class="p-6 bg-gray-100">
-       <!-- Barra de búsqueda de Medicamentos -->
-<div class="flex justify-center mt-8">
-  <input
-    type="text"
-    id="searchBarMedicamentos"
-    placeholder="Buscar por medicamento..."
-    class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
-  />
-</div>
+<div>
+        <!-- Barra de búsqueda de Medicamentos -->
+      <div class="flex justify-end mt-8">
+        <input
+          type="text"
+          id="searchBarMedicamentos"
+          placeholder="Buscar por medicamento..."
+          class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
+        />
+      </div>
 
 <!-- Tarjeta del Medicamento -->
 <div class="bg-purple-100 p-6 rounded-lg shadow-md" data-medicamento="perjeta cáncer de mama inyección">
@@ -788,9 +795,9 @@
         });
       });
     </script>
+</div>
 
-    
-    
+
     <!-- start footer -->
     <footer class="relative bg-gray-900 text-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-12 lg:py-24">
       <div class="flex flex-col md:flex-row">
