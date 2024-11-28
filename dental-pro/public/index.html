@@ -176,12 +176,14 @@
 
     
 
+    
 
 
 
 
-    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50"> 
-      <!-- Sección de Tipos de Cáncer -->
+
+
+    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
       </div>
@@ -198,71 +200,7 @@
     
       <!-- Tarjetas de Tipos de Cáncer -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
-        <!-- Carcinoma de células basales -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="carcinoma células basales piel">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Carcinomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Carcinomas de células basales</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Generalmente se originan en la piel y es uno de los tipos de cáncer más comunes.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Carcinoma de células escamosas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="carcinoma células escamosas piel esófago vejiga">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Carcinomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Carcinomas de células escamosas</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Suele aparecer en la piel y en órganos como el esófago y la vejiga.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Adenocarcinoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="adenocarcinoma glándulas mama colon próstata">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Carcinomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Adenocarcinoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Comienza en células glandulares y es común en órganos como la mama, el colon y la próstata.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Osteosarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="sarcoma osteosarcoma hueso">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Osteosarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Un tipo de cáncer óseo común en adolescentes.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Liposarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="sarcoma liposarcoma tejido graso">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Liposarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Afecta al tejido graso.
-            </p>
-          </div>
-        </div>
-    
-        <!-- Leiomiosarcoma -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card" data-tipo="sarcoma leiomiosarcoma tejido muscular liso órganos">
-          <div class="p-4">
-            <span class="text-blue-500 font-semibold">Sarcomas</span>
-            <h3 class="text-lg font-bold text-gray-800">Leiomiosarcoma</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Se desarrolla en el tejido muscular liso, como el de los órganos internos.
-            </p>
-          </div>
-        </div>
+        <!-- Tarjetas dinámicas -->
       </div>
     </section>
     
@@ -272,67 +210,20 @@
         <button id="closeModal" class="ml-auto block text-gray-400 hover:text-gray-800 font-bold text-xl">&times;</button>
         <h3 id="modalTitle" class="text-lg font-bold text-gray-800"></h3>
         <p id="modalContent" class="text-gray-600 mt-4"></p>
+        <div class="mt-4 flex space-x-4">
+          <button id="verTratamientos" class="text-blue-500 underline">Ver Tratamientos</button>
+        </div>
+        <div id="tratamientosContenido" class="mt-4 hidden">
+          <h4 class="text-md font-semibold">Tratamientos Relacionados</h4>
+          <ul id="listaTratamientos" class="list-disc list-inside mt-2"></ul>
+          <button id="regresarInfo" class="mt-2 text-blue-500 underline">Regresar a la Información</button>
+        </div>
       </div>
     </div>
     
-    <script>
-      // Filtrado en tiempo real
-      const buscadorTipos = document.getElementById('buscadorTipos');
-      const listaTipos = document.getElementById('listaTipos');
-      const tarjetasTipos = listaTipos.getElementsByClassName('card');
-    
-      buscadorTipos.addEventListener('input', function() {
-        const terminoBusqueda = buscadorTipos.value.toLowerCase();
-    
-        Array.from(tarjetasTipos).forEach(card => {
-          const tipoCancer = card.getAttribute('data-tipo').toLowerCase();
-    
-          if (tipoCancer.includes(terminoBusqueda)) {
-            card.style.display = 'block'; // Mostrar tarjeta
-          } else {
-            card.style.display = 'none'; // Ocultar tarjeta
-          }
-        });
-      });
-    
-      // Mostrar información en modal
-      const modal = document.getElementById('modal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalContent = document.getElementById('modalContent');
-      const closeModal = document.getElementById('closeModal');
-    
-      Array.from(tarjetasTipos).forEach(card => {
-        card.addEventListener('click', () => {
-          const title = card.querySelector('h3').textContent;
-          const description = card.querySelector('p').textContent;
-    
-          modalTitle.textContent = title;
-          modalContent.textContent = description;
-    
-          modal.classList.remove('hidden');
-          modal.classList.add('flex');
-          modal.querySelector('div').classList.remove('scale-90');
-          modal.querySelector('div').classList.add('scale-100');
-        });
-      });
-    
-      closeModal.addEventListener('click', () => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      });
-    
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          closeModal.click();
-        }
-      });
-    </script>
-    
-    <style>
-      #modal div {
-        transition: transform 0.2s ease-in-out;
-      }
-    </style>
+
+
+
     
 
 
@@ -549,6 +440,75 @@
       })
       .catch(error => console.error('Error al cargar los datos:', error));
   </script>
+
+<script>
+  const API_BASE = "http://localhost:3000/api";
+
+const buscadorTipos = document.getElementById("buscadorTipos");
+const listaTipos = document.getElementById("listaTipos");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+const verTratamientos = document.getElementById("verTratamientos");
+const tratamientosContenido = document.getElementById("tratamientosContenido");
+const listaTratamientos = document.getElementById("listaTratamientos");
+const regresarInfo = document.getElementById("regresarInfo");
+
+let tiposCancerData = [];
+
+// Cargar tipos de cáncer
+async function cargarTiposCancer() {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer`);
+    tiposCancerData = await response.json();
+    mostrarTiposCancer(tiposCancerData);
+  } catch (error) {
+    console.error("Error al cargar tipos de cáncer:", error);
+  }
+}
+
+// Mostrar tipos de cáncer en tarjetas
+function mostrarTiposCancer(tipos) {
+  listaTipos.innerHTML = "";
+  tipos.forEach((tipo) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+    card.innerHTML = `
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
+        <p class="text-gray-600 text-sm">${tipo.descripcion.substring(0, 100)}...</p>
+      </div>`;
+    card.addEventListener("click", () => mostrarModal(tipo.id));
+    listaTipos.appendChild(card);
+  });
+}
+
+// Mostrar modal con información detallada
+async function mostrarModal(id) {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
+    const tipo = await response.json();
+
+    modalTitle.textContent = tipo.nombre;
+    modalContent.innerHTML = `
+      <p>${tipo.descripcion}</p>
+      <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
+
+    tratamientosContenido.classList.add("hidden");
+    modal.classList.remove("hidden");
+  } catch (error) {
+    console.error("Error al mostrar detalles:", error);
+  }
+}
+
+// Manejo del modal
+closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+
+</script>
+
 
 
 </body>

@@ -7,6 +7,7 @@ const port = 3000;
 
 // Middleware para permitir solicitudes desde el cliente
 app.use(cors());
+app.use(express.json()); // Para parsear JSON en solicitudes POST/PUT si lo necesitas
 
 // Configuración de la conexión a la base de datos MySQL
 const db = mysql.createConnection({
@@ -20,21 +21,46 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) {
     console.error("Error al conectar a la base de datos:", err);
-    return;
+    process.exit(1); // Detiene el servidor si hay un error
   }
   console.log("Conexión exitosa a la base de datos MySQL");
 });
 
-// Ruta para obtener los datos de la tabla "medicamentos"
-app.get("/api/medicamentos", (req, res) => {
-  const query = "SELECT * FROM medicamentos";
+// Ruta para obtener todos los tipos de cáncer
+app.get("/api/tiposcancer", (req, res) => {
+  const query = "SELECT * FROM tiposcancer";
   db.query(query, (err, results) => {
     if (err) {
-      console.error("Error al obtener datos:", err);
-      res.status(500).send("Error al obtener datos de la base de datos");
-    } else {
-      res.json(results); // Devuelve los resultados en formato JSON
+      console.error("Error al obtener tipos de cáncer:", err);
+      return res.status(500).send("Error al obtener datos de la base de datos");
     }
+    res.json(results);
+  });
+});
+
+// Ruta para obtener detalles de un tipo de cáncer
+app.get("/api/tiposcancer/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "SELECT * FROM tiposcancer WHERE id = ?";
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error("Error al obtener detalles del tipo de cáncer:", err);
+      return res.status(500).send("Error al obtener datos de la base de datos");
+    }
+    res.json(results[0] || {}); // Envía el primer resultado o un objeto vacío si no hay datos
+  });
+});
+
+// Ruta para obtener medicamentos relacionados con un tipo de cáncer
+app.get("/api/tiposcancer/:id/medicamentos", (req, res) => {
+  const { id } = req.params;
+  const query = "SELECT * FROM medicamentos WHERE tipo_cancer_id = ?";
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error("Error al obtener medicamentos:", err);
+      return res.status(500).send("Error al obtener datos de la base de datos");
+    }
+    res.json(results);
   });
 });
 
