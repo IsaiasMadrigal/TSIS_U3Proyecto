@@ -476,28 +476,34 @@
     
     // Solicita los datos de la API
     fetch('http://localhost:3000/api/medicamentos')
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector('#medicamentos-table tbody');
-        tableBody.innerHTML = ''; // Limpia el contenido previo
+  .then(response => response.json())
+  .then(data => {
+    const tableBody = document.querySelector('#medicamentos-table tbody');
+    tableBody.innerHTML = ''; // Limpia el contenido previo
 
-        data.forEach(medicamento => {
-          const row = `
-            <tr>
-              <td>${medicamento.id}</td>
-              <td>${medicamento.nombre}</td>
-              <td>${medicamento.tipo_medicamento}</td>
-              <td>${medicamento.ingrediente_activo}</td>
-              <td>${medicamento.tipo_cancer_nombre}</td>
-              <td>${medicamento.laboratorio}</td>
-              <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
-              <td>${medicamento.precio}</td>
-            </tr>
-          `;
-          tableBody.innerHTML += row;
-        });
-      })
-      .catch(error => console.error('Error al cargar los datos:', error));
+    data.forEach(medicamento => {
+      const row = `
+  <tr>
+    <td>
+      <button 
+        onclick="window.location.href='medicamentos/${medicamento.id}.html';"
+        style="background-color: #4CAF50; color: white; border: none; padding: 8px 12px; cursor: pointer;">
+        ${medicamento.nombre}
+      </button>
+    </td>
+    <td>${medicamento.tipo_medicamento}</td>
+    <td>${medicamento.ingrediente_activo}</td>
+    <td>${medicamento.tipo_cancer_nombre}</td>
+    <td>${medicamento.laboratorio}</td>
+    <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width: 50px; height: 50px;"></td>
+    <td>${medicamento.precio}</td>
+  </tr>
+`;
+      tableBody.innerHTML += row;
+    });
+  })
+  .catch(error => console.error('Error al cargar los datos:', error));
+
   </script>
 
 
