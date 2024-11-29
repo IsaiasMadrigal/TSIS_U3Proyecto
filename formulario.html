@@ -8,64 +8,66 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="glosario.css">
+    <link rel="stylesheet" href="formulario.css">
     <link rel="stylesheet" href="build/tailwind.css">
     <title>Diccionario Médico</title>
 </head>
 <body>
         <div class="encabezado">
         <!-- start header -->
-        <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 mb-20" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
-            <!-- Barra superior con dirección y teléfono -->
-            <div class="hidden md:flex justify-between items-center py-2 border-b text-sm py-3" style="border-color: rgba(255,255,255,.25)">
-              <div class="flex items-center text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                  <path d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
-                </svg>
-                <span class="ml-2">+52 443 733 2074</span>
-              </div>
-              
-              <div class="flex items-center space-x-4">
-                <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                    <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
-                  </svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                    <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
-                  </svg>
-                </a>
-                <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                    <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
-                  </svg>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                    <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
-                    <circle cx="12" cy="12" r="2.813" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          
-            <!-- Barra inferior con las opciones -->
-            <div class="flex items-center justify-between py-4">
-              <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
-                <a href="#" class="hover:underline">Sobre Nosotros</a>
-                <a href="#" class="hover:underline">Tratamientos</a>
-                <a href="#" class="hover:underline">Investigación</a>
-                <a href="#" class="hover:underline">Noticias</a>
-                <a href="#" class="hover:underline">Contactos</a>
-                <a href="glosario.html" class="hover:underline">Glosario</a>
-              </nav>
-              <div class="flex items-center space-x-4">
-                <a href="login.html" class="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition">Iniciar Sesión</a>
-                <a href="index.html" class="text-white text-2xl font-bold">OncoCare</a>
-              </div>
-            </div>
-        </header>
+    <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+      <!-- Barra superior con dirección y teléfono -->
+      <div class="hidden md:flex justify-between items-center py-2 border-b text-sm py-3" style="border-color: rgba(255,255,255,.25)">
+        <div class="flex items-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+            <path d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
+          </svg>
+          <span class="ml-2">+52 443 733 2074</span>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+          <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+              <circle cx="12" cy="12" r="2.813" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    
+      <!-- Barra inferior con las opciones -->
+      <div class="flex items-center justify-between py-4">
+        <nav class="flex items-center space-x-8 text-white font-montserrat text-lg ">
+          <a href="#" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="estudios.html" class="hover:underline">Estudios</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
+          <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
+          <a href="glosario.html" class="hover:underline">Glosario</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="login.html" class="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition">Iniciar Sesión</a>
+          <a href="index.html" class="text-white text-2xl font-bold">OncoCare</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- end header -->
         </div> 
 
 
