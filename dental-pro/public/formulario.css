@@ -140,3 +140,6 @@ input:focus, select:focus, textarea:focus {
     font-style: italic;
 }
 
+nav:hoover{
+    color: white;
+}

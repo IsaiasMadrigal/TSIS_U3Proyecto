@@ -1,98 +1,29 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Política de Privacidad</title>
   <link rel="stylesheet" href="build/tailwind.css">
-
-  <title>OncoCare</title>
-
   <style>
-    #menu-toggle:checked+#menu {
-      display: block;
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
     }
-
-    #dropdown-toggle:checked+#dropdown {
-      display: block;
+    .gradient-overlay {
+      background: linear-gradient(to top right, rgba(174, 65, 252, 0.55), rgba(145, 228, 228, 0.6));
     }
-
-    a,
-    span {
-      position: relative;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    a.arrow,
-    span.arrow {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    a.arrow .arrow_icon,
-    span.arrow .arrow_icon {
-      position: relative;
-      margin-left: 0.5em;
-    }
-
-    a.arrow .arrow_icon svg,
-    span.arrow .arrow_icon svg {
-      transition: transform 0.3s 0.02s ease;
-      margin-right: 1em;
-    }
-
-    a.arrow .arrow_icon::before,
-    span.arrow .arrow_icon::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #38b2ac;
-      transform: translateY(-50%);
-      transition: width 0.3s ease;
-    }
-
-    a.arrow:hover .arrow_icon::before,
-    span.arrow:hover .arrow_icon::before {
-      width: 1em;
-    }
-
-    a.arrow:hover .arrow_icon svg,
-    span.arrow:hover .arrow_icon svg {
-      transform: translateX(0.75em);
-    }
-
-    /* .cover {
-      border-bottom-right-radius: 128px;
-    } */
-
-    .bg-blue-teal-gradient {
-      background: rgb(49, 130, 206);
-      background: linear-gradient(90deg, rgba(49, 130, 206, 1) 0%, rgba(56, 178, 172, 1) 100%);
-    }
-
-    /* @media (min-width: 1024px) {
-      .cover {
-        border-bottom-right-radius: 256px;
-      }
-    } */
   </style>
 </head>
-
-<body class="antialiased bg-white font-sans text-gray-900">
-
-  <main class="w-full">
-
+<body class="relative items-center font-sans justify-center min-h-screen bg-cover bg-center" style="background-image: url('https://www.example.com/background.jpg');">
+  
     <!-- start header -->
     <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
       <!-- Barra superior con dirección y teléfono -->
@@ -146,248 +77,31 @@
     </header>
     
     <!-- end header -->
+        <section class="relative flex bg-gray-100 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-16 lg:py-32">
 
+  <div class="absolute inset-0 gradient-overlay"></div>
 
-    <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
-      </div>
-    
-      <!-- Barra de búsqueda -->
-      <div class="flex justify-center mb-12">
-        <input
-          type="text"
-          id="buscadorTipos"
-          placeholder="Buscar..."
-          class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-          oninput="filtrarTiposCancer()"
-        />
-      </div>
-    
-      <!-- Contenedor de tarjetas -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        id="listaTipos"
-      >
-        <!-- Tarjetas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <img
-            src="./images/t-cancer/cmama.jpg"
-            alt="Cáncer de mama"
-            class="w-full h-32 object-cover rounded-t-lg"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de mama</h3>
-            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
-            <div class="text-right mt-2">
-              <a
-                href="#"
-                class="text-blue-500 hover:underline"
-                onclick="mostrarModal(1)"
-              >
-                Ver más
-              </a>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Repetir para las demás tarjetas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <img
-            src="./images/t-cancer/cpulmon.jpg"
-            alt="Cáncer de pulmón"
-            class="w-full h-32 object-cover rounded-t-lg"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de pulmón</h3>
-            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
-            <div class="text-right mt-2">
-              <a
-                href="#"
-                class="text-blue-500 hover:underline"
-                onclick="mostrarModal(2)"
-              >
-                Ver más
-              </a>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Tarjetas restantes... -->
-      </div>
-    </section>
-    
-<!-- Modal -->
-<div
-  id="modal"
-  class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
-  onclick="cerrarModal(event)"
->
-  <div
-    class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6"
-    onclick="event.stopPropagation()"
-  >
-    <!-- Botón de cierre -->
-    <button
-      id="modalClose"
-      class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
-      onclick="cerrarModal()"
-    >
-      &times;
-    </button>
-    <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
-    <div id="modalContent" class="text-gray-700 mb-4"></div>
-    <!-- Enlaces horizontales -->
-    <div class="flex justify-around mt-4">
-      <a href="tratamientos.html" class="text-blue-500 hover:underline">Tratamientos</a>
-      <a href="index.html#estudios" class="text-blue-500 hover:underline">Estudios</a>
-    </div>
+  <div class="relative z-10 container">
+    <h1 class="text-3xl font-bold text-purple-700 mb-6 text-center">Política de Privacidad</h1>
+    <p class="mb-4 text-gray-700">
+      Nos comprometemos a proteger tus datos personales y garantizar su seguridad. Esta política describe cómo recopilamos, usamos y almacenamos tu información.
+    </p>
+    <h2 class="text-xl font-semibold mb-2 text-purple-600">Recolección de Datos</h2>
+    <p class="mb-4 text-gray-700">Recopilamos datos como nombre, correo electrónico y otros necesarios para la funcionalidad del sitio.</p>
+    <h2 class="text-xl font-semibold mb-2 text-purple-600">Uso de Datos</h2>
+    <p class="mb-4 text-gray-700">Usamos la información recopilada para mejorar la experiencia del usuario y proporcionar recursos educativos.</p>
+    <h2 class="text-xl font-semibold mb-2 text-purple-600">Tus Derechos</h2>
+    <p class="mb-4 text-gray-700">
+      Puedes acceder, modificar o eliminar tus datos en cualquier momento según las normativas aplicables, como el RGPD o leyes locales.
+    </p>
+    <h2 class="text-xl font-semibold mb-2 text-purple-600">Cookies</h2>
+    <p class="mb-4 text-gray-700">Este sitio utiliza cookies para optimizar tu navegación. Puedes desactivarlas desde tu navegador.</p>
+    <a href="index.html" class="block mt-4 text-center text-purple-700 font-bold hover:underline">Regresar al inicio</a>
   </div>
-</div>
 
+</section>
 
-      <!-- Sección de Tratamientos -->
-       <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 bg-blue-100">
-      <div>
-        <div class="text-center mt-16 mb-12">
-          <h2 class="text-3xl font-bold">Tratamientos</h2>
-          <p class="text-gray-600 mt-4">
-            Descubre los tratamientos más avanzados para diferentes tipos de cáncer.
-          </p>
-        </div>
-        
-         <!-- Barra de búsqueda -->
-         <div class="flex justify-end mt-8">
-          <input
-          type="text"
-          id="searchBarTreatments"
-          placeholder="Buscar por tipo de cáncer..."
-          class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
-          />
-        </div>
-  
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Cáncer de Pulmón -->
-           
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de pulmon pulmón">
-            <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-              <img src="./images/est-trat/pulmon1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-            </div>
-            <div class="p-4">
-              <span class="text-teal-500 font-semibold">Tratamientos</span>
-              <h3 class="text-lg font-bold text-gray-800">Cáncer de Pulmón</h3>
-              <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-                <li>Quimioterapia</li>
-                <li>Radioterapia</li>
-                <li>Cirugía</li>
-                <li>Inmunoterapia</li>
-                <li>Terapias dirigidas</li>
-              </ul>
-            </div>
-          </div>
-      
-          <!-- Cáncer de Próstata -->
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de prostata próstata">
-            <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-              <img src="./images/est-trat/prostata1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-            </div>
-            <div class="p-4">
-              <span class="text-teal-500 font-semibold">Tratamientos</span>
-              <h3 class="text-lg font-bold text-gray-800">Cáncer de Próstata</h3>
-              <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-                <li>Vigilancia activa</li>
-                <li>Terapia hormonal</li>
-                <li>Radioterapia</li>
-                <li>Cirugía</li>
-                <li>Quimioterapia</li>
-              </ul>
-            </div>
-          </div>
-      
-          <!-- Cáncer de Mama -->
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de mama">
-            <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-              <img src="./images/est-trat/mama1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-            </div>
-            <div class="p-4">
-              <span class="text-teal-500 font-semibold">Tratamientos</span>
-              <h3 class="text-lg font-bold text-gray-800">Cáncer de Mama</h3>
-              <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-                <li>Cirugía conservadora</li>
-                <li>Radioterapia</li>
-                <li>Terapia hormonal</li>
-                <li>Quimioterapia</li>
-                <li>Terapias dirigidas</li>
-              </ul>
-            </div>
-          </div>
-      
-          <!-- Cáncer de Piel -->
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de piel">
-            <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-              <img src="./images/est-trat/piel1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-            </div>
-            <div class="p-4">
-              <span class="text-teal-500 font-semibold">Tratamientos</span>
-              <h3 class="text-lg font-bold text-gray-800">Cáncer de Piel</h3>
-              <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-                <li>Cirugía de Mohs</li>
-                <li>Excisión quirúrgica</li>
-                <li>Radioterapia</li>
-                <li>Crioterapia</li>
-                <li>Inmunoterapia</li>
-                <li>Terapias tópicas</li>
-              </ul>
-            </div>
-          </div>
-  
-          <!-- Leucemia -->
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow w-84" data-cancer="cancer cáncer de leucemia">
-            <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-              <img src="./images/est-trat/leucemia1.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-            </div>
-            <div class="p-4">
-              <span class="text-teal-500 font-semibold">Tratamientos</span>
-              <h3 class="text-lg font-bold text-gray-800">Leucemia</h3>
-              <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-                <li>Quimioterapia</li>
-                <li>Radioterapia</li>
-                <li>Terapia dirigida</li>
-                <li>Inmunoterapia</li>
-                <li>Trasplante de médula ósea</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-  
-      <script>
-        const searchBarTreatments = document.getElementById('searchBarTreatments');
-        const treatmentCards = document.querySelectorAll('[data-cancer]');
-  
-        searchBarTreatments.addEventListener('input', (event) => {
-          const searchText = event.target.value.toLowerCase();
-  
-          treatmentCards.forEach((card) => {
-            const cancerType = card.getAttribute('data-cancer').toLowerCase();
-  
-            if (cancerType.includes(searchText)) {
-              card.style.display = '';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      </script>  
-  </div>  
-  </section>
-  
-  <div class="m-1"></div>
-  
-
-
- <!-- start footer -->
+<!-- start footer -->
 <footer class="bg-gray-900 text-white">
   <!-- Sección superior con degradado -->
   <div class="footer-top py-4 text-center" style="background: linear-gradient(to right, #DBB6EE, #83C9DD, #CDFFFF);">
@@ -470,21 +184,6 @@
 
 <!-- end footer -->
 
-  </main>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131505823-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-131505823-4');
-  </script>
 
 </body>
-
 </html>
