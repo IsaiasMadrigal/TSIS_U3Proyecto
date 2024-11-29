@@ -6,14 +6,24 @@
   },
   "dependencies": {
     "autoprefixer": "^9.5.1",
+    "express": "^4.21.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.4",
     "tailwindcss": "^1.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "concurrently": "^4.1.0",
-    "cross-env": "^5.2.0",
+    "concurrently": "^4.1.2",
+    "cross-env": "^5.2.1",
     "cssnano": "^4.1.10",
-    "live-server": "^1.2.1",
+    "live-server": "^1.2.2",
     "postcss-cli": "^6.1.2"
-  }
+  },
+  "name": "dental-pro",
+  "version": "1.0.0",
+  "description": "A simple starter project for playing around with Tailwind in a proper PostCSS environment.",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

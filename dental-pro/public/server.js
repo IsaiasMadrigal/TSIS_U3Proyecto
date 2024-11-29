@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   host: "localhost",       // Cambia si tu base de datos está en un servidor diferente
   user: "root",            // Tu usuario de MySQL
   password: "",            // La contraseña de tu usuario de MySQL
-  database: "plataformamedica" // Nombre de la base de datos
+  database: 'plataformamedica' // Nombre de la base de datos
 });
 
 // Conexión a la base de datos
