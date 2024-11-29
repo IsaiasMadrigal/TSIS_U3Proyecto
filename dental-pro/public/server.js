@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const path = require("path"); // Para manejar rutas de archivos
 
 const app = express();
 const port = 3000;
@@ -25,6 +26,9 @@ db.connect((err) => {
   }
   console.log("Conexión exitosa a la base de datos MySQL");
 });
+
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, "public")));  // Asegúrate de que Express sirva la carpeta public
 
 // Ruta para obtener todos los tipos de cáncer
 app.get("/api/tiposcancer", (req, res) => {

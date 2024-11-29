@@ -181,8 +181,6 @@
 
 
 
-
-
     <section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
@@ -200,53 +198,86 @@
       </div>
     
       <!-- Contenedor de tarjetas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
-        <!-- Ejemplo de tarjeta -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        id="listaTipos"
+      >
+        <!-- Tarjetas -->
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <img
-            src="ruta_de_la_imagen_ejemplo.jpg"
-            alt="Ejemplo"
+            src="./images/t-cancer/cmama.jpg"
+            alt="Cáncer de mama"
+            class="w-full h-32 object-cover rounded-t-lg"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800">Cáncer de mama</h3>
+            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
+            <div class="text-right mt-2">
+              <a
+                href="#"
+                class="text-blue-500 hover:underline"
+                onclick="mostrarModal(1)"
+              >
+                Ver más
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Repetir para las demás tarjetas -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <img
+            src="./images/t-cancer/cpulmon.jpg"
+            alt="Cáncer de pulmón"
             class="w-full h-32 object-cover rounded-t-lg"
           />
           <div class="p-4">
             <h3 class="text-lg font-bold text-gray-800">Cáncer de pulmón</h3>
             <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
             <div class="text-right mt-2">
-              <a href="#" class="text-blue-500 hover:underline" onclick="mostrarModal(1)">Ver más</a>
+              <a
+                href="#"
+                class="text-blue-500 hover:underline"
+                onclick="mostrarModal(2)"
+              >
+                Ver más
+              </a>
             </div>
           </div>
         </div>
-      </div>
     
-      <!-- Modal -->
-      <div
-        id="modal"
-        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
-        onclick="cerrarModal(event)"
-      >
-        <div
-          class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6"
-          onclick="event.stopPropagation()"
-        >
-          <!-- Botón de cierre -->
-          <button
-            id="modalClose"
-            class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
-            onclick="cerrarModal()"
-          >
-            &times;
-          </button>
-          <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
-          <div id="modalContent" class="text-gray-700 mb-4"></div>
-          <!-- Enlaces horizontales -->
-          <div class="flex justify-around mt-4">
-            <a href="tratamientos.html" class="text-blue-500 hover:underline">Tratamientos</a>
-            <a href="index.html#estudios" class="text-blue-500 hover:underline">Estudios</a>
-          </div>
-        </div>
+        <!-- Tarjetas restantes... -->
       </div>
     </section>
     
+<!-- Modal -->
+<div
+  id="modal"
+  class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
+  onclick="cerrarModal(event)"
+>
+  <div
+    class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6"
+    onclick="event.stopPropagation()"
+  >
+    <!-- Botón de cierre -->
+    <button
+      id="modalClose"
+      class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
+      onclick="cerrarModal()"
+    >
+      &times;
+    </button>
+    <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
+    <div id="modalContent" class="text-gray-700 mb-4"></div>
+    <!-- Enlaces horizontales -->
+    <div class="flex justify-around mt-4">
+      <a href="tratamientos.html" class="text-blue-500 hover:underline">Tratamientos</a>
+      <a href="index.html#estudios" class="text-blue-500 hover:underline">Estudios</a>
+    </div>
+  </div>
+</div>
+
     
 
 
