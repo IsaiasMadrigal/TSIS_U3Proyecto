@@ -195,31 +195,58 @@
           id="buscadorTipos"
           placeholder="Buscar..."
           class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          oninput="filtrarTiposCancer()"
         />
       </div>
     
-      <!-- Tarjetas de Tipos de Cáncer -->
+      <!-- Contenedor de tarjetas -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
-        <!-- Tarjetas dinámicas -->
+        <!-- Ejemplo de tarjeta -->
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <img
+            src="ruta_de_la_imagen_ejemplo.jpg"
+            alt="Ejemplo"
+            class="w-full h-32 object-cover rounded-t-lg"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800">Cáncer de pulmón</h3>
+            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
+            <div class="text-right mt-2">
+              <a href="#" class="text-blue-500 hover:underline" onclick="mostrarModal(1)">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal -->
+      <div
+        id="modal"
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
+        onclick="cerrarModal(event)"
+      >
+        <div
+          class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6"
+          onclick="event.stopPropagation()"
+        >
+          <!-- Botón de cierre -->
+          <button
+            id="modalClose"
+            class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
+            onclick="cerrarModal()"
+          >
+            &times;
+          </button>
+          <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
+          <div id="modalContent" class="text-gray-700 mb-4"></div>
+          <!-- Enlaces horizontales -->
+          <div class="flex justify-around mt-4">
+            <a href="tratamientos.html" class="text-blue-500 hover:underline">Tratamientos</a>
+            <a href="index.html#estudios" class="text-blue-500 hover:underline">Estudios</a>
+          </div>
+        </div>
       </div>
     </section>
     
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full transform scale-90 transition-transform">
-        <button id="closeModal" class="ml-auto block text-gray-400 hover:text-gray-800 font-bold text-xl">&times;</button>
-        <h3 id="modalTitle" class="text-lg font-bold text-gray-800"></h3>
-        <p id="modalContent" class="text-gray-600 mt-4"></p>
-        <div class="mt-4 flex space-x-4">
-          <button id="verTratamientos" class="text-blue-500 underline">Ver Tratamientos</button>
-        </div>
-        <div id="tratamientosContenido" class="mt-4 hidden">
-          <h4 class="text-md font-semibold">Tratamientos Relacionados</h4>
-          <ul id="listaTratamientos" class="list-disc list-inside mt-2"></ul>
-          <button id="regresarInfo" class="mt-2 text-blue-500 underline">Regresar a la Información</button>
-        </div>
-      </div>
-    </div>
     
 
 
@@ -413,6 +440,8 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
+
+  
   <script>
     
     // Solicita los datos de la API
@@ -441,23 +470,29 @@
       .catch(error => console.error('Error al cargar los datos:', error));
   </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
-  const API_BASE = "http://localhost:3000/api";
-
-const buscadorTipos = document.getElementById("buscadorTipos");
+// Variables globales
+const API_BASE = "http://localhost:3000/api";
 const listaTipos = document.getElementById("listaTipos");
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modalTitle");
-const modalContent = document.getElementById("modalContent");
-const closeModal = document.getElementById("closeModal");
-const verTratamientos = document.getElementById("verTratamientos");
-const tratamientosContenido = document.getElementById("tratamientosContenido");
-const listaTratamientos = document.getElementById("listaTratamientos");
-const regresarInfo = document.getElementById("regresarInfo");
+const buscadorTipos = document.getElementById("buscadorTipos");
 
-let tiposCancerData = [];
+let tiposCancerData = []; // Datos originales
 
-// Cargar tipos de cáncer
+// Cargar datos del servidor
 async function cargarTiposCancer() {
   try {
     const response = await fetch(`${API_BASE}/tiposcancer`);
@@ -468,44 +503,74 @@ async function cargarTiposCancer() {
   }
 }
 
-// Mostrar tipos de cáncer en tarjetas
+// Función de búsqueda
+function filtrarTiposCancer() {
+  const textoBusqueda = buscadorTipos.value.toLowerCase();
+  const resultadosFiltrados = tiposCancerData.filter((tipo) =>
+    tipo.nombre.toLowerCase().includes(textoBusqueda) ||
+    tipo.descripcion.toLowerCase().includes(textoBusqueda)
+  );
+  mostrarTiposCancer(resultadosFiltrados);
+}
+
+// Mostrar tarjetas
 function mostrarTiposCancer(tipos) {
   listaTipos.innerHTML = "";
+  if (tipos.length === 0) {
+    listaTipos.innerHTML =
+      '<p class="text-gray-500 text-center col-span-full">No se encontraron resultados</p>';
+    return;
+  }
+
   tipos.forEach((tipo) => {
     const card = document.createElement("div");
     card.className =
-      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow";
     card.innerHTML = `
+      <img
+        src="${tipo.imagen}"
+        alt="${tipo.nombre}"
+        class="w-full h-32 object-cover rounded-t-lg"
+      />
       <div class="p-4">
         <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
-        <p class="text-gray-600 text-sm">${tipo.descripcion.substring(0, 100)}...</p>
+        <p class="text-gray-600 text-sm">
+          ${tipo.descripcion.substring(0, 100)}...
+        </p>
+        <div class="text-right mt-2">
+          <a href="#" class="text-blue-500 hover:underline" onclick="mostrarModal(${tipo.id})">Ver más</a>
+        </div>
       </div>`;
-    card.addEventListener("click", () => mostrarModal(tipo.id));
     listaTipos.appendChild(card);
   });
 }
 
-// Mostrar modal con información detallada
+// Mostrar modal con detalles
 async function mostrarModal(id) {
   try {
     const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
     const tipo = await response.json();
 
-    modalTitle.textContent = tipo.nombre;
-    modalContent.innerHTML = `
+    document.getElementById("modalTitle").textContent = tipo.nombre;
+    document.getElementById("modalContent").innerHTML = `
       <p>${tipo.descripcion}</p>
       <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
-
-    tratamientosContenido.classList.add("hidden");
-    modal.classList.remove("hidden");
+    document.getElementById("modal").classList.remove("hidden");
   } catch (error) {
     console.error("Error al mostrar detalles:", error);
   }
 }
 
-// Manejo del modal
-closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+// Cerrar modal
+function cerrarModal(event) {
+  if (!event || event.target.id === "modal") {
+    document.getElementById("modal").classList.add("hidden");
+  }
+}
+
+// Cargar datos al inicio
 document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+
 
 </script>
 
