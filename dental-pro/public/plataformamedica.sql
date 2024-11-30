@@ -6,13 +6,87 @@ USE `plataformamedica`;
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.32-MariaDB
 
--- Creación de usuario para acceso a la base de datos
+CREATE USER 'db_user'@'localhost' IDENTIFIED BY 'SecurePassword123!';
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON `plataformamedica`.* TO 'db_user'@'localhost';
+FLUSH PRIVILEGES;
+-- Procedimiento simplificado para registrar respaldos (sin comandos del sistema)
+DELIMITER $$
+
+
+-- Creación de la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS `plataformamedica` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `plataformamedica`;
+
+-- Creación de usuario para acceso restringido a la base de datos
 CREATE USER 'db_user'@'localhost' IDENTIFIED BY 'SecurePassword123!';
 GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON `plataformamedica`.* TO 'db_user'@'localhost';
 FLUSH PRIVILEGES;
 
--- Procedimiento simplificado para registrar respaldos (sin comandos del sistema)
+-- Tabla para almacenar respaldos encriptados
+CREATE TABLE IF NOT EXISTS `backup_encrypted` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `backup_date` DATETIME NOT NULL,
+    `encrypted_data` LONGBLOB NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Procedimiento para generar respaldos encriptados
 DELIMITER $$
+
+CREATE PROCEDURE `generate_encrypted_backup`()
+BEGIN
+    DECLARE backup_data LONGBLOB;
+    DECLARE encryption_key VARBINARY(32);
+
+    -- Clave de encriptación (puedes cambiarla, pero debe ser fija para desencriptar)
+    SET encryption_key = AES_ENCRYPT('yourEncryptionKey123!', 'static_key');
+
+    -- Generar respaldo de toda la base de datos en formato JSON
+    SET backup_data = AES_ENCRYPT(
+        (SELECT JSON_OBJECTAGG(TABLE_NAME, 
+                (SELECT JSON_ARRAYAGG(ROW_TO_JSON(t))
+                 FROM (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = TABLE_NAME) AS t)
+         )
+        FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = DATABASE()),
+        encryption_key
+    );
+
+    -- Guardar el respaldo encriptado en la tabla
+    INSERT INTO `backup_encrypted` (`backup_date`, `encrypted_data`)
+    VALUES (NOW(), backup_data);
+END$$
+
+DELIMITER ;
+
+-- Procedimiento para desencriptar respaldos (si se necesita restaurar)
+DELIMITER $$
+
+CREATE PROCEDURE `restore_encrypted_backup`(IN backup_id INT)
+BEGIN
+    DECLARE backup_data LONGBLOB;
+    DECLARE decryption_key VARBINARY(32);
+
+    -- Clave de desencriptación (debe coincidir con la usada para encriptar)
+    SET decryption_key = AES_ENCRYPT('yourEncryptionKey123!', 'static_key');
+
+    -- Obtener el respaldo encriptado
+    SELECT AES_DECRYPT(encrypted_data, decryption_key) INTO backup_data
+    FROM `backup_encrypted`
+    WHERE id = backup_id;
+
+    -- Aquí podrías procesar el JSON para restaurar los datos si es necesario
+    -- En este ejemplo, simplemente mostramos los datos desencriptados
+    SELECT backup_data AS decrypted_backup;
+END$$
+
+DELIMITER ;
+
+-- Evento programado para respaldos automáticos
+CREATE EVENT IF NOT EXISTS `daily_encrypted_backup`
+ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP
+DO
+CALL generate_encrypted_backup();
+
+
 
 CREATE PROCEDURE `log_backup`()
 BEGIN
