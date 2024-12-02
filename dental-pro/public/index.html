@@ -198,90 +198,172 @@
       </div>
     
       <!-- Contenedor de tarjetas -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        id="listaTipos"
-      >
-        <!-- Tarjetas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <img
-            src="./images/t-cancer/cmama.jpg"
-            alt="Cáncer de mama"
-            class="w-full h-32 object-cover rounded-t-lg"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de mama</h3>
-            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
-            <div class="text-right mt-2">
-              <a
-                href="#"
-                class="text-blue-500 hover:underline"
-                onclick="mostrarModal(1)"
-              >
-                Ver más
-              </a>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Repetir para las demás tarjetas -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <img
-            src="./images/t-cancer/cpulmon.jpg"
-            alt="Cáncer de pulmón"
-            class="w-full h-32 object-cover rounded-t-lg"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de pulmón</h3>
-            <p class="text-gray-600 text-sm">Breve descripción del cáncer...</p>
-            <div class="text-right mt-2">
-              <a
-                href="#"
-                class="text-blue-500 hover:underline"
-                onclick="mostrarModal(2)"
-              >
-                Ver más
-              </a>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Tarjetas restantes... -->
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos"></div>
     </section>
     
-<!-- Modal -->
-<div
-  id="modal"
-  class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
-  onclick="cerrarModal(event)"
->
-  <div
-    class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6"
-    onclick="event.stopPropagation()"
-  >
-    <!-- Botón de cierre -->
-    <button
-      id="modalClose"
-      class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
-      onclick="cerrarModal()"
+    <!-- Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden z-50"
+      onclick="cerrarModal(event)"
     >
-      &times;
-    </button>
-    <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
-    <div id="modalContent" class="text-gray-700 mb-4"></div>
-    <!-- Enlaces horizontales -->
-    <div class="flex justify-around mt-4">
-      <a href="tratamientos.html" class="text-blue-500 hover:underline">Tratamientos</a>
-      <a href="index.html#estudios" class="text-blue-500 hover:underline">Estudios</a>
+      <div
+        class="bg-white w-3/4 max-w-lg rounded-lg shadow-lg relative p-6 flex flex-col justify-between"
+        onclick="event.stopPropagation()"
+      >
+        <!-- Botón de cierre -->
+        <button
+          id="modalClose"
+          class="absolute top-2 left-2 text-gray-500 hover:text-gray-800 text-2xl"
+          onclick="cerrarModal()"
+        >
+          &times;
+        </button>
+    
+        <!-- Título -->
+        <h2 id="modalTitle" class="text-xl font-bold mb-4 text-center"></h2>
+    
+        <!-- Contenido -->
+        <div id="modalContent" class="text-gray-700 mb-4 text-center"></div>
+    
+        <!-- Botones en las esquinas inferiores -->
+        <div class="relative mt-6">
+          <a href="tratamientos.html" class="boton-tratamientos absolute bottom-0 left-0 mb-4 ml-4">Tratamientos</a>
+          <a href="index.html#estudios" class="boton-estudios absolute bottom-0 right-0 mb-4 mr-4">Estudios</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    
+    <script>
+      const API_BASE = "http://localhost:3000/api";
+      const listaTipos = document.getElementById("listaTipos");
+      const buscadorTipos = document.getElementById("buscadorTipos");
+    
+      let tiposCancerData = [];
+    
+      async function cargarTiposCancer() {
+        try {
+          const response = await fetch(`${API_BASE}/tiposcancer`);
+          tiposCancerData = await response.json();
+          mostrarTiposCancer(tiposCancerData);
+        } catch (error) {
+          console.error("Error al cargar tipos de cáncer:", error);
+        }
+      }
+    
+      function filtrarTiposCancer() {
+        const textoBusqueda = buscadorTipos.value.toLowerCase();
+        const resultadosFiltrados = tiposCancerData.filter((tipo) =>
+          tipo.nombre.toLowerCase().includes(textoBusqueda) ||
+          tipo.descripcion.toLowerCase().includes(textoBusqueda)
+        );
+        mostrarTiposCancer(resultadosFiltrados);
+      }
+    
+      function verificarImagen(src, callback) {
+  const img = new Image();
+  img.onload = () => callback(true); // La imagen existe
+  img.onerror = () => callback(false); // La imagen no existe
+  img.src = src;
+}
+
+function mostrarTiposCancer(tipos) {
+  listaTipos.innerHTML = ""; // Limpia el contenedor
+
+  if (tipos.length === 0) {
+    listaTipos.innerHTML =
+      '<p class="text-gray-500 text-center col-span-full">No se encontraron resultados</p>';
+    return;
+  }
+
+  tipos.forEach((tipo) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow card-tipo-cancer";
+
+    const rutaImagen = `images/t-cancer/${tipo.imagen}`;
+    verificarImagen(rutaImagen, (existe) => {
+      const imgSrc = existe ? rutaImagen : "images/t-cancer/default.jpg";
+      card.innerHTML = `
+        <img
+          src="${imgSrc}"
+          alt="${tipo.nombre}"
+          class="w-full h-32 object-cover rounded-t-lg"
+        />
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-gray-800 nombre-tipo">${tipo.nombre}</h3>
+          <p class="text-gray-600 text-sm descripcion-tipo">
+            ${tipo.descripcion.substring(0, 100)}...
+          </p>
+          <div class="text-right mt-2">
+            <a href="#" class="text-blue-500 hover:underline btn-ver-mas" onclick="mostrarModal(${tipo.id}); return false;">Ver más</a>
+          </div>
+        </div>`;
+      listaTipos.appendChild(card);
+    });
+  });
+}
+
 
     
-
-
-
+      async function mostrarModal(id) {
+        try {
+          const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
+          const tipo = await response.json();
+    
+          document.getElementById("modalTitle").textContent = tipo.nombre;
+          document.getElementById("modalContent").innerHTML = `
+            <p>${tipo.descripcion}</p>
+            <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
+          document.getElementById("modal").classList.remove("hidden");
+        } catch (error) {
+          console.error("Error al mostrar detalles:", error);
+        }
+      }
+    
+      function cerrarModal(event) {
+        if (!event || event.target.id === "modal") {
+          document.getElementById("modal").classList.add("hidden");
+        }
+      }
+    
+      document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+    </script>
+    
+    <style>
+      .boton-tratamientos,
+      .boton-estudios {
+        display: inline-block;
+        background: linear-gradient(90deg, #B590CD 0%, #A9DCE4 100%);
+        color: white;
+        font-weight: 600;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.375rem;
+        text-align: center;
+        text-decoration: none;
+        transition: box-shadow 0.3s ease;
+      }
+    
+      .boton-tratamientos:hover,
+      .boton-estudios:hover {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      }
+    
+      .boton-tratamientos {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 1rem;
+      }
+    
+      .boton-estudios {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 1rem;
+      }
+    </style>
+    
     
 
 
@@ -515,95 +597,7 @@
 
 
 
-<script>
-// Variables globales
-const API_BASE = "http://localhost:3000/api";
-const listaTipos = document.getElementById("listaTipos");
-const buscadorTipos = document.getElementById("buscadorTipos");
 
-let tiposCancerData = []; // Datos originales
-
-// Cargar datos del servidor
-async function cargarTiposCancer() {
-  try {
-    const response = await fetch(`${API_BASE}/tiposcancer`);
-    tiposCancerData = await response.json();
-    mostrarTiposCancer(tiposCancerData);
-  } catch (error) {
-    console.error("Error al cargar tipos de cáncer:", error);
-  }
-}
-
-// Función de búsqueda
-function filtrarTiposCancer() {
-  const textoBusqueda = buscadorTipos.value.toLowerCase();
-  const resultadosFiltrados = tiposCancerData.filter((tipo) =>
-    tipo.nombre.toLowerCase().includes(textoBusqueda) ||
-    tipo.descripcion.toLowerCase().includes(textoBusqueda)
-  );
-  mostrarTiposCancer(resultadosFiltrados);
-}
-
-// Mostrar tarjetas
-function mostrarTiposCancer(tipos) {
-  listaTipos.innerHTML = "";
-  if (tipos.length === 0) {
-    listaTipos.innerHTML =
-      '<p class="text-gray-500 text-center col-span-full">No se encontraron resultados</p>';
-    return;
-  }
-
-  tipos.forEach((tipo) => {
-    const card = document.createElement("div");
-    card.className =
-      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow";
-    card.innerHTML = `
-      <img
-        src="${tipo.imagen}"
-        alt="${tipo.nombre}"
-        class="w-full h-32 object-cover rounded-t-lg"
-      />
-      <div class="p-4">
-        <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
-        <p class="text-gray-600 text-sm">
-          ${tipo.descripcion.substring(0, 100)}...
-        </p>
-        <div class="text-right mt-2">
-          <a href="#" class="text-blue-500 hover:underline" onclick="mostrarModal(${tipo.id})">Ver más</a>
-        </div>
-      </div>`;
-    listaTipos.appendChild(card);
-  });
-}
-
-// Mostrar modal con detalles
-async function mostrarModal(id) {
-  try {
-    const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
-    const tipo = await response.json();
-
-    document.getElementById("modalTitle").textContent = tipo.nombre;
-    document.getElementById("modalContent").innerHTML = `
-      <p>${tipo.descripcion}</p>
-      <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
-    document.getElementById("modal").classList.remove("hidden");
-  } catch (error) {
-    console.error("Error al mostrar detalles:", error);
-  }
-}
-
-// Cerrar modal
-function cerrarModal(event) {
-  if (!event || event.target.id === "modal") {
-    document.getElementById("modal").classList.add("hidden");
-  }
-}
-
-// Cargar datos al inicio
-document.addEventListener("DOMContentLoaded", cargarTiposCancer);
-
-
-</script>
 
 
 

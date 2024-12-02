@@ -28,7 +28,9 @@ db.connect((err) => {
 });
 
 // Servir archivos estáticos desde la carpeta 'public'
-app.use(express.static(path.join(__dirname, "public")));  // Asegúrate de que Express sirva la carpeta public
+app.use(express.static(path.join(__dirname, "public")));  
+
+// Rutas del API
 
 // Ruta para obtener todos los tipos de cáncer
 app.get("/api/tiposcancer", (req, res) => {
@@ -38,7 +40,12 @@ app.get("/api/tiposcancer", (req, res) => {
       console.error("Error al obtener tipos de cáncer:", err);
       return res.status(500).send("Error al obtener datos de la base de datos");
     }
-    res.json(results);
+    // Asegurarse de incluir las rutas de las imágenes
+    const tipos = results.map((tipo) => ({
+      ...tipo,
+      imagen: tipo.imagen ? `/images/t-cancer/${tipo.imagen}` : `/images/t-cancer/default.jpg`,
+    }));
+    res.json(tipos);
   });
 });
 
@@ -51,7 +58,17 @@ app.get("/api/tiposcancer/:id", (req, res) => {
       console.error("Error al obtener detalles del tipo de cáncer:", err);
       return res.status(500).send("Error al obtener datos de la base de datos");
     }
-    res.json(results[0] || {}); // Envía el primer resultado o un objeto vacío si no hay datos
+    if (results.length > 0) {
+      const tipo = {
+        ...results[0],
+        imagen: results[0].imagen
+          ? `/images/t-cancer/${results[0].imagen}`
+          : `/images/t-cancer/default.jpg`,
+      };
+      res.json(tipo);
+    } else {
+      res.status(404).send("Tipo de cáncer no encontrado");
+    }
   });
 });
 
@@ -65,6 +82,18 @@ app.get("/api/tiposcancer/:id/medicamentos", (req, res) => {
       return res.status(500).send("Error al obtener datos de la base de datos");
     }
     res.json(results);
+  });
+});
+
+// Ruta para servir imágenes directamente (opcional si ya usas 'express.static')
+app.get("/images/t-cancer/:imagen", (req, res) => {
+  const { imagen } = req.params;
+  const rutaImagen = path.join(__dirname, "public", "images", "t-cancer", imagen);
+  res.sendFile(rutaImagen, (err) => {
+    if (err) {
+      console.error("Error al enviar la imagen:", err);
+      res.status(404).send("Imagen no encontrada");
+    }
   });
 });
 
