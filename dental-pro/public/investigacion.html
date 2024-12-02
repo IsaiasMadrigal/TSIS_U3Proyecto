@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <!-- <link rel="stylesheet" href="lineaTiempo.css"> -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="build/tailwind.css">
 
@@ -146,6 +147,130 @@
     </header>
     
     <!-- end header -->
+
+    <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 mt-16">
+      <div class="relative max-w-screen-lg mx-auto py-12 font-montserrat">
+        <!-- Contenedor de la línea de tiempo -->
+        <div class="flex flex-col items-center font-montserrat">
+          <!-- Imagen y detalles visibles -->
+          <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 relative">
+            <!-- Contenedor de partículas -->
+            <div id="particle-container" class="absolute inset-0 pointer-events-none"></div>
+            <!-- Imagen -->
+            <img id="timeline-image" src="https://via.placeholder.com/300" alt="Evento" class="w-80 h-80 object-cover rounded-full border-4 border-gray-300 shadow-lg transition-all duration-500 transform scale-100 opacity-100">
+            <!-- Detalles de la sección -->
+            <div class="flex flex-col text-center md:text-left">
+              <span id="timeline-date" class="text-4xl font-semibold text-gray-800 transition-opacity duration-500">2008</span>
+              <p id="timeline-description" class="text-lg text-gray-600 mt-2 transition-opacity duration-500">Descripción del evento de 2008. Explicación breve de lo que ocurrió y su relevancia.</p>
+            </div>
+          </div>
+      
+          <!-- Barra de tiempo con fechas -->
+          <div class="relative w-full mt-8">
+            <div class="flex justify-between">
+              <div class="text-gray-600 text-lg">2008</div>
+              <div class="text-gray-600 text-lg">2024</div>
+            </div>
+            <div class="w-full h-4 bg-gray-300 rounded overflow-hidden mt-2">
+              <div id="progress-bar" class="h-full bg-blue-500 transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+      
+          <!-- Botones de navegación -->
+          <div class="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between px-4">
+            <button id="prev-button" class="px-4 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform active:scale-90">←</button>
+            <button id="next-button" class="px-4 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform active:scale-90">→</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- JavaScript -->
+      <script>
+        const images = [
+          { date: '2008', src: 'images/circulito.png', description: 'Descubrimiento del marcador genético BRCA2 en cáncer de mama y ovario, mejorando las opciones de prevención.' },
+          { date: '2012', src: 'images/circulito.png', description: 'Introducción de la inmunoterapia con anticuerpos monoclonales como ipilimumab para el melanoma avanzado.' },
+          { date: '2015', src: 'images/circulito.png', description: 'Aprobación de nivolumab, un inhibidor del PD-1, revolucionando el tratamiento en cáncer de pulmón.' },
+          { date: '2018', src: 'images/circulito.png', description: 'El Nobel de Medicina fue otorgado por descubrimientos en terapias inmunológicas contra el cáncer.' },
+          { date: '2021', src: 'images/circulito.png', description: 'Implementación global de terapias basadas en CAR-T para leucemias y linfomas, personalizando el tratamiento.' },
+          { date: '2024', src: 'images/circulito.png', description: 'Avances en biopsias líquidas permiten monitorear tumores de forma no invasiva, mejorando la detección temprana.' }
+        ];
+      
+        let currentIndex = 0;
+      
+        function createParticles() {
+          const container = document.getElementById('particle-container');
+          container.innerHTML = ''; // Limpia partículas anteriores
+          for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 0.5}s`;
+            container.appendChild(particle);
+          }
+          setTimeout(() => (container.innerHTML = ''), 1000); // Elimina partículas después de animación
+        }
+      
+        function updateTimeline() {
+          const imageElement = document.getElementById('timeline-image');
+          const dateElement = document.getElementById('timeline-date');
+          const descriptionElement = document.getElementById('timeline-description');
+          const progressBar = document.getElementById('progress-bar');
+      
+          // Animaciones
+          imageElement.classList.add('opacity-0', 'scale-90');
+          dateElement.classList.add('opacity-0');
+          descriptionElement.classList.add('opacity-0');
+          setTimeout(() => {
+            imageElement.src = images[currentIndex].src;
+            dateElement.textContent = images[currentIndex].date;
+            descriptionElement.textContent = images[currentIndex].description;
+      
+            progressBar.style.width = `${(currentIndex / (images.length - 1)) * 100}%`;
+      
+            imageElement.classList.remove('opacity-0', 'scale-90');
+            dateElement.classList.remove('opacity-0');
+            descriptionElement.classList.remove('opacity-0');
+      
+            createParticles();
+          }, 500);
+        }
+      
+        document.getElementById('prev-button').addEventListener('click', () => {
+          currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+          updateTimeline();
+        });
+      
+        document.getElementById('next-button').addEventListener('click', () => {
+          currentIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+          updateTimeline();
+        });
+      
+        updateTimeline();
+      </script>
+      
+      <!-- CSS -->
+      <style>
+        .particle {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: rgba(255, 255, 255, 0.8);
+          border-radius: 50%;
+          animation: float 1s ease-out forwards;
+        }
+      
+        @keyframes float {
+          0% {
+            transform: translateY(0) scale(1);
+          }
+          100% {
+            transform: translateY(-50px) scale(0);
+            opacity: 0;
+          }
+        }
+      </style>
+    </section>
 
 <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
     <!-- Sección de Investigación -->
