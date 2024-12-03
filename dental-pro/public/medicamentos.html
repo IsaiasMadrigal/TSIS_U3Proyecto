@@ -163,13 +163,12 @@
 </button>
 
 <!--Barra de búsqueda para medicamentos-->
-<form class="max-w-md mx-auto mb-4">   
-<label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
-<div class="relative">
-    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-    </div>
-    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar medicamento" required />
-</div>
+<form class="max-w-md mx-auto mb-4" onsubmit="buscarArchivo(); return false;">   
+  <label for="search-bar" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"></div>
+    <input type="text" id="search-bar" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar medicamento" required />
+  </div>
 </form>
 <!---prueba tabla-->
 
@@ -183,7 +182,7 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-6 py-3 text-center">
-                Nombre
+                Nombres
             </th>
             <th scope="col" class="px-6 py-3 text-center">
                 Tipo
@@ -344,37 +343,73 @@
     gtag('config', 'UA-131505823-4');
   </script>
   
-  <script>
-    // Solicita los datos de la API
-    fetch('http://localhost:3000/api/medicamentos')
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector('#medicamentos-table tbody');
-        tableBody.innerHTML = ''; // Limpia el contenido previo
-  
-        data.forEach(medicamento => {
-          const row = `
-            <tr>
-              <td class="text-center">
-                <button 
-                  onclick="window.location.href='${medicamento.nombre}.html';"
-                  style="background-color: #36c5d9; color: white; border: none; padding: 8px 12px; cursor: pointer; width: 100%;">
-                  ${medicamento.nombre}
-                </button>
-              </td>
-              <td class="text-center">${medicamento.tipo_medicamento}</td>
-              <td class="text-center">${medicamento.ingrediente_activo}</td>
-              <td class="text-center">${medicamento.tipo_cancer_nombre}</td>
-                          <td class="text-center">
-                <img src="medicamentos/medicament.jpg" alt="Imagen de ${medicamento.nombre}" style="width: 60px; height: 60px; display: block; margin: 0 auto;"">
-              </td>
-            </tr>
-          `;
-          tableBody.innerHTML += row;
-        });
-      })
-      .catch(error => console.error('Error al cargar los datos:', error));
-  </script>
+<script>
+  let medicamentosData = []; // Variable global para almacenar los datos
+
+  // Solicita los datos de la API
+  fetch('http://localhost:3000/api/medicamentos')
+    .then(response => response.json())
+    .then(data => {
+      medicamentosData = data; // Almacena los datos recibidos
+      renderTable(data); // Llama a la función para mostrar los datos en la tabla
+    })
+    .catch(error => console.error('Error al cargar los datos:', error));
+
+  // Función para renderizar la tabla
+  function renderTable(data) {
+    const tableBody = document.querySelector('#medicamentos-table tbody');
+    tableBody.innerHTML = ''; // Limpia el contenido previo
+
+    data.forEach(medicamento => {
+      const row = `
+        <tr>
+          <td class="text-center">
+            <button 
+              onclick="window.location.href='${medicamento.nombre}.html';"
+              style="background-color: #36c5d9; color: white; border: none; padding: 8px 12px; cursor: pointer; width: 100%;">
+              ${medicamento.nombre}
+            </button>
+          </td>
+          <td class="text-center">${medicamento.tipo_medicamento}</td>
+          <td class="text-center">${medicamento.ingrediente_activo}</td>
+          <td class="text-center">${medicamento.tipo_cancer_nombre}</td>
+          <td class="text-center">
+            <img src="medicamentos/medicament.jpg" alt="Imagen de ${medicamento.nombre}" style="width: 60px; height: 60px; display: block; margin: 0 auto;">
+          </td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  }
+
+  // Filtra los medicamentos según el texto ingresado en la barra de búsqueda
+  const searchBar = document.getElementById('search-bar');
+  searchBar.addEventListener('input', () => {
+    const searchText = searchBar.value.toLowerCase(); // Convierte a minúsculas
+    const filteredData = medicamentosData.filter(medicamento => 
+      medicamento.nombre.toLowerCase().includes(searchText) // Filtra los nombres similares
+    );
+    renderTable(filteredData); // Renderiza la tabla con los datos filtrados
+  });
+</script>
+
+<script>
+  // Lista de archivos HTML disponibles en la carpeta
+  const archivos = ["Tamoxifeno.html", "Ibuprofeno.html", "Paracetamol.html"];
+
+  function buscarArchivo() {
+    const input = document.getElementById("search-bar").value.toLowerCase(); // Obtén el texto ingresado
+    const archivoEncontrado = archivos.find(archivo => archivo.toLowerCase().includes(input)); // Busca coincidencias
+    
+    if (archivoEncontrado) {
+      window.location.href = archivoEncontrado; // Redirige al archivo encontrado
+    } else {
+      alert("No se encontró ningún archivo coincidente."); // Muestra un mensaje si no hay coincidencias
+    }
+  }
+</script>
+
+
 
 </body>
 
