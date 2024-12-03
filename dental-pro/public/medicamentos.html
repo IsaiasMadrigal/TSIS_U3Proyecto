@@ -149,27 +149,32 @@
 
 
   <section class="relative bg-gray-100 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-16 lg:py-32">
-    <button 
-  type="button" 
-  class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-  onclick="window.location.href='tcancer.html';">
-  Tipos de Cáncer
-</button>
-<button 
-  type="button" 
-  class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-  onclick="window.location.href='medicamentos.html';">
-  Medicamentos
-</button>
-
-<!--Barra de búsqueda para medicamentos-->
-<form class="max-w-md mx-auto mb-4" onsubmit="buscarArchivo(); return false;">   
-  <label for="search-bar" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
-  <div class="relative">
-    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"></div>
-    <input type="text" id="search-bar" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar medicamento" required />
-  </div>
-</form>
+    <div class="flex items-center space-x-4">
+      <!-- Botón "Tipos de cáncer" -->
+      <button 
+      type="button" 
+      class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-4 text-center"
+      style="height: 56px;"
+      onclick="window.location.href='tcancer.html';">
+      Conoce los diferentes tipos de Cáncer
+    </button>
+  
+      <!-- Barra de búsqueda -->
+      <form class="flex-grow" onsubmit="buscarArchivo(); return false;">   
+        <label for="search-bar" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"></div>
+          <input 
+            type="text" 
+            id="search-bar" 
+            class="block w-full h-14 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            placeholder="Buscar medicamento" 
+            required />
+        </div>
+      </form>
+    </div>
+  </section>
+  
 <!---prueba tabla-->
 
 
@@ -179,11 +184,14 @@
         Conoce los diferentes medicamentos
         <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Conozca los diferentes tipos de medicamentos e infórmese sobre sus compatibilidades y características.</p>
     </caption>
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" style="background: linear-gradient(to right, #6ce3e7, #6ce3e7, #6ce3e7);">
         <tr>
             <th scope="col" class="px-6 py-3 text-center">
-                Nombres
+                Nombre
             </th>
+            <th scope="col" class="px-6 py-3 text-center">
+              Presentación
+          </th>
             <th scope="col" class="px-6 py-3 text-center">
                 Tipo
             </th>
@@ -194,8 +202,8 @@
                 Combate
             </th>
             <th scope="col" class="px-6 py-3 text-center">
-                Presentación
-            </th>
+              Info
+          </th>
         </tr>
     </thead>
     <tbody>
@@ -204,40 +212,44 @@
 </table>
 </div>
 <!--Aqui termina la Tabla y esta la Navbar-->
-<nav aria-label="Page navigation example"  class="flex justify-center">
-<ul class="flex items-center -space-x-px h-8 text-sm">
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-      <span class="sr-only">Previous</span>
-      <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-      </svg>
-    </a>
-  </li>
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-  </li>
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-  </li>
-  <li>
-    <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-  </li>
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-  </li>
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-  </li>
-  <li>
-    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-      <span class="sr-only">Next</span>
-      <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-      </svg>
-    </a>
-  </li>
-</ul>
+<nav aria-label="Page navigation example" class="flex justify-center">
+  <ul class="flex items-center -space-x-px h-8 text-sm">
+    <!-- Botón Anterior -->
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        <span class="sr-only">Previous</span>
+        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+        </svg>
+      </a>
+    </li>
+    <!-- Botón Seleccionado -->
+    <li>
+      <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">1</a>
+    </li>
+    <!-- Otros Botones -->
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+    </li>
+    <!-- Botón Siguiente -->
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        <span class="sr-only">Next</span>
+        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+        </svg>
+      </a>
+    </li>
+  </ul>
 </nav>
 
     
@@ -362,21 +374,22 @@
 
     data.forEach(medicamento => {
       const row = `
-        <tr>
-          <td class="text-center">
-            <button 
-              onclick="window.location.href='${medicamento.nombre}.html';"
-              style="background-color: #36c5d9; color: white; border: none; padding: 8px 12px; cursor: pointer; width: 100%;">
-              ${medicamento.nombre}
-            </button>
-          </td>
-          <td class="text-center">${medicamento.tipo_medicamento}</td>
-          <td class="text-center">${medicamento.ingrediente_activo}</td>
-          <td class="text-center">${medicamento.tipo_cancer_nombre}</td>
-          <td class="text-center">
-            <img src="medicamentos/medicament.jpg" alt="Imagen de ${medicamento.nombre}" style="width: 60px; height: 60px; display: block; margin: 0 auto;">
-          </td>
-        </tr>
+<tr>
+  <td class="text-center">${medicamento.nombre}</td>
+  <td class="text-center">
+    <img src="medicamentos/medicament.jpg" alt="Imagen de ${medicamento.nombre}" style="width: 60px; height: 60px; display: block; margin: 0 auto;">
+  </td>
+  <td class="text-center">${medicamento.tipo_medicamento}</td>
+  <td class="text-center">${medicamento.ingrediente_activo}</td>
+  <td class="text-center">${medicamento.tipo_cancer_nombre}</td>
+  <td class="text-center">
+    <button 
+      onclick="window.location.href='${medicamento.nombre}.html';"
+      style="background-color: transparent; border: none; padding: 0; cursor: pointer;">
+      <img src="medicamentos/plus.png" alt="Imagen de ${medicamento.nombre}" style="width: 40px; height: 40px; display: block; margin: 0 auto;">
+    </button>
+  </td>
+</tr>
       `;
       tableBody.innerHTML += row;
     });
