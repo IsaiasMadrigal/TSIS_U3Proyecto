@@ -5,25 +5,12 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="build/tailwind.css">
 
-  <title>DentalPro</title>
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hover con GIF</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-
-</body>
-</html>
-
+  <title>OncoCare</title>
 
   <style>
     #menu-toggle:checked+#menu {
@@ -99,17 +86,30 @@
         border-bottom-right-radius: 256px;
       }
     } */
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
   </style>
 </head>
 
-<body class="antialiased bg-white font-sans text-gray-900">
+<body class="antialiased bg-white font-montserrat text-gray-900">
 
   <main class="w-full">
 
 <!-- start header -->
 <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
   <div class="flex">
-    <div>
+    <div class="flex ">
       <div class=" flex items-center justify-start mx-16">
         <!-- Contenedor de la imagen -->
         <div class="group relative w-20 h-20 my-8">
@@ -148,15 +148,12 @@
       </div>
     </div> 
     <div>  
-        <!-- Barra superior con dirección y teléfono -->
-        <div class="hidden md:flex justify-between items-center py-2 border-b text-sm py-3" style="border-color: rgba(255,255,255,.25)">
+      <div>
+        <!-- Barra superior -->
+        <div class="hidden md:flex justify-between items-center py-2 border-b text-sm" style="border-color: rgba(255,255,255,.25)">
           <div class="flex items-center text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-              <path d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
-            </svg>
-            <span class="ml-2">+52 443 733 2074</span>
+            <!-- Espacio para información adicional -->
           </div>
-          
           <div class="flex items-center space-x-4">
             <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
@@ -176,15 +173,14 @@
             <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
                 <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
-                <circle cx="12" cy="12" r="2.813" />
               </svg>
             </a>
           </div>
         </div>
-
-        <!-- Barra inferior con las opciones -->
-        <div class="flex items-center justify-between py-4">
-          <nav class="flex items-center space-x-32 text-white font-montserrat text-lg"> <!--space-x para el espaciado-->>
+    
+        <!-- Menú inferior -->
+        <div class="flex flex-col md:flex-row items-center justify-between py-4">
+          <nav class="hidden md:flex items-center space-x-16 text-white font-montserrat text-lg">
             <a href="index.html" class="hover:underline">Inicio</a>
             <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
             <a href="investigacion.html" class="hover:underline">Investigación</a>
@@ -192,11 +188,36 @@
             <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
             <a href="glosario.html" class="hover:underline">Glosario</a>
           </nav>
-          <div class="flex items-center space-x-4">
-            <a href="index.html" class="text-white text-2xl font-bold mx-10">OncoCare</a>
+          <div class="md:hidden flex items-center">
+            <button id="menu-toggle" class="text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
           </div>
+          <div class="text-white text-2xl font-bold mx-10">OncoCare</div>
         </div>
+    
+        <div id="mobile-menu" class="hidden flex-col space-y-2 text-center bg-gradient-to-r from-purple-400 to-teal-300 p-2">
+          <a href="index.html" class="text-white hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
+          <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
+          <a href="noticias.html" class="text-white hover:underline">Noticias</a>
+          <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
+          <a href="glosario.html" class="text-white hover:underline">Glosario</a>
+        </div>
+      </div>
+    
+      <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      </script>
+        
     </div>
+
   </div>  
 </header>
 
@@ -359,458 +380,229 @@
   
     </div>
     <!-- end hero -->
+    
+    <!-- Iconos de follow -->
+    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 space-y-4 z-50">
+      <a href="https://facebook.com" target="_blank" class="block p-2 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+        </svg>
+      </a>
+      <a href="https://youtube.com" target="_blank" class="block p-2 bg-red-600 rounded-full shadow-lg hover:bg-red-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="block p-2 bg-blue-400 rounded-full shadow-lg hover:bg-blue-500 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+        </svg>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="block p-2 bg-pink-500 rounded-full shadow-lg hover:bg-pink-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+          <circle cx="114" cy="12" r="2.813" />
+        </svg>
+      </a>
+      <a href="https://example.com" target="_blank" class="block p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </a>
+    </div>
+    
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-16 bg-gradient-to-r from-purple-400 to-teal-300 text-white flex flex-col items-center justify-center space-y-4 transition-all duration-300 hover:w-48">
+      <a href="index.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Inicio</span>
+        <span class="hidden group-hover:inline">Inicio</span>
+      </a>
+      <a href="tratamientos.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Tratamientos</span>
+        <span class="hidden group-hover:inline">Tratamientos</span>
+      </a>
+      <a href="investigacion.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Investigación</span>
+        <span class="hidden group-hover:inline">Investigación</span>
+      </a>
+      <a href="noticias.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Noticias</span>
+        <span class="hidden group-hover:inline">Noticias</span>
+      </a>
+      <a href="medicamentos.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Medicamentos</span>
+        <span class="hidden group-hover:inline">Medicamentos</span>
+      </a>
+      <a href="glosario.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
+        <span class="material-icons">Glosario</span>
+        <span class="hidden group-hover:inline">Glosario</span>
+      </a>
+    </div>
+    <style>
+      #sidebar {
+        width: 0.5rem;
+        height: 40vh; /* Ajusta la altura de la sidebar */
+        border-radius: 0 1rem 1rem 0;
+        top: 20rem;
+        opacity: 80%;
+      }
+      #sidebar:hover {
+        width: 12rem;
+      }
+      #sidebar a span {
+        opacity: 0;
+      }
+      #sidebar:hover a span {
+        opacity: 3;
+      }
+    </style>
 
-<div class=" flex items-center justify-start mx-16">
-  <!-- Contenedor de la imagen -->
-  <div class="group relative w-24 h-24">
-    <!-- Imagen estática -->
-    <img 
-      src="./images/logo.png" 
-      alt="Estático" 
-      class="absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"
-    >
-    <!-- GIF -->
-    <img 
-      id="gifImage" 
-      src="./images/oncocaregif.png" 
-      alt="GIF" 
-      class="absolute inset-0 object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 persistent-gif"
-    >
+
+<section id="tiposCancer" class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold">Tipos de cáncer</h2>
   </div>
 
-  <script>
-    const gifImage = document.getElementById('gifImage');
-    const gifDuration = 3000; // Duración aproximada del GIF en milisegundos
+  <!-- Barra de búsqueda -->
+  <div class="flex justify-center mb-12">
+    <input
+      type="text"
+      id="buscadorTipos"
+      placeholder="Buscar..."
+      class="border border-gray-300 rounded-lg p-2 w-full max-w-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
 
-    // Reinicia el GIF al colocar el cursor sobre el contenedor
-    gifImage.parentElement.addEventListener('mouseenter', () => {
-      const currentSrc = gifImage.src;
-      gifImage.src = ''; // Limpia la fuente para reiniciar el GIF
-      gifImage.src = currentSrc; // Restaura la fuente para reiniciar la animación
-
-      // Reinicia después de que termine el GIF
-      setTimeout(() => {
-        gifImage.src = ''; // Limpia la fuente
-        gifImage.src = currentSrc; // Restaura la fuente nuevamente
-      }, gifDuration);
-    });
-  </script>
-</div>
-
-      <!-- Sección de Estudios -->
-<div>    
-      <div class="text-center mt-16 mb-12">
-        <h2 class="text-3xl font-bold">Estudios Necesarios</h2>
-        <p class="text-gray-600 mt-4">
-          Los estudios recomendados para diagnosticar y monitorear diferentes tipos de cáncer.
-        </p>
-      </div>
-
-      
-       <!-- Barra de búsqueda -->
-       <div class="flex justify-end mt-8">
-        <!-- Barra de búsqueda para Estudios -->
-        <input
-        type="text"
-        id="searchBarStudies"
-        placeholder="Buscar por tipo de cáncer..."
-        class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
-        />
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 col">
-        <!-- Estudios para Cáncer de Pulmón -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm w-full" data-cancer2="cancer cáncer de pulmon pulmón">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center overflow-hidden p-2">
-            <img src="./images/est-trat/pulmon2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Pulmón</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Tomografía computarizada (TC)</li>
-              <li>Broncoscopia con biopsia</li>
-              <li>Biopsia por aspiración con aguja fina</li>
-              <li>Pruebas moleculares</li>
-              <li>Radiografías de tórax</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Cáncer de Próstata -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm w-full" data-cancer2="cancer cáncer de prostata próstata">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/prostata2.png" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Próstata</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Pruebas de PSA</li>
-              <li>Biopsias guiadas por ultrasonido</li>
-              <li>Resonancia magnética multiparamétrica</li>
-              <li>Gammagrafía ósea</li>
-              <li>Tomografía computarizada</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Cáncer de Mama -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm w-full" data-cancer2="cancer cáncer de mama">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/mama2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Mama</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Mamografía</li>
-              <li>Ultrasonido mamario</li>
-              <li>Resonancia magnética</li>
-              <li>Biopsias guiadas por imágenes</li>
-              <li>Pruebas genéticas</li>
-            </ul>
-          </div>
-        </div>
-        <!-- Estudios para Cáncer de Piel -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm w-full" data-cancer2="cancer cáncer de piel">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/piel2.webp" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold text-center">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Cáncer de Piel</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Dermatoscopia</li>
-              <li>Biopsia de piel</li>
-              <li>Mapeo corporal total</li>
-              <li>Pruebas genéticas (en casos específicos)</li>
-            </ul>
-          </div>
-        </div>
-    
-        <!-- Estudios para Leucemia -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm w-full" data-cancer2="cancer cáncer de leucemia">
-          <div class="bg-gray-200 h-40 rounded-t-lg flex items-center justify-center p-2">
-            <img src="./images/est-trat/leucemia2.jpg" alt="Cáncer de Pulmón" class="w-full h-full object-cover rounded">
-          </div>
-          <div class="p-4">
-            <span class="text-teal-500 font-semibold text-center">Estudios</span>
-            <h3 class="text-lg font-bold text-gray-800">Leucemia</h3>
-            <ul class="list-disc list-inside text-gray-600 text-sm mt-2">
-              <li>Hemograma completo</li>
-              <li>Biopsia de médula ósea</li>
-              <li>Cariotipo y pruebas genéticas</li>
-              <li>Citometría de flujo</li>
-              <li>Tomografía computarizada (en casos avanzados)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      const searchBarStudies = document.getElementById('searchBarStudies');
-      const studyCards = document.querySelectorAll('[data-cancer2]');
-
-      searchBarStudies.addEventListener('input', (event) => {
-        const searchText = event.target.value.toLowerCase();
-
-        studyCards.forEach((card) => {
-          const cancerType = card.getAttribute('data-cancer2').toLowerCase();
-
-          if (cancerType.includes(searchText)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    </script>
+  <!-- Tarjetas de Tipos de Cáncer -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="listaTipos">
+    <!-- Tarjetas dinámicas -->
+  </div>
 </section>
-</div>    
-    <div class="p-6 bg-gray-100">
-<div>  
 
-        <!-- Barra de búsqueda de Medicamentos -->
-      <div class="flex justify-end mt-8">
-        <!--Botón-->
-        <div class="text-left">
-          <button id="AñadirMedicamento" class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded m-4" onclick="location.href='formulario.html'">
-            Añadir medicamento
-          </button>        
-      </div>
-        <input
-          type="text"
-          id="searchBarMedicamentos"
-          placeholder="Buscar por medicamento..."
-          class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
-        />
-      </div>
-      
-
-<!-- Tarjeta del Medicamento -->
-<div class="bg-purple-100 p-6 rounded-lg shadow-md" data-medicamento="perjeta cáncer de mama inyección">
-  <div class="flex flex-col lg:flex-row items-center lg:items-start">
-    <!-- Imagen del Medicamento -->
-    <div class="lg:w-1/4 flex justify-center mb-4 lg:mb-0">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqSCpwjJ8FIxnqYx4mgpFDAeHcJtwcYT7FLQ&s"
-        alt="Perjeta"
-        class="rounded-lg shadow-md max-w-full"
-      />
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full transform scale-90 transition-transform">
+    <button id="closeModal" class="ml-auto block text-gray-400 hover:text-gray-800 font-bold text-xl">&times;</button>
+    <h3 id="modalTitle" class="text-lg font-bold text-gray-800"></h3>
+    <p id="modalContent" class="text-gray-600 mt-4"></p>
+    <div class="mt-4 flex space-x-4">
+      <button id="verTratamientos" class="text-blue-500 underline">Ver Tratamientos</button>
     </div>
-    <!-- Información del Medicamento -->
-    <div class="lg:w-3/4 lg:ml-6">
-      <h3 class="text-2xl font-bold text-gray-800 mb-2">Medicamento</h3>
-      <p class="text-lg font-semibold text-gray-700">
-        Perjeta en inyección (Pertuzumab 420mg/14ml) 1 Vial
-      </p>
-      <p class="text-2xl font-bold text-purple-700 my-4">$90,299.00 MXN</p>
-      <div class="flex items-center space-x-4">
-        <span
-          class="px-4 py-2 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold"
-        >
-          Tratamiento para
-        </span>
-        <span
-          class="text-lg font-medium text-gray-600"
-        >
-          Cáncer de mama
-        </span>
-      </div>
-      <p class="mt-2 text-gray-600">
-        Perjeta está indicado en combinación con trastuzumab y quimioterapia
-      </p>
+    <div id="tratamientosContenido" class="mt-4 hidden">
+      <h4 class="text-md font-semibold">Tratamientos Relacionados</h4>
+      <ul id="listaTratamientos" class="list-disc list-inside mt-2"></ul>
+      <button id="regresarInfo" class="mt-2 text-blue-500 underline">Regresar a la Información</button>
     </div>
   </div>
 </div>
 
     
-      <!-- Comparación -->
-      <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">Comparación</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
-                <th class="p-4">Medicamento</th>
-                <th class="p-4">Precio</th>
-                <th class="p-4">mg/ml</th>
-                <th class="p-4">Presentación</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-t">
-                <td class="p-4 flex items-center">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqSCpwjJ8FIxnqYx4mgpFDAeHcJtwcYT7FLQ&s"
-                    alt="Perjeta"
-                    class="w-8 h-8 rounded-lg mr-2"
-                  />
-                  Perjeta
-                </td>
-                <td class="p-4">$90,299.00 MXN</td>
-                <td class="p-4">420mg/14ml</td>
-                <td class="p-4">Inyección</td>
-              </tr>
-              <tr class="border-t bg-gray-50">
-                <td class="p-4 flex items-center">
-                  <img
-                    src="https://hfprod.farmaciasanpablo.com.mx/sys-master-azureproductimages/hb2/h49/9144814305310/Fsp275Wx275H_Fsp800Wx800H_30170003_1fnc524qs"
-                    alt="Herceptin"
-                    class="w-8 h-8 rounded-lg mr-2"
-                  />
-                  Herceptin
-                </td>
-                <td class="p-4">$56,270.00 MXN</td>
-                <td class="p-4">440mg</td>
-                <td class="p-4">Inyección</td>
-              </tr>
-              <tr class="border-t">
-                <td class="p-4 flex items-center">
-                  <img
-                    src="https://healthsupply-online.com/wp-content/uploads/2023/03/TUKYSA.jpg"
-                    alt="Tukysa"
-                    class="w-8 h-8 rounded-lg mr-2"
-                  />
-                  Tukysa
-                </td>
-                <td class="p-4">$79,250.00 MXN</td>
-                <td class="p-4">150mg</td>
-                <td class="p-4">Tabletas</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
     <script>
-      const searchBarMedicamentos = document.getElementById('searchBarMedicamentos');
-      const medicineCards = document.querySelectorAll('[data-medicamento]');
-
-      searchBarMedicamentos.addEventListener('input', (event) => {
-        const searchText = event.target.value.toLowerCase();
-
-        medicineCards.forEach((card) => {
-          const medicineName = card.getAttribute('data-medicamento').toLowerCase();
-
-          if (medicineName.includes(searchText)) {
-            card.style.display = '';
+      // Filtrado en tiempo real
+      var buscadorTipos = document.getElementById('buscadorTipos');
+      var listaTipos = document.getElementById('listaTipos');
+      const tarjetasTipos = listaTipos.getElementsByClassName('bg-white');
+    
+      buscadorTipos.addEventListener('input', function() {
+        const terminoBusqueda = buscadorTipos.value.toLowerCase();
+    
+        Array.from(tarjetasTipos).forEach(card => {
+          const tipoCancer = card.getAttribute('data-tipo').toLowerCase();
+    
+          if (tipoCancer.includes(terminoBusqueda)) {
+            card.style.display = 'block'; // Mostrar tarjeta
           } else {
-            card.style.display = 'none';
+            card.style.display = 'none'; // Ocultar tarjeta
           }
         });
       });
     </script>
-</div>
-
-
-    <!-- start footer -->
-    <footer class="relative bg-gray-900 text-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-12 lg:py-24">
-      <div class="flex flex-col md:flex-row">
-        <div class="w-full lg:w-2/6 lg:mx-4 lg:pr-8">
-          <h3 class="font-bold text-2xl">DentalPro</h3>
-          <p class="text-gray-400">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.</p>
-
-          <form class="flex items-center mt-6">
-            <div class="w-full">
-              <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2" for="grid-last-name">
-                Subscribe for our Newsletter
-              </label>
-              <div class="relative">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-4 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  type="email" placeholder="Enter Your Email Address">
-
-                <button type="submit"
-                  class="bg-teal-500 hover:bg-teal-400 text-white px-4 py-2 text-sm font-bold rounded absolute top-0 right-0 my-2 mr-2">Subscribe</button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="w-full lg:w-1/6 mt-8 lg:mt-0 lg:mx-4">
-          <h5 class="uppercase tracking-wider font-semibold text-gray-500">Treatments</h5>
-          <ul class="mt-4">
-            <li class="mt-2"><a href="#" title="" class="opacity-75 hover:opacity-100">General Dentistry</a></li>
-            <li class="mt-2"><a href="#" title="" class="opacity-75 hover:opacity-100">Cosmetic Dentistry</a></li>
-            <li class="mt-2"><a href="#" title="" class="opacity-75 hover:opacity-100">Oral Health</a></li>
-          </ul>
-        </div>
-
-        <div class="w-full lg:w-2/6 mt-8 lg:mt-0 lg:mx-4 lg:pr-8">
-          <h5 class="uppercase tracking-wider font-semibold text-gray-500">Contact Details</h5>
-          <ul class="mt-4">
-            <li>
-              <a href="#" title="" class="block flex items-center opacity-75 hover:opacity-100">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    class="fill-current">
-                    <path
-                      d="M12,2C7.589,2,4,5.589,4,9.995C3.971,16.44,11.696,21.784,12,22c0,0,8.029-5.56,8-12C20,5.589,16.411,2,12,2z M12,14 c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4S14.21,14,12,14z" />
-                  </svg>
-                </span>
-                <span class="ml-3">
-                  1985 Kerry Way, Whittier, CA, USA
-                </span>
-              </a>
-            </li>
-            <li class="mt-4">
-              <a href="#" title="" class="block flex items-center opacity-75 hover:opacity-100">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    class="fill-current">
-                    <path
-                      d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10c5.514,0,10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8 s3.589-8,8-8s8,3.589,8,8S16.411,20,12,20z" />
-                    <path d="M13 7L11 7 11 13 17 13 17 11 13 11z" /></svg>
-                </span>
-                <span class="ml-3">
-                  Mon - Fri: 9:00 - 19:00<br>
-                  Closed on Weekends
-                </span>
-              </a>
-            </li>
-            <li class="mt-4">
-              <a href="#" title="" class="block flex items-center opacity-75 hover:opacity-100">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    class="fill-current">
-                    <path
-                      d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
-                  </svg>
-                </span>
-                <span class="ml-3">
-                  +1 562-789-1935
-                </span>
-              </a>
-            </li>
-            <li class="mt-4">
-              <a href="#" title="" class="block flex items-center opacity-75 hover:opacity-100">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    class="fill-current">
-                    <path
-                      d="M20,4H4C2.896,4,2,4.896,2,6v12c0,1.104,0.896,2,2,2h16c1.104,0,2-0.896,2-2V6C22,4.896,21.104,4,20,4z M20,8.7l-8,5.334 L4,8.7V6.297l8,5.333l8-5.333V8.7z" />
-                  </svg>
-                </span>
-                <span class="ml-3">
-                  dentalpro@example.com
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="w-full lg:w-1/6 mt-8 lg:mt-0 lg:mx-4">
-          <h5 class="uppercase tracking-wider font-semibold text-gray-500">We're Social</h5>
-          <ul class="mt-4 flex">
-            <li>
-              <a href="#" target="_blank" title="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                  <path
-                    d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592	c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20	c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z" />
-                </svg>
-              </a>
-            </li>
-
-            <li class="ml-6">
-              <a href="#" target="_blank" title="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                  <path
-                    d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809	c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793	c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05	c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032	c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028	c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22	c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z" />
-                </svg>
-              </a>
-            </li>
-
-            <li class="ml-6">
-              <a href="#" target="_blank" title="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                  <path
-                    d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.419c1.209-0.469,2.164-1.425,2.633-2.633c0.263-0.7,0.404-1.438,0.419-2.187 c0.043-0.962,0.056-1.267,0.056-3.71C21.003,9.572,21.003,9.262,20.947,8.305z M11.994,16.602c-2.554,0-4.623-2.069-4.623-4.623 s2.069-4.623,4.623-4.623c2.552,0,4.623,2.069,4.623,4.623S14.546,16.602,11.994,16.602z M16.801,8.263 c-0.597,0-1.078-0.482-1.078-1.078s0.481-1.078,1.078-1.078c0.595,0,1.077,0.482,1.077,1.078S17.396,8.263,16.801,8.263z" />
-                  <circle cx="11.994" cy="11.979" r="3.003" /></svg>
-              </a>
-            </li>
-
-            <li class="ml-6">
-              <a href="#" target="_blank" title="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                  <path
-                    d="M21.593,7.203c-0.23-0.858-0.905-1.535-1.762-1.766C18.265,5.007,12,5,12,5S5.736,4.993,4.169,5.404	c-0.84,0.229-1.534,0.921-1.766,1.778c-0.413,1.566-0.417,4.814-0.417,4.814s-0.004,3.264,0.406,4.814	c0.23,0.857,0.905,1.534,1.763,1.765c1.582,0.43,7.83,0.437,7.83,0.437s6.265,0.007,7.831-0.403c0.856-0.23,1.534-0.906,1.767-1.763	C21.997,15.281,22,12.034,22,12.034S22.02,8.769,21.593,7.203z M9.996,15.005l0.005-6l5.207,3.005L9.996,15.005z" />
-                </svg>
-              </a>
-            </li>
-          </ul>
-
-          <p class="text-sm text-gray-400 mt-12">© 2018 ProDentists. <br class="hidden lg:block">All Rights Reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-    <!-- end footer -->
-
     
+
+<!-- start footer -->
+<footer class="bg-gray-900 text-white">
+  <!-- Sección superior con degradado -->
+  <div class="footer-top py-4 text-center" style="background: linear-gradient(to right, #DBB6EE, #83C9DD, #CDFFFF);">
+    <span class="block text-sm sm:text-lg font-semibold">
+      ¡PONTE EN CONTACTO CON NOSOTROS! LLÁMANOS HOY +52 443 733 2074
+    
+  </span>
+  </div>
+
+  <!-- Sección principal -->
+  <div id="footer" class="footer-main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-12 px-8 lg:px-16">
+    <!-- Primera parte -->
+    <div class="footer-section">
+      <h1 class="text-2xl font-bold mb-4">OncoCare</h1>
+      <p class="text-sm text-gray-400 mb-6">
+        Informate sobre los tratamientos más innovadores y las últimas investigaciones en la lucha contra el cáncer con OncoCare.
+      </p>
+      <p class="text-gray-300 font-semibold">SUSCRÍBETE PARA RECIBIR NOTICIAS</p>
+      <div class="subscribe-form mt-4 flex">
+        <input type="email" placeholder="Ingresa tu E-mail" class="flex-1 px-4 py-2 rounded-l bg-gray-200 text-gray-900 focus:outline-none" />
+        <button class="bg-purple-300 text-white text-xs font-bold px-5 py-2 rounded-r transition-all duration-300 ease-in-out hover:bg-purple-700 hover:scale-110">
+          SUSCRÍBETE
+        </button>
+      </div>
+    </div>
+
+    <!-- Segunda parte -->
+    <div class="footer-section">
+      <h2 class="text-xl font-semibold mb-4">TyC</h2>
+      <ul class="space-y-2">
+        <li><a href="terminos.html" class="opacity-75 hover:opacity-100">Terminos de Uso</a></li>
+        <li><a href="privacidad.html" class="opacity-75 hover:opacity-100">Aviso de Privacidad</a></li>
+        <li><a href="FAQ.html" class="opacity-75 hover:opacity-100">Preguntas Frecuentes</a></li>
+        <li><a href="recomendaciones.html" class="opacity-75 hover:opacity-100">Recomendaciones</a></li>
+      </ul>
+    </div>
+
+    <!-- Tercera parte -->
+    <div class="footer-section">
+      <h2 class="text-xl font-semibold mb-4">Contacto</h2>
+      <p>📍 Dirección totalmente real #13, Morelia, Mich.</p>
+      <p>⏰︎ Lunes - Viernes 07:00 - 18:00</p>
+      <p>🕿 +52 000000000000</p>
+      <p>✉ OncoCare@gmail.com</p>
+    </div>
+
+    <!-- Cuarta parte -->
+    <div class="footer-section">
+      <h2 class="text-xl font-semibold mb-4">Nuestras cuentas</h2>
+      <div class="social-icons space-x-4">
+        <div class="flex items-center space-x-4">
+          <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+              <circle cx="12" cy="12" r="2.813" />
+            </svg>
+          </a>
+        </div>
+       
+      </div>
+      <p class="text-sm text-gray-400 mt-6">© 2024 OncoCare. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- end footer -->
+
   </main>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -825,7 +617,100 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
-  
+  <script>
+    
+    // Solicita los datos de la API
+    fetch('http://localhost:3000/api/medicamentos')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#medicamentos-table tbody');
+        tableBody.innerHTML = ''; // Limpia el contenido previo
+
+        data.forEach(medicamento => {
+          const row = `
+            <tr>
+              <td>${medicamento.id}</td>
+              <td>${medicamento.nombre}</td>
+              <td>${medicamento.tipo_medicamento}</td>
+              <td>${medicamento.ingrediente_activo}</td>
+              <td>${medicamento.tipo_cancer_id}</td>
+              <td>${medicamento.laboratorio}</td>
+              <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
+              <td>${medicamento.precio}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+        });
+      })
+      .catch(error => console.error('Error al cargar los datos:', error));
+  </script>
+  <script>
+  const API_BASE = "http://localhost:3000/api";
+
+const buscadorTipos = document.getElementById("buscadorTipos");
+const listaTipos = document.getElementById("listaTipos");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+const verTratamientos = document.getElementById("verTratamientos");
+const tratamientosContenido = document.getElementById("tratamientosContenido");
+const listaTratamientos = document.getElementById("listaTratamientos");
+const regresarInfo = document.getElementById("regresarInfo");
+
+let tiposCancerData = [];
+
+// Cargar tipos de cáncer
+async function cargarTiposCancer() {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer`);
+    tiposCancerData = await response.json();
+    mostrarTiposCancer(tiposCancerData);
+  } catch (error) {
+    console.error("Error al cargar tipos de cáncer:", error);
+  }
+}
+
+// Mostrar tipos de cáncer en tarjetas
+function mostrarTiposCancer(tipos) {
+  listaTipos.innerHTML = "";
+  tipos.forEach((tipo) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+    card.innerHTML = `
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
+        <p class="text-gray-600 text-sm">${tipo.descripcion.substring(0, 100)}...</p>
+      </div>`;
+    card.addEventListener("click", () => mostrarModal(tipo.id));
+    listaTipos.appendChild(card);
+  });
+}
+
+// Mostrar modal con información detallada
+async function mostrarModal(id) {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
+    const tipo = await response.json();
+
+    modalTitle.textContent = tipo.nombre;
+    modalContent.innerHTML = `
+      <p>${tipo.descripcion}</p>
+      <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
+
+    tratamientosContenido.classList.add("hidden");
+    modal.classList.remove("hidden");
+  } catch (error) {
+    console.error("Error al mostrar detalles:", error);
+  }
+}
+
+// Manejo del modal
+closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+
+</script>
 
 </body>
 
