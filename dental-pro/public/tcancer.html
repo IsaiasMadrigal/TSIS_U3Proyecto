@@ -168,7 +168,7 @@
             type="text" 
             id="search-bar" 
             class="block w-full h-14 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-            placeholder="Buscar Cáncer" 
+            placeholder="Cáncer de..." 
             required />
         </div>
       </form>
@@ -179,11 +179,11 @@
 <!---prueba tabla-->
 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4 mx-auto max-w-4xl px-4">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="tcancer-table">
       <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
           Conoce los diferentes tipos de Cáncer
-          <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Informese sobre los diferentes tipos de cáncer, quienes son más propensos y como identificarlo a tiempo.</p>
+          <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Infórmese sobre los diferentes tipos de cáncer, quienes son más propensos y cómo identificarlo a tiempo.</p>
       </caption>
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" style="background: linear-gradient(to right, #6ce3e7, #6ce3e7, #6ce3e7);">
           <tr>
@@ -194,7 +194,7 @@
                   Descripción
               </th>
               <th scope="col" class="px-6 py-3 text-center">
-                  Sintomas
+                  Síntomas
               </th>
               <th scope="col" class="px-6 py-3 text-center">
                 Info
@@ -205,7 +205,8 @@
           <!-- Las filas se agregarán automáticamente aquí por el script -->
       </tbody>
   </table>
-  </div>
+</div>
+
   <!--Aqui termina la Tabla y esta la Navbar-->
   <nav aria-label="Page navigation example" class="flex justify-center">
     <ul class="flex items-center -space-x-px h-8 text-sm">
@@ -367,6 +368,8 @@ function renderTable(data) {
   tableBody.innerHTML = ''; // Limpia el contenido previo
 
   data.forEach(tiposcancer => {
+    const nombreArchivo = tiposcancer.nombre.replace(/\s+/g, '_') + '.html'; // Reemplaza los espacios por guiones bajos
+
     const row = `
 <tr>
 <td class="text-center">${tiposcancer.nombre}</td>
@@ -374,7 +377,7 @@ function renderTable(data) {
 <td class="text-center">${tiposcancer.sintomas}</td>
 <td class="text-center">
   <button 
-    onclick="window.location.href='${tiposcancer.nombre}.html';"
+    onclick="window.location.href='${nombreArchivo}';"
     style="background-color: transparent; border: none; padding: 0; cursor: pointer;">
     <img src="medicamentos/plus.png" alt="Imagen de ${tiposcancer.nombre}" style="width: 40px; height: 40px; display: block; margin: 0 auto;">
   </button>
@@ -385,7 +388,7 @@ function renderTable(data) {
   });
 }
 
-// Filtra los medicamentos según el texto ingresado en la barra de búsqueda
+// Filtra los canceres según el texto ingresado en la barra de búsqueda
 const searchBar = document.getElementById('search-bar');
 searchBar.addEventListener('input', () => {
   const searchText = searchBar.value.toLowerCase(); // Convierte a minúsculas
@@ -399,19 +402,22 @@ searchBar.addEventListener('input', () => {
 
 
 <script>
-// Lista de archivos HTML disponibles en la carpeta
-const archivos = ["Tamoxifeno.html", "Ibuprofeno.html", "Paracetamol.html"];
+  // Lista de archivos HTML disponibles en la carpeta
+  const archivos = ["Cancer_de_Mama.html", "Cancer_de_pulmon.html", "Leucemia.html"];
 
-function buscarArchivo() {
-  const input = document.getElementById("search-bar").value.toLowerCase(); // Obtén el texto ingresado
-  const archivoEncontrado = archivos.find(archivo => archivo.toLowerCase().includes(input)); // Busca coincidencias
-  
-  if (archivoEncontrado) {
-    window.location.href = archivoEncontrado; // Redirige al archivo encontrado
-  } else {
-    alert("No se encontró ningún archivo coincidente."); // Muestra un mensaje si no hay coincidencias
+  function buscarArchivo() {
+    // Obtén el texto ingresado y reemplaza los espacios por guiones bajos
+    const input = document.getElementById("search-bar").value.toLowerCase().replace(/\s+/g, '_'); // Reemplaza espacios por _
+    
+    // Busca coincidencias con los archivos disponibles
+    const archivoEncontrado = archivos.find(archivo => archivo.toLowerCase().includes(input)); 
+    
+    if (archivoEncontrado) {
+      window.location.href = archivoEncontrado; // Redirige al archivo encontrado
+    } else {
+      alert("No se encontró ningún archivo coincidente."); // Muestra un mensaje si no hay coincidencias
+    }
   }
-}
 </script>
 
 
