@@ -198,7 +198,7 @@
           <div class="text-white text-2xl font-bold mx-10">OncoCare</div>
         </div>
     
-        <div id="mobile-menu" class="hidden flex-col space-y-2 text-center bg-gradient-to-r from-purple-400 to-teal-300 p-2">
+        <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
           <a href="index.html" class="text-white hover:underline">Inicio</a>
           <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
           <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
@@ -410,8 +410,13 @@
         </svg>
       </a>
     </div>
-    
-    
+  
+    <!-- Icono de mano para la sidebar -->
+     <div id="sidebar-icon" class="fixed left-0 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-purple-400 to-teal-300 text-white flex items-center justify-center rounded-r-lg cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pointer">
+        <path d="M22 14a8 8 0 0 1-8 8"/><path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1"/><path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+      </svg>
+    </div>
     <!-- Sidebar -->
     <div id="sidebar" class="fixed left-0 top-0 h-full w-16 bg-gradient-to-r from-purple-400 to-teal-300 text-white flex flex-col items-center justify-center space-y-4 transition-all duration-300 hover:w-48">
       <a href="index.html" class="flex items-center space-x-2 p-2 hover:bg-blue-400 w-full">
@@ -439,9 +444,25 @@
         <span class="hidden group-hover:inline">Glosario</span>
       </a>
     </div>
+    <script>
+      const sidebar = document.getElementById('sidebar');
+      const sidebarIcon = document.getElementById('sidebar-icon');
+
+      sidebarIcon.addEventListener('click', () => {
+        sidebar.classList.toggle('hover:w-48');
+      });
+
+      sidebar.addEventListener('mouseenter', () => {
+        sidebarIcon.style.display = 'none';
+      });
+
+      sidebar.addEventListener('mouseleave', () => {
+        sidebarIcon.style.display = 'flex';
+      });
+    </script>
     <style>
       #sidebar {
-        width: 0.5rem;
+        width: 1rem;
         height: 40vh; /* Ajusta la altura de la sidebar */
         border-radius: 0 1rem 1rem 0;
         top: 20rem;
@@ -455,6 +476,11 @@
       }
       #sidebar:hover a span {
         opacity: 3;
+      }
+      #sidebar-icon {
+        top: 53%;
+        transform: translateY(-50%);
+        left: 15px;
       }
     </style>
 
