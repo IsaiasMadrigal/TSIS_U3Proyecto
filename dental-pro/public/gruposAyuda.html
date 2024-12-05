@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="stylesheet" href="build/tailwind.css">
+
+  <title>OncoCare</title>
+
+  <style>
+    #menu-toggle:checked+#menu {
+      display: block;
+    }
+
+    #dropdown-toggle:checked+#dropdown {
+      display: block;
+    }
+
+    a,
+    span {
+      position: relative;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a.arrow,
+    span.arrow {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    a.arrow .arrow_icon,
+    span.arrow .arrow_icon {
+      position: relative;
+      margin-left: 0.5em;
+    }
+
+    a.arrow .arrow_icon svg,
+    span.arrow .arrow_icon svg {
+      transition: transform 0.3s 0.02s ease;
+      margin-right: 1em;
+    }
+
+    a.arrow .arrow_icon::before,
+    span.arrow .arrow_icon::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #38b2ac;
+      transform: translateY(-50%);
+      transition: width 0.3s ease;
+    }
+
+    a.arrow:hover .arrow_icon::before,
+    span.arrow:hover .arrow_icon::before {
+      width: 1em;
+    }
+
+    a.arrow:hover .arrow_icon svg,
+    span.arrow:hover .arrow_icon svg {
+      transform: translateX(0.75em);
+    }
+
+    /* .cover {
+      border-bottom-right-radius: 128px;
+    } */
+
+    .bg-blue-teal-gradient {
+      background: rgb(49, 130, 206);
+      background: linear-gradient(90deg, rgba(49, 130, 206, 1) 0%, rgba(56, 178, 172, 1) 100%);
+    }
+
+    /* @media (min-width: 1024px) {
+      .cover {
+        border-bottom-right-radius: 256px;
+      }
+    } */
+  </style>
+</head>
+
+<body class="antialiased bg-white font-montserrat text-gray-900">
+
+  <main class="w-full">
+
+    <!-- start header -->
+    <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+      <!-- Barra superior con dirección y teléfono -->
+      <div class="hidden md:flex justify-between items-center py-2 border-b text-sm py-3" style="border-color: rgba(255,255,255,.25)">
+        <div class="flex items-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+            <path d="M14.594,13.994l-1.66,1.66c-0.577-0.109-1.734-0.471-2.926-1.66c-1.193-1.193-1.553-2.354-1.661-2.926l1.661-1.66 l0.701-0.701L5.295,3.293L4.594,3.994l-1,1C3.42,5.168,3.316,5.398,3.303,5.643c-0.015,0.25-0.302,6.172,4.291,10.766 C11.6,20.414,16.618,20.707,18,20.707c0.202,0,0.326-0.006,0.358-0.008c0.245-0.014,0.476-0.117,0.649-0.291l1-1l0.697-0.697 l-5.414-5.414L14.594,13.994z" />
+          </svg>
+          <span class="ml-2">+52 443 733 2074</span>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+          <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+              <circle cx="12" cy="12" r="2.813" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    
+      <!-- Barra inferior con las opciones -->
+      <div class="flex items-center justify-between py-4">
+        <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
+          <a href="#" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="tratamientos.html#estudios" class="hover:underline">Estudios</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
+          <a href="#footer" class="hover:underline">Contactos</a>
+          <a href="glosario.html" class="hover:underline">Glosario</a>
+          <a href="gruposAyuda.html" class="hover:underline">Apoyo</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="login.html" class="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition">Iniciar Sesión</a>
+          <a href="index.html" class="text-white text-2xl font-bold">OncoCare</a>
+        </div>
+      </div>
+    </header>
+
+
+<body>   
+<!-- Contenido principal -->
+<main class="container mx-auto px-6 lg:px-16 py-12">
+  <!-- Título principal -->
+  <section class="text-center mb-12">
+    <h1 class="text-3xl font-bold mb-4">Grupos de Ayuda para Pacientes de Cáncer</h1>
+    <p class="text-lg text-gray-600">Explora comunidades y recursos para apoyo emocional, educación y más.</p>
+  </section>
+
+
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">World NET Community</h3>
+          <p class="text-gray-600 mb-4">Apoya a pacientes con tumores neuroendocrinos (NET). Conecta pacientes, cuidadores y médicos.</p>
+          <a href="https://incalliance.org/world-net-community-directory/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">Sociedad Americana contra el Cáncer</h3>
+          <p class="text-gray-600 mb-4">Ofrece recursos educativos y grupos de apoyo para diversos tipos de cáncer.</p>
+          <a href="https://www.cancer.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">Fundación de Cáncer de Mama</h3>
+          <p class="text-gray-600 mb-4">Brinda programas educativos y redes de apoyo a mujeres con cáncer de mama.</p>
+          <a href="https://www.bcrf.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">LIVESTRONG</h3>
+          <p class="text-gray-600 mb-4">Apoya a pacientes de cáncer con recursos para la recuperación y la vida después del tratamiento.</p>
+          <a href="https://www.livestrong.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">CancerCare</h3>
+          <p class="text-gray-600 mb-4">Proporciona servicios gratuitos como apoyo emocional y talleres educativos.</p>
+          <a href="https://www.cancercare.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">Grupo de Apoyo GIST</h3>
+          <p class="text-gray-600 mb-4">Dedicado a pacientes con tumores del estroma gastrointestinal (GIST).</p>
+          <a href="https://www.gistcancer.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">National Ovarian Cancer Coalition</h3>
+          <p class="text-gray-600 mb-4">Enfocado en concienciar y apoyar a pacientes con cáncer de ovario.</p>
+          <a href="https://www.ovarian.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">Foro de Cáncer del Pulmón</h3>
+          <p class="text-gray-600 mb-4">Ofrece un espacio seguro para pacientes y cuidadores con cáncer de pulmón.</p>
+          <a href="https://lungevity.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">CureSearch</h3>
+          <p class="text-gray-600 mb-4">Apoya a niños con cáncer y sus familias con información y recursos.</p>
+          <a href="https://curesearch.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">Brain Tumor Foundation</h3>
+          <p class="text-gray-600 mb-4">Proporciona información y apoyo a pacientes con tumores cerebrales.</p>
+          <a href="https://www.braintumor.org/" class="text-teal-500 font-semibold hover:underline" target="_blank">Visitar Sitio Web</a>
+        </div>
+      </div>
+    </section>
+  </main>
+    
+    <!-- start footer -->
+    <footer class="bg-gray-900 text-white">
+        <!-- Sección superior con degradado -->
+        <div class="footer-top py-4 text-center" style="background: linear-gradient(to right, #DBB6EE, #83C9DD, #CDFFFF);">
+          <span class="block text-sm sm:text-lg font-semibold">
+            ¡PONTE EN CONTACTO CON NOSOTROS! LLÁMANOS HOY +52 000 000 0000
+          
+          <button class="bg-white text-teal-500 font-bold py-2 px-4 rounded mt-2">
+            Agendar cita
+          </button>
+        </span>
+        </div>
+      
+        <!-- Sección principal -->
+        <div id="footer" class="footer-main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-12 px-8 lg:px-16">
+          <!-- Primera parte -->
+          <div class="footer-section">
+            <h1 class="text-2xl font-bold mb-4">OncoCare</h1>
+            <p class="text-sm text-gray-400 mb-6">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p class="text-gray-300 font-semibold">SUSCRÍBETE PARA RECIBIR NOTICIAS</p>
+            <div class="subscribe-form mt-4 flex">
+              <input type="email" placeholder="Ingresa tu E-mail" class="flex-1 px-4 py-2 rounded-l bg-gray-200 text-gray-900 focus:outline-none" />
+              <button class="bg-purple-300 text-white text-xs font-bold px-5 py-2 rounded-lg transition-all duration-300 ease-in-out hover:bg-purple-700 hover:scale-110">
+                SUSCRÍBETE
+              </button>
+            </div>
+          </div>
+      
+          <!-- Segunda parte -->
+          <div class="footer-section">
+            <h2 class="text-xl font-semibold mb-4">Tratamientos</h2>
+            <ul class="space-y-2">
+              <li><a href="/tratamiento1" class="opacity-75 hover:opacity-100">Tratamiento 1</a></li>
+              <li><a href="/tratamiento2" class="opacity-75 hover:opacity-100">Tratamiento 2</a></li>
+              <li><a href="/tratamiento3" class="opacity-75 hover:opacity-100">Tratamiento 3</a></li>
+              <li><a href="/tratamiento4" class="opacity-75 hover:opacity-100">Tratamiento 4</a></li>
+            </ul>
+          </div>
+      
+          <!-- Tercera parte -->
+          <div class="footer-section">
+            <h2 class="text-xl font-semibold mb-4">Contacto</h2>
+            <p>📍 Dirección totalmente real #13, Morelia, Mich.</p>
+            <p>⏰︎ Lunes - Viernes 07:00 - 18:00</p>
+            <p>🕿 +52 000000000000</p>
+            <p>✉ OncoCare@gmail.com</p>
+          </div>
+      
+          <!-- Cuarta parte -->
+          <div class="footer-section">
+            <h2 class="text-xl font-semibold mb-4">Nuestras cuentas</h2>
+            <div class="social-icons space-x-4">
+              <div class="flex items-center space-x-4">
+                <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+                  </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+                  </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="hover:text-gray-300" title="YouTube">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M23.498,6.186c-0.273-1.03-1.083-1.84-2.113-2.114C19.643,3.504,12,3.5,12,3.5S4.357,3.504,2.615,4.072 C1.585,4.346,0.774,5.156,0.5,6.186C0,8.026,0,12,0,12s0,3.974,0.5,5.814c0.273,1.03,1.083,1.841,2.113,2.114 C4.357,20.496,12,20.5,12,20.5s7.643-0.004,9.385-0.572c1.03-0.273,1.841-1.084,2.113-2.114C24,15.974,24,12,24,12 S24,8.026,23.498,6.186z M9.75,15.02v-6.04L15.525,12L9.75,15.02z" />
+                  </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-gray-300" title="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M20.947,8.305c-0.011-0.757-0.151-1.508-0.419-2.216c-0.469-1.209-1.424-2.165-2.633-2.633 c-0.699-0.263-1.438-0.404-2.186-0.42C14.747,2.993,14.442,2.981,12,2.981s-2.755,0-3.71,0.055 c-0.747,0.016-1.486,0.157-2.185,0.42C4.896,3.924,3.94,4.88,3.472,6.089C3.209,6.788,3.067,7.527,3.053,8.274 c-0.043,0.963-0.056,1.268-0.056,3.71s0,2.754,0.056,3.71c0.015,0.748,0.156,1.486,0.419,2.187 c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45c0.963,0.043,1.268,0.056,3.71,0.056s2.755,0,3.71-0.056 c0.747-0.015,1.486-0.156,2.186-0.42c1.209-0.468,2.164-1.424,2.633-2.632c0.272-0.696,0.426-1.435,0.45-2.186 c0.043-0.963,0.056-1.268,0.056-3.71S20.99,9.269,20.947,8.305z M12,16.563c-2.519,0-4.563-2.045-4.563-4.563S9.481,7.438,12,7.438 s4.563,2.045,4.563,4.563S14.519,16.563,12,16.563z M17.031,7.969c-0.6,0-1.094-0.494-1.094-1.094c0-0.6,0.494-1.094,1.094-1.094 s1.094,0.494,1.094,1.094C18.125,7.475,17.631,7.969,17.031,7.969z" />
+                    <circle cx="12" cy="12" r="2.813" />
+                  </svg>
+                </a>
+              </div>
+             
+            </div>
+            <p class="text-sm text-gray-400 mt-6">© 2024 OncoCare. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+      
+      <!-- end footer -->
+</body>
+</html>
