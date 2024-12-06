@@ -29,11 +29,8 @@ CREATE TABLE `administradores` (
   `nombre_usuario` varchar(50) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
   `correo_electronico` varchar(100) NOT NULL,
-  `rol` enum('superadmin','editor') DEFAULT 'editor',
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
-  UNIQUE KEY `correo_electronico` (`correo_electronico`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +40,7 @@ CREATE TABLE `administradores` (
 
 LOCK TABLES `administradores` WRITE;
 /*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
-INSERT INTO `administradores` VALUES (1,'admin_master','$2y$10$EjemploDeContraseñaEncriptada1234abcd','admin@plataformamedica.com','superadmin','2024-11-26 16:32:40'),(2,'editor_jose','$2y$10$OtraContraseñaEncriptada5678efgh','editor@plataformamedica.com','editor','2024-11-26 16:32:40');
+INSERT INTO `administradores` VALUES (1,'usuario1','123','usuario1@ejemplo.com','2024-12-03 18:56:30'),(2,'usuario2','abc','usuario2@ejemplo.com','2024-12-03 18:56:30');
 /*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,16 +53,16 @@ DROP TABLE IF EXISTS `compatibilidadmedicamentos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `compatibilidadmedicamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `medicamento_principal_id` int(11) NOT NULL,
-  `medicamento_compatible_id` int(11) NOT NULL,
-  `tipo_compatibilidad` varchar(100) NOT NULL,
+  `medicamento_principal` varchar(100) NOT NULL,
+  `medicamento_compatible` varchar(100) NOT NULL,
+  `tipo_compatibilidad` varchar(100) DEFAULT NULL,
   `comentarios` text DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_compatibilidad` (`medicamento_principal_id`,`medicamento_compatible_id`),
-  KEY `medicamento_compatible_id` (`medicamento_compatible_id`),
-  CONSTRAINT `compatibilidadmedicamentos_ibfk_1` FOREIGN KEY (`medicamento_principal_id`) REFERENCES `medicamentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `compatibilidadmedicamentos_ibfk_2` FOREIGN KEY (`medicamento_compatible_id`) REFERENCES `medicamentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `medicamento_principal` (`medicamento_principal`),
+  KEY `medicamento_compatible` (`medicamento_compatible`),
+  CONSTRAINT `compatibilidadmedicamentos_ibfk_1` FOREIGN KEY (`medicamento_principal`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `compatibilidadmedicamentos_ibfk_2` FOREIGN KEY (`medicamento_compatible`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +71,7 @@ CREATE TABLE `compatibilidadmedicamentos` (
 
 LOCK TABLES `compatibilidadmedicamentos` WRITE;
 /*!40000 ALTER TABLE `compatibilidadmedicamentos` DISABLE KEYS */;
-INSERT INTO `compatibilidadmedicamentos` VALUES (40,1,2,'Complementario','Trastuzumab se usa con Tamoxifeno en ciertos subtipos de cáncer de mama.'),(41,1,3,'Alternativo','Anastrozol puede ser una alternativa al Trastuzumab en algunos casos.'),(42,2,3,'Complementario','Tamoxifeno y Anastrozol pueden administrarse en fases diferentes del tratamiento.'),(43,4,5,'Complementario','Erlotinib y Crizotinib pueden usarse secuencialmente para mejorar la respuesta.'),(44,4,6,'Alternativo','Pembrolizumab es una opción en casos con resistencia a Erlotinib.');
+INSERT INTO `compatibilidadmedicamentos` VALUES (1,'Tamoxifeno','Letrozol','Complementario','Ambos medicamentos son útiles en el tratamiento hormonal del cáncer de mama.'),(2,'Cisplatino','Erlotinib','Secuencial','Erlotinib puede ser administrado después de Cisplatino en ciertos tratamientos.'),(3,'Fluorouracilo','Oxaliplatino','Sinérgico','Combinación común para el tratamiento de cáncer colorrectal.'),(4,'Paclitaxel','Bevacizumab','Sinérgico','Paclitaxel mejora los efectos de Bevacizumab en terapias avanzadas.'),(5,'Gemcitabina','Doxorrubicina','Secuencial','La administración secuencial puede ser efectiva en terapias paliativas.');
 /*!40000 ALTER TABLE `compatibilidadmedicamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,16 +85,17 @@ DROP TABLE IF EXISTS `medicamentos`;
 CREATE TABLE `medicamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
-  `tipo_medicamento` varchar(100) NOT NULL,
-  `ingrediente_activo` varchar(150) NOT NULL,
-  `tipo_cancer_id` int(11) NOT NULL,
-  `laboratorio` varchar(100) NOT NULL,
+  `tipo_medicamento` varchar(100) DEFAULT NULL,
+  `ingrediente_activo` varchar(150) DEFAULT NULL,
+  `tipo_cancer_nombre` varchar(100) DEFAULT NULL,
+  `laboratorio` varchar(100) DEFAULT NULL,
   `imagen` varchar(255) DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `tipo_cancer_id` (`tipo_cancer_id`),
-  CONSTRAINT `medicamentos_ibfk_1` FOREIGN KEY (`tipo_cancer_id`) REFERENCES `tiposcancer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `nombre` (`nombre`),
+  KEY `tipo_cancer_nombre` (`tipo_cancer_nombre`),
+  CONSTRAINT `medicamentos_ibfk_1` FOREIGN KEY (`tipo_cancer_nombre`) REFERENCES `tiposcancer` (`nombre`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +104,7 @@ CREATE TABLE `medicamentos` (
 
 LOCK TABLES `medicamentos` WRITE;
 /*!40000 ALTER TABLE `medicamentos` DISABLE KEYS */;
-INSERT INTO `medicamentos` VALUES (1,'Trastuzumab','Anticuerpo monoclonal','Trastuzumab',1,'Roche',NULL,NULL),(2,'Tamoxifeno','Modulador selectivo de los receptores de estrógeno','Tamoxifeno',1,'AstraZeneca',NULL,NULL),(3,'Anastrozol','Inhibidor de la aromatasa','Anastrozol',1,'Teva Pharmaceuticals',NULL,NULL),(4,'Erlotinib','Inhibidor de tirosina quinasa','Erlotinib',2,'Roche',NULL,NULL),(5,'Crizotinib','Inhibidor de ALK','Crizotinib',2,'Pfizer',NULL,NULL),(6,'Pembrolizumab','Inmunoterapia','Pembrolizumab',2,'Merck & Co.',NULL,NULL),(7,'Bevacizumab','Anticuerpo monoclonal','Bevacizumab',3,'Roche',NULL,NULL),(8,'Cetuximab','Anticuerpo monoclonal','Cetuximab',3,'Eli Lilly',NULL,NULL),(9,'Oxaliplatino','Quimioterapia','Oxaliplatino',3,'Sanofi',NULL,NULL),(10,'Abiraterona','Inhibidor de la biosíntesis de andrógenos','Abiraterona',4,'Janssen',NULL,NULL),(11,'Enzalutamida','Antagonista de los receptores de andrógenos','Enzalutamida',4,'Pfizer',NULL,NULL),(12,'Docetaxel','Quimioterapia','Docetaxel',4,'Sanofi',NULL,NULL),(13,'Vemurafenib','Inhibidor de BRAF','Vemurafenib',5,'Roche',NULL,NULL),(14,'Ipilimumab','Anticuerpo monoclonal','Ipilimumab',5,'Bristol-Myers Squibb',NULL,NULL),(15,'Dabrafenib','Inhibidor de BRAF','Dabrafenib',5,'Novartis',NULL,NULL),(16,'Ramucirumab','Anticuerpo monoclonal','Ramucirumab',6,'Eli Lilly',NULL,NULL),(17,'Capecitabina','Quimioterapia','Capecitabina',6,'Roche',NULL,NULL),(18,'Sunitinib','Inhibidor de tirosina quinasa','Sunitinib',6,'Pfizer',NULL,NULL),(19,'Imatinib','Inhibidor de tirosina quinasa','Imatinib',7,'Novartis',NULL,NULL),(20,'Dasatinib','Inhibidor de tirosina quinasa','Dasatinib',7,'Bristol-Myers Squibb',NULL,NULL),(21,'Nilotinib','Inhibidor de tirosina quinasa','Nilotinib',7,'Novartis',NULL,NULL),(22,'Sorafenib','Inhibidor de tirosina quinasa','Sorafenib',8,'Bayer',NULL,NULL),(23,'Regorafenib','Inhibidor de tirosina quinasa','Regorafenib',8,'Bayer',NULL,NULL),(24,'Lenvatinib','Inhibidor de tirosina quinasa','Lenvatinib',8,'Eisai',NULL,NULL),(25,'Gemcitabina','Quimioterapia','Gemcitabina',9,'Eli Lilly',NULL,NULL),(26,'Erlotinib','Inhibidor de tirosina quinasa','Erlotinib',9,'Roche',NULL,NULL),(27,'Nab-paclitaxel','Quimioterapia','Paclitaxel unido a albúmina',9,'Celgene',NULL,NULL),(28,'Carboplatino','Quimioterapia','Carboplatino',10,'Bristol-Myers Squibb',NULL,NULL),(29,'Olaparib','Inhibidor de PARP','Olaparib',10,'AstraZeneca',NULL,NULL),(30,'Bevacizumab','Anticuerpo monoclonal','Bevacizumab',10,'Roche',NULL,NULL);
+INSERT INTO `medicamentos` VALUES (1,'Tamoxifeno','Antiestrógeno','Tamoxifeno','Cáncer de Mama','PharmaCorp','imagenes/tamoxifeno.jpg',50.00),(2,'Cisplatino','Quimioterapia','Cisplatino','Cáncer de Pulmón','MedLife','imagenes/cisplatino.jpg',120.00),(3,'Erlotinib','Inhibidor de Tirosina Quinasa','Erlotinib','Cáncer de Pulmón','GenPharma','imagenes/erlotinib.jpg',180.00),(4,'Trastuzumab','Anticuerpo Monoclonal','Trastuzumab','Cáncer de Mama','OncoBiotech','imagenes/trastuzumab.jpg',250.00),(5,'Fluorouracilo','Antimetabolito','5-FU','Cáncer de Colon','ChemoCare','imagenes/fluorouracilo.jpg',80.00),(6,'Doxorrubicina','Antraciclina','Doxorrubicina','Cáncer de Hígado','OncoGen','imagenes/doxorrubicina.jpg',200.00),(7,'Paclitaxel','Taxano','Paclitaxel','Cáncer de Ovario','PharmaCorp','imagenes/paclitaxel.jpg',220.00),(8,'Bevacizumab','Anticuerpo Monoclonal','Bevacizumab','Cáncer de Colon','BioTechLab','imagenes/bevacizumab.jpg',300.00),(9,'Gemcitabina','Antimetabolito','Gemcitabina','Cáncer de Páncreas','MedLife','imagenes/gemcitabina.jpg',150.00),(10,'Imatinib','Inhibidor de Tirosina Quinasa','Imatinib','Cáncer de Sangre (Leucemia)','GenPharma','imagenes/imatinib.jpg',500.00),(11,'Letrozol','Inhibidor de Aromatasa','Letrozol','Cáncer de Mama','OncoBiotech','imagenes/letrozol.jpg',60.00),(12,'Sorafenib','Multiquinasa','Sorafenib','Cáncer de Hígado','ChemoCare','imagenes/sorafenib.jpg',220.00),(13,'Irinotecán','Inhibidor de Topoisomerasa','Irinotecán','Cáncer de Colon','PharmaCorp','imagenes/irinotecan.jpg',130.00),(14,'Pembrolizumab','Inmunoterapia','Pembrolizumab','Cáncer de Piel','OncoGen','imagenes/pembrolizumab.jpg',400.00),(15,'Capecitabina','Antimetabolito','Capecitabina','Cáncer de Colon','BioTechLab','imagenes/capecitabina.jpg',100.00),(16,'Oxaliplatino','Quimioterapia','Oxaliplatino','Cáncer de Colon','GenPharma','imagenes/oxaliplatino.jpg',140.00),(17,'Abiraterona','Antiandrógeno','Abiraterona','Cáncer de Próstata','OncoBiotech','imagenes/abiraterona.jpg',280.00),(18,'Vemurafenib','Inhibidor de BRAF','Vemurafenib','Cáncer de Piel','MedLife','imagenes/vemurafenib.jpg',350.00),(19,'Rituximab','Anticuerpo Monoclonal','Rituximab','Cáncer de Sangre (Leucemia)','ChemoCare','imagenes/rituximab.jpg',450.00),(20,'Enzalutamida','Antiandrógeno','Enzalutamida','Cáncer de Próstata','PharmaCorp','imagenes/enzalutamida.jpg',300.00);
 /*!40000 ALTER TABLE `medicamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,9 +118,10 @@ DROP TABLE IF EXISTS `tiposcancer`;
 CREATE TABLE `tiposcancer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
-  `descripcion` text NOT NULL,
-  `sintomas_principales` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `descripcion` text DEFAULT NULL,
+  `sintomas` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,7 +131,7 @@ CREATE TABLE `tiposcancer` (
 
 LOCK TABLES `tiposcancer` WRITE;
 /*!40000 ALTER TABLE `tiposcancer` DISABLE KEYS */;
-INSERT INTO `tiposcancer` VALUES (1,'Cáncer de mama','Un tipo de cáncer que se forma en las células de los senos.','Bulto en el seno, cambio en el tamaño o forma, secreción del pezón.'),(2,'Cáncer de pulmón','Cáncer que comienza en los pulmones, frecuentemente asociado al tabaquismo.','Tos persistente, dificultad para respirar, dolor en el pecho.'),(3,'Cáncer de colon','Cáncer que afecta el colon o el recto, parte del sistema digestivo.','Cambios en los hábitos intestinales, sangre en las heces, fatiga.'),(4,'Cáncer de próstata','Cáncer que afecta la glándula prostática en hombres.','Problemas para orinar, sangre en la orina, dolor en la pelvis.'),(5,'Cáncer de piel (melanoma)','Un tipo de cáncer de piel que se desarrolla a partir de los melanocitos.','Cambio en un lunar existente, aparición de un nuevo crecimiento inusual.'),(6,'Cáncer de estómago','Cáncer que se forma en el revestimiento del estómago.','Indigestión persistente, pérdida de apetito, dolor abdominal.'),(7,'Leucemia','Cáncer de la sangre que afecta la médula ósea y los glóbulos blancos.','Fatiga extrema, infecciones frecuentes, hematomas o sangrado fácil.'),(8,'Cáncer de hígado','Cáncer que comienza en el hígado, órgano responsable de muchas funciones vitales.','Dolor en el abdomen superior derecho, pérdida de peso, ictericia.'),(9,'Cáncer de páncreas','Cáncer que afecta el páncreas, que produce enzimas digestivas y hormonas.','Dolor abdominal, pérdida de peso, ictericia.'),(10,'Cáncer de ovario','Cáncer que comienza en los ovarios, parte del sistema reproductivo femenino.','Hinchazón abdominal, dolor pélvico, dificultad para comer o sensación de llenura rápida.');
+INSERT INTO `tiposcancer` VALUES (1,'Cáncer de Mama','Cáncer que se forma en las células de los senos.','Bultos en el seno, cambios en el tamaño o forma, secreción inusual.'),(2,'Cáncer de Pulmón','Cáncer que afecta los pulmones, asociado con el tabaquismo.','Tos persistente, dificultad para respirar, dolor en el pecho.'),(3,'Cáncer de Piel','Cáncer que comienza en las células de la piel.','Lunares irregulares, cambios en la piel, llagas que no sanan.'),(4,'Cáncer de Próstata','Cáncer que afecta la glándula prostática en hombres.','Dificultad para orinar, sangre en la orina, dolor óseo.'),(5,'Cáncer de Colon','Cáncer que afecta el colon o el recto.','Cambio en los hábitos intestinales, sangrado rectal, pérdida de peso inexplicada.'),(6,'Cáncer de Hígado','Cáncer que se origina en el hígado.','Dolor abdominal, ictericia, fatiga.'),(7,'Cáncer de Estómago','Cáncer que afecta el estómago.','Indigestión persistente, pérdida de apetito, vómitos.'),(8,'Cáncer de Ovario','Cáncer que afecta los ovarios.','Dolor abdominal, hinchazón, fatiga.'),(9,'Cáncer de Páncreas','Cáncer que comienza en el páncreas.','Dolor abdominal, pérdida de peso, piel amarilla.'),(10,'Cáncer de Sangre (Leucemia)','Cáncer que afecta la sangre y la médula ósea.','Fatiga, infecciones frecuentes, sangrado o hematomas.');
 /*!40000 ALTER TABLE `tiposcancer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -145,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-27  0:40:20
+-- Dump completed on 2024-12-03 12:57:10

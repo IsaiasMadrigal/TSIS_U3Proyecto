@@ -88,6 +88,7 @@
       }
     } */
   </style>
+
 </head>
 
 <body class="antialiased bg-white font-sans text-gray-900">
@@ -135,142 +136,127 @@
         <nav class="flex items-center space-x-8 text-white font-montserrat text-lg">
           <a href="index.html" class="hover:underline">Inicio</a>
           <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
-          <a href="investigacion.html" class="hover:underline">Investigación</a>
+          <a href="tratamientos.html#estudios" class="hover:underline">Investigaciones</a>
           <a href="noticias.html" class="hover:underline">Noticias</a>
           <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
           <a href="glosario.html" class="hover:underline">Glosario</a>
+          <a href="gruposAyuda.html" class="hover:underline">Apoyo</a>
         </nav>
         <div class="flex items-center space-x-4">
           <a href="index.html" class="text-white text-2xl font-bold">OncoCare</a>
         </div>
       </div>
     </header>
-    
-    <!-- end header -->
 
     <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50 mt-16">
+      <div class="text-center mt-16 mb-12">
+        <h2 class="text-3xl font-bold font-arial">Cáncer a lo Largo de los Años</h2>
+        <p class="text-gray-600 mt-4 font-arial">Conoce los descubrimientos sobre la oncología.</p>
+      </div>
       <div class="relative max-w-screen-lg mx-auto py-12 font-montserrat">
         <!-- Contenedor de la línea de tiempo -->
-        <div class="flex flex-col items-center font-montserrat">
+        <div class="flex flex-col items-center">
           <!-- Imagen y detalles visibles -->
-          <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 relative">
-            <!-- Contenedor de partículas -->
-            <div id="particle-container" class="absolute inset-0 pointer-events-none"></div>
-            <!-- Imagen -->
-            <img id="timeline-image" src="https://via.placeholder.com/300" alt="Evento" class="w-80 h-80 object-cover rounded-full border-4 border-gray-300 shadow-lg transition-all duration-500 transform scale-100 opacity-100">
-            <!-- Detalles de la sección -->
+          <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-40 mb-8 relative">
+            <img id="timeline-image" alt="Evento" class="w-35 h-40 md:w-64  object-cover border-4 border-gray-300 shadow-lg rounded-2xl">
             <div class="flex flex-col text-center md:text-left">
-              <span id="timeline-date" class="text-4xl font-semibold text-gray-800 transition-opacity duration-500">2008</span>
-              <p id="timeline-description" class="text-lg text-gray-600 mt-2 transition-opacity duration-500">Descripción del evento de 2008. Explicación breve de lo que ocurrió y su relevancia.</p>
+              <span id="timeline-date" class="text-4xl font-semibold text-[#83C9DD] transition-opacity duration-500">2008</span>
+              <p id="timeline-description" class="text-lg text-gray-600 mt-2 transition-opacity duration-500">Descripción del evento de 2008.</p>
             </div>
           </div>
-      
+    
           <!-- Barra de tiempo con fechas -->
-          <div class="relative w-full mt-8">
-            <div class="flex justify-between">
-              <div class="text-gray-600 text-lg">2008</div>
-              <div class="text-gray-600 text-lg">2024</div>
+          <div class="relative w-full mt-8 overflow-x-auto scrollbar-hide ">
+            <div class="flex w-[300%] space-x-8" id="timeline-track">
+             
+    
+            <!-- Barra de progreso -->
+            <div class="w-full h-4 bg-gray-300 rounded-full mt-3 relative overflow-hidden">
+              <div id="progress-bar" class="absolute top-0 left-0 h-full rounded-3xl bg-[#7B5DA6] " style="width: 0%"></div>
+
             </div>
-            <div class="w-full h-4 bg-gray-300 rounded overflow-hidden mt-2">
-              <div id="progress-bar" class="h-full bg-blue-500 transition-all duration-500" style="width: 0%"></div>
-            </div>
+            
+            
           </div>
-      
-          <!-- Botones de navegación -->
-          <div class="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between px-4">
-            <button id="prev-button" class="px-4 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform active:scale-90">←</button>
-            <button id="next-button" class="px-4 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform active:scale-90">→</button>
-          </div>
+          
         </div>
+        <div class="absolute left-4 bottom-4 text-2xl font-montserrat text-[#83C9DD]">1941</div>
+        <div class="absolute right-4 bottom-4 text-2xl font-montserrat text-[#83C9DD]">2018</div>
+  
       </div>
       
-      <!-- JavaScript -->
+      </div>
+    <!---->
+      <div class="  flex items-center justify-center">
+        <div id="scroll-message" class="absolute bottom-13 bg-[#83C9DD] text-white px-4 py-2  shadow-lg animate-bounce font-montserrat text-lg rounded-2xl">
+          Desliza para explorar
+        </div><!---->
+      </div>
+    
       <script>
         const images = [
-          { date: '2008', src: 'images/circulito.png', description: 'Descubrimiento del marcador genético BRCA2 en cáncer de mama y ovario, mejorando las opciones de prevención.' },
-          { date: '2012', src: 'images/circulito.png', description: 'Introducción de la inmunoterapia con anticuerpos monoclonales como ipilimumab para el melanoma avanzado.' },
-          { date: '2015', src: 'images/circulito.png', description: 'Aprobación de nivolumab, un inhibidor del PD-1, revolucionando el tratamiento en cáncer de pulmón.' },
-          { date: '2018', src: 'images/circulito.png', description: 'El Nobel de Medicina fue otorgado por descubrimientos en terapias inmunológicas contra el cáncer.' },
-          { date: '2021', src: 'images/circulito.png', description: 'Implementación global de terapias basadas en CAR-T para leucemias y linfomas, personalizando el tratamiento.' },
-          { date: '2024', src: 'images/circulito.png', description: 'Avances en biopsias líquidas permiten monitorear tumores de forma no invasiva, mejorando la detección temprana.' }
+          { date: '1941', src: 'images/george.png', description: 'George Papanicolau presenta su método para establecer el diagnóstico citológico del cáncer del tracto genital femenino.' },
+          { date: '1941', src: 'images/alfred.png', description: 'Se publica el primer estudio sobre el uso de mostazas nitrogenadas como agentes quimioterapéuticos contra la Enfermedad de Hodgkin, el linfosarcoma y las leucemias. La investigación fue realizada por Louis Goodman y Alfred Gilman.' },
+          { date: '1951', src: 'images/mamograma.png', description: 'Raúl Leborgne desarrolla un mamograma mejorado con dispositivos de compresión.' },
+          { date: '1972', src: 'images/tomografia.png', description: 'Creación de la Tomografía Computarizada (TC) por Godfrey Hounsfield.' },
+          { date: '1973', src: 'images/resonancia.png', description: 'Desarrollo de la Resonancia Magnética por Paul Lauterbur y Peter Mansfield.' },
+          { date: '1988', src: 'images/vph.png', description: 'Prueba ultrasensible para la detección del virus del papiloma humano (VPH) liderada por Ritter.' },
+          { date: '2003', src: 'images/genoma.png', description: 'Secuenciación del genoma humano completada, contribuyendo al desarrollo de terapias personalizadas.' },
+          { date: '2006', src: 'images/vacunavph.png', description: 'Descripción, publicación y aprobación del uso de las vacunas contra el VPH.' },
+          { date: '2014', src: 'images/parp.png', description: 'Desarrollo de los inhibidores PARP para la reparación celular en alteraciones BRCA.' },
+          { date: '2016', src: 'images/blanco.png', description: 'Nuevos medicamentos blanco dirigidos con función agnóstica y estudios canasta.' },
+          { date: '2018', src: 'images/inmunoterapia.png', description: 'Inmunoterapia cambia la historia natural de tumores con inestabilidad microsatélital.' },
+
         ];
-      
-        let currentIndex = 0;
-      
-        function createParticles() {
-          const container = document.getElementById('particle-container');
-          container.innerHTML = ''; // Limpia partículas anteriores
-          for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 0.5}s`;
-            container.appendChild(particle);
-          }
-          setTimeout(() => (container.innerHTML = ''), 1000); // Elimina partículas después de animación
-        }
-      
+    
+        const timelineTrack = document.getElementById('timeline-track');
+        const progressBar = document.getElementById('progress-bar');
+        const imageElement = document.getElementById('timeline-image');
+        const dateElement = document.getElementById('timeline-date');
+        const descriptionElement = document.getElementById('timeline-description');
+    
         function updateTimeline() {
-          const imageElement = document.getElementById('timeline-image');
-          const dateElement = document.getElementById('timeline-date');
-          const descriptionElement = document.getElementById('timeline-description');
-          const progressBar = document.getElementById('progress-bar');
-      
-          // Animaciones
-          imageElement.classList.add('opacity-0', 'scale-90');
-          dateElement.classList.add('opacity-0');
-          descriptionElement.classList.add('opacity-0');
-          setTimeout(() => {
-            imageElement.src = images[currentIndex].src;
-            dateElement.textContent = images[currentIndex].date;
-            descriptionElement.textContent = images[currentIndex].description;
-      
-            progressBar.style.width = `${(currentIndex / (images.length - 1)) * 100}%`;
-      
-            imageElement.classList.remove('opacity-0', 'scale-90');
-            dateElement.classList.remove('opacity-0');
-            descriptionElement.classList.remove('opacity-0');
-      
-            createParticles();
-          }, 500);
+          const trackParent = timelineTrack.parentElement;
+          const scrollRatio = trackParent.scrollLeft / (timelineTrack.scrollWidth - trackParent.clientWidth);
+          const progressWidth = Math.max(0, Math.min(scrollRatio * 100, 100));
+    
+          // Actualiza el ancho de la barra de progreso
+          progressBar.style.width = `${progressWidth}%`;
+    
+          // Encuentra el índice del evento actual basado en la posición del scroll
+          const index = Math.floor(scrollRatio * images.length);
+          const event = images[Math.min(index, images.length - 1)];
+    
+          // Actualiza los detalles visibles
+          if (event) {
+            dateElement.textContent = event.date;
+            descriptionElement.textContent = event.description;
+            imageElement.src = event.src;
+          }
         }
-      
-        document.getElementById('prev-button').addEventListener('click', () => {
-          currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
-          updateTimeline();
-        });
-      
-        document.getElementById('next-button').addEventListener('click', () => {
-          currentIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
-          updateTimeline();
-        });
-      
+    
+        timelineTrack.parentElement.addEventListener('scroll', updateTimeline);
         updateTimeline();
       </script>
-      
-      <!-- CSS -->
+    
       <style>
-        .particle {
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background-color: rgba(255, 255, 255, 0.8);
-          border-radius: 50%;
-          animation: float 1s ease-out forwards;
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
-      
-        @keyframes float {
-          0% {
-            transform: translateY(0) scale(1);
-          }
-          100% {
-            transform: translateY(-50px) scale(0);
-            opacity: 0;
-          }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
+        .scroll-message {
+          animation: bounce 1.5s infinite;
+         
+         
+          
+}
       </style>
     </section>
+    
+    
 
 <section class="px-4 sm:px-8 lg:px-16 xl:px-40 py-16 bg-gray-50">
     <!-- Sección de Investigación -->
