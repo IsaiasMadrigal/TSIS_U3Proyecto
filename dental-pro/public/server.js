@@ -89,8 +89,156 @@ app.get("/api/tiposcancer", (req, res) => {
   });
 });
 
+//CRUD'S---------------------------------------------------------------------------
+// Ruta para crear un nuevo medicamento (administración)
+app.post("/api/medicamentos/admin", (req, res) => {
+  const {
+    nombre,
+    tipo_medicamento,
+    ingrediente_activo,
+    tipo_cancer_nombre,
+    laboratorio,
+    imagen,
+    precio,
+  } = req.body;
+
+  const query =
+    "INSERT INTO medicamentos (nombre, tipo_medicamento, ingrediente_activo, tipo_cancer_nombre, laboratorio, imagen, precio) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+  db.query(
+    query,
+    [nombre, tipo_medicamento, ingrediente_activo, tipo_cancer_nombre, laboratorio, imagen, precio],
+    (err) => {
+      if (err) {
+        console.error("Error al insertar datos:", err);
+        res.status(500).send("Error al insertar datos en la base de datos");
+      } else {
+        res.status(201).send("Medicamento creado exitosamente");
+      }
+    }
+  );
+});
+
+// Ruta para actualizar un medicamento por ID (administración)
+app.put("/api/medicamentos/admin/:id", (req, res) => {
+  const { id } = req.params;
+  const { nombre, descripcion } = req.body;
+  db.query("UPDATE medicamentos SET nombre = ?, descripcion = ? WHERE id = ?", [nombre, descripcion, id], (err) => {
+    if (err) {
+      console.error("Error al actualizar datos:", err);
+      res.status(500).send("Error al actualizar datos en la base de datos");
+    } else {
+      res.send("Medicamento actualizado exitosamente");
+    }
+  });
+});
+
+// Ruta para eliminar un medicamento por ID (administración)
+app.delete("/api/medicamentos/admin/:id", (req, res) => {
+  const { id } = req.params;
+  db.query("DELETE FROM medicamentos WHERE id = ?", [id], (err) => {
+    if (err) {
+      console.error("Error al eliminar datos:", err);
+      res.status(500).send("Error al eliminar datos de la base de datos");
+    } else {
+      res.send("Medicamento eliminado exitosamente");
+    }
+  });
+});
+
+//insertar un nuevo tipo de cáncer
+app.post("/api/tiposcancer/admin", (req, res) => {
+  const {
+    nombre,
+    descripcion,
+    sintomas,
+  } = req.body;
+
+  const query =
+    "INSERT INTO tiposcancer (nombre, descripcion, sintomas) VALUES (?, ?, ?)";
+
+  db.query(
+    query,
+    [nombre, descripcion, sintomas],
+    (err) => {
+      if (err) {
+        console.error("Error al insertar datos:", err);
+        res.status(500).send("Error al insertar datos en la base de datos");
+      } else {
+        res.status(201).send("Cáncer creado exitosamente");
+      }
+    }
+  );
+});
+
+/*app.put("/api/tiposcancer/:id", (req, res) => {
+  const { id } = req.params;
+  const { tipo, descripcion } = req.body;
+  db.query("UPDATE tiposcancer SET tipo = ?, descripcion = ? WHERE id = ?", [tipo, descripcion, id], (err) => {
+    if (err) return res.status(500).send(err);
+    res.send("Tipo de cáncer actualizado");
+  });
+});*/
+
+// Ruta para eliminar un cancer por ID (administración)
+app.delete("/api/tiposcancer/admin/:id", (req, res) => {
+  const { id } = req.params;
+  db.query("DELETE FROM tiposcancer WHERE id = ?", [id], (err) => {
+    if (err) {
+      console.error("Error al eliminar datos:", err);
+      res.status(500).send("Error al eliminar datos de la base de datos");
+    } else {
+      res.send("Cáncer eliminado exitosamente");
+    }
+  });
+});
 
 // Inicia el servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
+});
+
+
+// Obtener todas las noticias
+app.get("/api/noticias", (req, res) => {
+  db.query("SELECT * FROM noticias", (err, resultados) => {
+    if (err) {
+      console.error("Error al obtener noticias:", err);
+      res.status(500).send("Error al obtener noticias");
+    } else {
+      res.json(resultados);
+    }
+  });
+});
+
+// Obtener una noticia por ID
+app.get("/api/noticias/:id", (req, res) => {
+  const { id } = req.params;
+  db.query("SELECT * FROM noticias WHERE id = ?", [id], (err, resultados) => {
+    if (err) {
+      console.error("Error al obtener la noticia:", err);
+      res.status(500).send("Error al obtener la noticia");
+    } else {
+      res.json(resultados[0]);
+    }
+  });
+});
+
+// Actualizar una noticia por ID
+app.put("/api/noticias/:id", (req, res) => {
+  const { id } = req.params;
+  const { titulo, texto, imagen, enlace } = req.body;
+
+  db.query(
+    "UPDATE noticias SET titulo = ?, texto = ?, imagen = ?, enlace = ? WHERE id = ?",
+    [titulo, texto, imagen, enlace, id],
+    (err) => {
+      if (err) {
+        console.error("Error al actualizar la noticia:", err);
+        res.status(500).send("Error al actualizar la noticia");
+      } else {
+        res.send("Noticia actualizada exitosamente");
+      }
+    }
+  );
 });
