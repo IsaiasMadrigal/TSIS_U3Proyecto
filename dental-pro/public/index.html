@@ -107,91 +107,75 @@
   <main class="w-full">
 
 <!-- start header -->
-<header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+<header class="absolute top-0 left-0 h-32 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
   <div class="flex">
     <div class="flex items-center justify-center mr-10">
-      <div class="">
-        <!-- Contenedor de la imagen -->
-        <div class="group relative w-20 h-20">
-          <!-- Imagen estática -->
-          <img 
-            src="./images/logo.png" 
-            alt="Estático" 
-            class="absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"
-          >
-          <!-- GIF -->
-          <img 
-            id="gifImage" 
-            src="./images/oncocaregif.png" 
-            alt="GIF" 
-            class="absolute inset-0 object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 persistent-gif"
-          >
-        </div>
-      
-        <script>
-          const gifImage = document.getElementById('gifImage');
-          const gifDuration = 3000; // Duración aproximada del GIF en milisegundos
-      
-          // Reinicia el GIF al colocar el cursor sobre el contenedor
-          gifImage.parentElement.addEventListener('mouseenter', () => {
-            const currentSrc = gifImage.src;
-            gifImage.src = ''; // Limpia la fuente para reiniciar el GIF
-            gifImage.src = currentSrc; // Restaura la fuente para reiniciar la animación
-      
-            // Reinicia después de que termine el GIF
-            setTimeout(() => {
-              gifImage.src = ''; // Limpia la fuente
-              gifImage.src = currentSrc; // Restaura la fuente nuevamente
-            }, gifDuration);
-          });
-        </script>
+      <!-- Logo dinámico -->
+      <div class="group relative w-20 h-20">
+        <!-- Imagen inicial -->
+        <img 
+          id="headerImage" 
+          src="./images/logo.png" 
+          alt="Logo estático" 
+          class="absolute inset-0 object-cover transition-opacity duration-300 persistent-gif"
+        >
       </div>
     </div> 
-    <div>  
-      <div>
 
-        <!-- Menú inferior -->
-        <div class="flex flex-col md:flex-row items-center justify-center h-32">
-          <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
-            <a href="index.html" class="hover:underline">Inicio</a>
-            <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
-            <a href="investigacion.html" class="hover:underline">Investigación</a>
-            <a href="noticias.html" class="hover:underline">Noticias</a>
-            <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
-            <a href="glosario.html" class="hover:underline">Glosario</a>
-            <a href="apoyo.html" class="text-white hover:underline">Apoyo</a>
-          </nav>
-          <div class="md:hidden flex items-center">
-            <button id="menu-toggle" class="text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-              </svg>
-            </button>
-          </div>
-          <div class="text-white text-2xl font-bold ml-16">OncoCare</div>
-        </div>  
-        <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
-          <a href="index.html" class="text-white hover:underline">Inicio</a>
-          <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
-          <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
-          <a href="noticias.html" class="text-white hover:underline">Noticias</a>
-          <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
-          <a href="glosario.html" class="text-white hover:underline">Glosario</a>
-          <a href="apoyo.html" class="text-white hover:underline">Apoyo</a>
+    <script>
+      const headerImage = document.getElementById('headerImage');
+      const gifUrl = './images/oncocaregif.png';
+      const staticUrl = './images/logo.png';
+
+      headerImage.addEventListener('mouseover', () => {
+        headerImage.src = gifUrl + '?t=' + new Date().getTime(); // Añade timestamp para forzar la recarga
+      });
+
+      headerImage.addEventListener('mouseout', () => {
+        headerImage.src = staticUrl;
+      });
+    </script>
+
+    <div>
+      <!-- Menú -->
+      <div class="flex flex-col md:flex-row items-center justify-center h-32 ">
+        <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
+          <a href="index.html" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="investigacion.html" class="hover:underline">Investigación</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
+          <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
+          <a href="glosario.html" class="hover:underline">Glosario</a>
+          <a href="gruposAyuda.html" class="text-white hover:underline">Apoyo</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
         </div>
+        <div class="text-white text-2xl font-bold ml-16">OncoCare</div>
       </div>
-    
-      <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      </script>
-        
+      <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
+        <a href="index.html" class="text-white hover:underline">Inicio</a>
+        <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
+        <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
+        <a href="noticias.html" class="text-white hover:underline">Noticias</a>
+        <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
+        <a href="glosario.html" class="text-white hover:underline">Glosario</a>
+        <a href="apoyo.html" class="text-white hover:underline">Apoyo</a>
+      </div>
     </div>
 
-  </div>  
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>        
+  </div>  
 </header>
 
 <!-- end header -->
@@ -320,7 +304,7 @@
         });
 
         document.getElementById('estudios').addEventListener('click', () => {
-          window.location.href = 'estudios.html'; //Envía a la página de estudios
+          window.location.href = 'investigacion.html'; //Envía a la página de estudios
         });
 
         document.getElementById('noticias').addEventListener('click', () => {
