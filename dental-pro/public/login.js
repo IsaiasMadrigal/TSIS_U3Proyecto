@@ -19,11 +19,10 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       return;
     }
 
-    // Redirige al index.html si el inicio de sesión es exitoso
-    window.location.href = "index.html";
+    // Redirige a administracion.html si el inicio de sesión es exitoso
+    window.location.href = "administracion.html";
   } catch (error) {
     document.getElementById("error-message").textContent =
       "Error al conectar con el servidor.";
   }
 });
-  

@@ -5,11 +5,13 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="build/tailwind.css">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <title>OncoCare</title>
 
   <style>
@@ -86,19 +88,34 @@
         border-bottom-right-radius: 256px;
       }
     } */
+
+    #map-container {
+  width: 90%; /* Ajusta el ancho relativo a la pantalla */
+  max-width: 600px; /* Limita el ancho máximo */
+  margin: 66px auto 20px; /* Margen superior ajustado para no sobreponerse al header */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+  height: 400px; /* Altura fija del mapa */
+  border-radius: 8px;
+}
   </style>
 </head>
 
-<body class="antialiased bg-white font-arial text-gray-900">
+<body class="antialiased bg-white font-sans text-gray-900">
 
 
-<!-- start header -->
-<header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+ <!-- start header -->
+ <header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
   <div class="flex">
     <div class="flex items-center justify-center mr-10">
       <div class="">
         <!-- Contenedor de la imagen -->
-        <div class="group relative w-20 h-20">
+        <div class="group relative w-20 h-20 ml-10">
           <!-- Imagen estática -->
           <img 
             src="./images/logo.png" 
@@ -139,12 +156,12 @@
         <!-- Menú inferior -->
         <div class="flex flex-col md:flex-row items-center justify-center h-32">
           <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
-            <a href="index.html" class="hover:underline">Inicio</a>
-            <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
-            <a href="investigacion.html" class="hover:underline">Investigación</a>
-            <a href="noticias.html" class="hover:underline">Noticias</a>
-            <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
-            <a href="glosario.html" class="hover:underline">Glosario</a>
+            <a href="index.html" class="text-white hover:underline">Inicio</a>
+            <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
+            <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
+            <a href="noticias.html" class="text-white hover:underline">Noticias</a>
+            <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
+            <a href="glosario.html" class="text-white hover:underline">Glosario</a>
             <a href="gruposAyuda.html" class="text-white hover:underline">Apoyo</a>
           </nav>
           <div class="md:hidden flex items-center">
@@ -183,11 +200,11 @@
 <!-- end header -->
 
 
-<body>   
+<body class="font-sans">   
 <!-- Contenido principal -->
-<main class="container mx-auto px-6 lg:px-16 py-12">
+<main class="container mx-auto px-6 lg:px-16 py-12 font-sans">
   <!-- Título principal -->
-  <section class="text-center mb-12 mt-16">
+  <section class="text-center mb-12 mt-16 font-sans">
     <h1 class="text-3xl font-bold mb-4"><br><br>Grupos de Ayuda para Pacientes de Cáncer</h1>
     <p class="text-lg text-gray-600">Explora comunidades y recursos para apoyo emocional, educación y más.</p>
   </section>
@@ -361,6 +378,19 @@
 </section>
 
   <!-- Fin Testimonios -->
+
+  
+  <div id="mapa" class="pt-10 pl-16 pr-16" style="background: linear-gradient(to bottom, #fbf3ff, #ffffff);">
+    <h1 class="text-4xl font-bold font-sans">Clínicas de Cáncer en Morelia</h1>
+    <p class="text-lg leading-snug mt-4">
+      Conoce las clínicas con especialidad oncológicas cerca de tu ubicación
+       para atención rápida y de calidad a la más mínima distancia.
+    </p>
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+  </div>
+
     
 <!-- start footer -->
 <footer class="bg-gray-900 text-white">
@@ -434,6 +464,58 @@
 </footer>
 
 <!-- end footer -->
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Inicializar el mapa centrado en Morelia
+  const map = L.map('map').setView([19.7008, -101.1845], 14); // Coordenadas de Morelia, Zoom nivel 14
+
+  // Añadir las capas del mapa desde OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Lista de clínicas con coordenadas y detalles
+  const clinics = [
+    {
+      coords: [19.702775, -101.174598], // Coordenadas de la clínica 1
+      name: "Clínica de Oncología y Hematología de Michoacán",
+      phone: "+52 443 312 1568",
+      website: null,
+      address: "Calle Lago de Pátzcuaro 555, Ventura Puente, 58020 Morelia, Michoacán, México"
+    },
+    {
+      coords: [19.700728, -101.194374], // Coordenadas de la clínica 2
+      name: "Hospital Ángeles Morelia",
+      phone: "+52 443 310 1600",
+      website: "https://hospitalesangeles.com/morelia",
+      address: "Av. Camelinas 333, Félix Ireta, 58070 Morelia, Michoacán, México"
+    },
+    {
+      coords: [19.707142, -101.173636], // Coordenadas de la clínica 3
+      name: "Unidad Médica Especializada en Oncología",
+      phone: null,
+      website: null,
+      address: "Privada Zafiro 61, Chapultepec Oriente, 58260 Morelia, Michoacán, México"
+    }
+  ];
+
+  // Añadir marcadores al mapa
+  clinics.forEach(clinic => {
+    let popupContent = `<h3>${clinic.name}</h3>`;
+    if (clinic.phone) {
+      popupContent += `<p><strong>Teléfono:</strong> ${clinic.phone}</p>`;
+    }
+    if (clinic.website) {
+      popupContent += `<p><strong>Sitio web:</strong> <a href="${clinic.website}" target="_blank">${clinic.website}</a></p>`;
+    }
+    popupContent += `<p><strong>Dirección:</strong> ${clinic.address}</p>`;
+
+    L.marker(clinic.coords)
+      .addTo(map)
+      .bindPopup(popupContent);
+  });
+</script>
 
 
 </body>

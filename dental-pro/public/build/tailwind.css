@@ -10547,6 +10547,14 @@ video {
   font-family: Montserrat;
 }
 
+.font-Montserrat {
+  font-family: Montserrat;
+}
+
+.font-montserrat {
+  font-family: Montserrat;
+}
+
 .font-hairline {
   font-weight: 100;
 }
@@ -31389,6 +31397,14 @@ video {
     font-family: Montserrat;
   }
 
+  .sm\:font-Montserrat {
+    font-family: Montserrat;
+  }
+
+  .sm\:font-montserrat {
+    font-family: Montserrat;
+  }
+
   .sm\:font-hairline {
     font-weight: 100;
   }
@@ -52198,6 +52214,14 @@ video {
   }
 
   .md\:font-sans {
+    font-family: Montserrat;
+  }
+
+  .md\:font-Montserrat {
+    font-family: Montserrat;
+  }
+
+  .md\:font-montserrat {
     font-family: Montserrat;
   }
 
@@ -73013,6 +73037,14 @@ video {
     font-family: Montserrat;
   }
 
+  .lg\:font-Montserrat {
+    font-family: Montserrat;
+  }
+
+  .lg\:font-montserrat {
+    font-family: Montserrat;
+  }
+
   .lg\:font-hairline {
     font-weight: 100;
   }
@@ -93825,6 +93857,14 @@ video {
     font-family: Montserrat;
   }
 
+  .xl\:font-Montserrat {
+    font-family: Montserrat;
+  }
+
+  .xl\:font-montserrat {
+    font-family: Montserrat;
+  }
+
   .xl\:font-hairline {
     font-weight: 100;
   }
@@ -114634,6 +114674,14 @@ video {
   }
 
   .\32xl\:font-sans {
+    font-family: Montserrat;
+  }
+
+  .\32xl\:font-Montserrat {
+    font-family: Montserrat;
+  }
+
+  .\32xl\:font-montserrat {
     font-family: Montserrat;
   }
 

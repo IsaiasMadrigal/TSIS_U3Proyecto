@@ -151,24 +151,26 @@
 
 <div class="main-content mt-16">
 
-  <!-- Login Form -->
-  <div class="login-container mt-16">
-    <!-- Imagen encima del título -->
-    <div class="logo-container">
-    <img src="Oncocare.png" alt="Logo">
-  </div>
-  <h1 class="text-2xl font-bold text-purple-700 text-center mb-4">Inicia sesión</h1>
-    <form id="login-form">
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" required>
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-      <button type="submit">Iniciar Sesión</button>
-    </form>
-      </div>
-    <p id="error-message" class="error"></p>
-  </div>
-  <script src="login.js"></script>
+ <!-- Login Form -->
+ <div class="login-container mt-16">
+  <!-- Imagen encima del título -->
+  <div class="logo-container">
+  <img src="Oncocare.png" alt="Logo">
+</div>
+<h1 class="text-2xl font-bold text-purple-700 text-center mb-4">Inicia sesión</h1>
+  <form id="login-form">
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Iniciar Sesión</button>
+    
+    <p id="error-message" style="display: none; color: red; font-size: 0.9rem; margin-top: 8px;" class="error"></p>
+  </form>
+    </div>
+  <p id="error-message" style="display: none; color: red; font-size: 0.9rem; margin-top: 8px;" class="error"></p>
+</div>
+<script src="login.js"></script>
 </div>
 
 <!-- start footer -->

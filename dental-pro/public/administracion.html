@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración de Base de Datos</title>
+  <script defer src="admin.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Panel de Administración</h1>
+  <h2>Gestión de Medicamentos</h2>
+  <table id="medicamentos-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Ingrediente</th>
+        <th>Combate</th>
+        <th>Laboratorio</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <!--<button id="add-medicamento">Añadir Medicamento</button>-->
+
+
+  <form id="form-medicamento" onsubmit="agregarMedicamento(); return false;">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+    
+    <label for="tipo_medicamento">Tipo de Medicamento:</label>
+    <input type="text" id="tipo_medicamento" required>
+    
+    <label for="ingrediente_activo">Ingrediente Activo:</label>
+    <input type="text" id="ingrediente_activo" required>
+    
+    <label for="tipo_cancer_nombre">Tipo de Cáncer:</label>
+    <input type="text" id="tipo_cancer_nombre" required>
+    
+    <label for="laboratorio">Laboratorio:</label>
+    <input type="text" id="laboratorio" required>
+    
+    <label for="imagen">URL de la Imagen:</label>
+    <input type="text" id="imagen" required>
+    
+    <label for="precio">Precio:</label>
+    <input type="number" step="0.01" id="precio" required>
+    
+    <button type="submit">Agregar Medicamento</button>
+  </form>
+
+
+
+  <h2>Gestión de Tipos de Cáncer</h2>
+  <table id="tiposcancer-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Sintomas</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <!--<button id="add-tipocancer">Añadir Tipo de Cáncer</button>-->
+</body>
+<form id="form-tiposcancer" onsubmit="agregarTipocancer(); return false;">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombrecancer" required>
+  
+  <label for="descripcion">Descripción:</label>
+  <input type="text" id="descripcioncancer" required>
+  
+  <label for="sintomas">Sintomas:</label>
+  <input type="text" id="sintomascancer" required>
+  
+  <button type="submit">Agregar Cáncer</button>
+</form>
+
+<section id="editar-noticia" class="hidden bg-gray-100 p-8 rounded-lg shadow-md mt-10">
+  <h2 class="text-2xl font-bold mb-4">Editar Noticia</h2>
+  <form id="form-editar-noticia" onsubmit="guardarCambiosNoticia(); return false;">
+    <input type="hidden" id="noticia-id" />
+
+    <label for="titulo" class="block font-bold mb-2">Título:</label>
+    <input type="text" id="titulo" class="w-full p-2 mb-4 border rounded" required />
+
+    <label for="texto" class="block font-bold mb-2">Texto:</label>
+    <textarea id="texto" class="w-full p-2 mb-4 border rounded" rows="4" required></textarea>
+
+    <label for="imagen" class="block font-bold mb-2">Imagen (URL):</label>
+    <input type="text" id="imagen" class="w-full p-2 mb-4 border rounded" required />
+
+    <label for="enlace" class="block font-bold mb-2">Enlace:</label>
+    <input type="url" id="enlace" class="w-full p-2 mb-4 border rounded" required />
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar Cambios</button>
+    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="cancelarEdicion()">Cancelar</button>
+  </form>
+</section>
+
+<section id="noticias-admin" class="mt-16">
+  <!-- Noticias cargadas dinámicamente -->
+</section>
+
+
+</html>

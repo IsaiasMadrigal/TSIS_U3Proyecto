@@ -2,6 +2,8 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': 'Montserrat',
+      'Montserrat': 'Montserrat',
+      'montserrat': 'Montserrat'
     },
     opacity: {
       '0': '0',
