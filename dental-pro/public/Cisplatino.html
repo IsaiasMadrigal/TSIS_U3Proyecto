@@ -184,6 +184,64 @@
 <!-- end header -->
     </section>
 
+    <!-- Iconos de follow -->
+ <div class="fixed right-0 bottom-0 mb-16 space-y-4 z-50">
+  <!-- Facebook -->
+   <a href="https://facebook.com" target="_blank" class="relative block p-2 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition">
+     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+       <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+     </svg>
+     <span class="tooltip-text">Facebook</span>
+   </a>
+ 
+   <!-- X -->
+   <a href="https://twitter.com" target="_blank" class="relative block p-2 bg-gray-800 rounded-full shadow-lg hover:bg-gray-900 transition">
+     <image src="./images/x.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+     <span class="tooltip-text">X</span>
+   </a>
+ 
+   <!-- Example (Corazón Icon) -->
+   <a href="gruposAyuda.html#mapa" target="_blank" class="relative block p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition">
+     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+       <circle cx="12" cy="25" r="2" fill="currentColor"/>
+     </svg>
+     <span class="tooltip-text">Direcciones</span>
+   </a>
+ 
+   <!-- Example (Hug Icon) -->
+   <a href="gruposAyuda.html" target="_blank" class="relative block p-2 bg-purple-300 rounded-full shadow-lg hover:bg-purple-500 transition">
+     <image src="./images/hug.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+     <span class="tooltip-text">Apoyo</span>
+   </a>
+ </div>
+ 
+     <style>
+       /* Oculta los tooltips inicialmente */
+       .tooltip-text {
+   display: none;
+   position: absolute;
+   background-color: rgba(45, 50, 78, 0.8);
+   color: white;
+   padding: 4px 8px;
+   border-radius: 4px;
+   font-size: 12px;
+   white-space: nowrap;
+   right: 120%; /* Posición a la izquierda del botón */
+   top: 50%; /* Centra verticalmente */
+   transform: translateY(-50%); /* Ajusta el centro vertical */
+   z-index: 10;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Muestra el tooltip al pasar el mouse */
+ a:hover .tooltip-text {
+   display: block;
+ }
+ .fixed {
+   right: calc(0px + 10px); /* Desplaza 10px hacia la izquierda */
+ }
+ </style>
     
 
     <div class="p-6 bg-gray-100">

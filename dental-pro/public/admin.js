@@ -23,8 +23,8 @@ async function cargarMedicamentos() {
       <td>${medicamento.laboratorio}</td>
       <td>${medicamento.precio}</td>
       <td>
-        <button onclick="editarMedicamento(${medicamento.id})">Editar</button>
-        <button onclick="eliminarMedicamento(${medicamento.id})">Eliminar</button>
+        <button onclick="editarMedicamento(${medicamento.id})" class="text-blue-400 hover:text-blue-700">Editar</button>
+        <button onclick="eliminarMedicamento(${medicamento.id})" class="text-red-400 hover:text-red-700">Eliminar</button>
       </td>
     </tr>`;
     medicamentosTable.innerHTML += row;
@@ -44,8 +44,8 @@ async function cargarTiposCancer() {
       <td>${tipo.descripcion}</td>
       <td>${tipo.sintomas}</td>
       <td>
-        <button onclick="editarTipoCancer(${tipo.id})">Editar</button>
-        <button onclick="eliminarTipoCancer(${tipo.id})">Eliminar</button>
+        <button onclick="editarTipoCancer(${tipo.id})" class="text-blue-400 hover:text-blue-700">Editar</button>
+        <button onclick="eliminarTipoCancer(${tipo.id})" class="text-red-400 hover:text-red-700">Eliminar</button>
       </td>
     </tr>`;
     tiposCancerTable.innerHTML += row;
