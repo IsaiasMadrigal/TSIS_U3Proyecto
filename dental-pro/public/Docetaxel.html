@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="build/tailwind.css">
+
+  <title>OncoCare</title>
+
+  <style>
+    #menu-toggle:checked+#menu {
+      display: block;
+    }
+
+    #dropdown-toggle:checked+#dropdown {
+      display: block;
+    }
+
+    a,
+    span {
+      position: relative;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a.arrow,
+    span.arrow {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    a.arrow .arrow_icon,
+    span.arrow .arrow_icon {
+      position: relative;
+      margin-left: 0.5em;
+    }
+
+    a.arrow .arrow_icon svg,
+    span.arrow .arrow_icon svg {
+      transition: transform 0.3s 0.02s ease;
+      margin-right: 1em;
+    }
+
+    a.arrow .arrow_icon::before,
+    span.arrow .arrow_icon::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #38b2ac;
+      transform: translateY(-50%);
+      transition: width 0.3s ease;
+    }
+
+    a.arrow:hover .arrow_icon::before,
+    span.arrow:hover .arrow_icon::before {
+      width: 1em;
+    }
+
+    a.arrow:hover .arrow_icon svg,
+    span.arrow:hover .arrow_icon svg {
+      transform: translateX(0.75em);
+    }
+
+    /* .cover {
+      border-bottom-right-radius: 128px;
+    } */
+
+    .bg-blue-teal-gradient {
+      background: rgb(49, 130, 206);
+      background: linear-gradient(90deg, rgba(49, 130, 206, 1) 0%, rgba(56, 178, 172, 1) 100%);
+    }
+
+    /* @media (min-width: 1024px) {
+      .cover {
+        border-bottom-right-radius: 256px;
+      }
+    } */
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body class="antialiased bg-white font-montserrat text-gray-900">
+
+  <main class="w-full">
+
+<!-- start header -->
+<header class="absolute top-0 left-0 h-32 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+  <div class="flex">
+    <div class="flex items-center justify-center mr-10">
+      <!-- Logo dinámico -->
+      <div class="group relative w-20 h-20">
+        <!-- Imagen inicial -->
+        <img 
+          id="headerImage" 
+          src="./images/logo.png" 
+          alt="Logo estático" 
+          class="absolute inset-0 object-cover transition-opacity duration-300 persistent-gif"
+        >
+      </div>
+    </div> 
+
+    <script>
+      const headerImage = document.getElementById('headerImage');
+      const gifUrl = './images/oncocaregif.png';
+      const staticUrl = './images/logo.png';
+
+      headerImage.addEventListener('mouseover', () => {
+        headerImage.src = gifUrl + '?t=' + new Date().getTime(); // Añade timestamp para forzar la recarga
+      });
+
+      headerImage.addEventListener('mouseout', () => {
+        headerImage.src = staticUrl;
+      });
+    </script>
+
+    <div>
+      <!-- Menú -->
+      <div class="flex flex-col md:flex-row items-center justify-center h-32 ">
+        <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
+          <a href="index.html" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="investigacion.html" class="hover:underline">Investigación</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
+          <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
+          <a href="glosario.html" class="hover:underline">Glosario</a>
+          <a href="gruposAyuda.html" class="text-white hover:underline">Apoyo</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+        <div class="text-white text-2xl font-bold ml-16">OncoCare</div>
+      </div>
+      <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
+        <a href="index.html" class="text-white hover:underline">Inicio</a>
+        <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
+        <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
+        <a href="noticias.html" class="text-white hover:underline">Noticias</a>
+        <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
+        <a href="glosario.html" class="text-white hover:underline">Glosario</a>
+        <a href="apoyo.html" class="text-white hover:underline">Apoyo</a>
+      </div>
+    </div>
+
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>        
+  </div>  
+</header>
+
+<!-- end header -->
+
+<!-- Iconos de follow -->
+<div class="fixed right-0 bottom-0 mb-16 space-y-4 z-50">
+  <!-- Facebook -->
+   <a href="https://facebook.com" target="_blank" class="relative block p-2 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition">
+     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+       <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+     </svg>
+     <span class="tooltip-text">Facebook</span>
+   </a>
+ 
+   <!-- X -->
+   <a href="https://twitter.com" target="_blank" class="relative block p-2 bg-gray-800 rounded-full shadow-lg hover:bg-gray-900 transition">
+     <image src="./images/x.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+     <span class="tooltip-text">X</span>
+   </a>
+ 
+   <!-- Example (Corazón Icon) -->
+   <a href="gruposAyuda.html#mapa" target="_blank" class="relative block p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition">
+     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+       <circle cx="12" cy="25" r="2" fill="currentColor"/>
+     </svg>
+     <span class="tooltip-text">Direcciones</span>
+   </a>
+ 
+   <!-- Example (Hug Icon) -->
+   <a href="gruposAyuda.html" target="_blank" class="relative block p-2 bg-purple-300 rounded-full shadow-lg hover:bg-purple-500 transition">
+     <image src="./images/hug.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
+     <span class="tooltip-text">Apoyo</span>
+   </a>
+ </div>
+ 
+     <style>
+       /* Oculta los tooltips inicialmente */
+       .tooltip-text {
+   display: none;
+   position: absolute;
+   background-color: rgba(45, 50, 78, 0.8);
+   color: white;
+   padding: 4px 8px;
+   border-radius: 4px;
+   font-size: 12px;
+   white-space: nowrap;
+   right: 120%; /* Posición a la izquierda del botón */
+   top: 50%; /* Centra verticalmente */
+   transform: translateY(-50%); /* Ajusta el centro vertical */
+   z-index: 10;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Muestra el tooltip al pasar el mouse */
+ a:hover .tooltip-text {
+   display: block;
+ }
+ .fixed {
+   right: calc(0px + 10px); /* Desplaza 10px hacia la izquierda */
+ }
+ </style>
+
+<div id="contenedorJ">
+        <!-- Tarjeta del Medicamento -->
+      <div class="bg-purple-100 p-6 rounded-lg shadow-md" data-medicamento="perjeta cáncer de mama inyección">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start">
+          <!-- Imagen del Medicamento -->
+          <div class="lg:w-1/4 flex justify-center mb-4 lg:mb-0">
+            <a href="https://curitek.com/producto/zurixol-docetaxel/">
+                <img
+              src="images/Docetaxel.png"
+              alt="Perjeta"
+              class="rounded-lg shadow-md max-w-full"
+            />
+            </a>
+          </div>
+          <!-- Información del Medicamento -->
+          <div class="lg:w-3/4 lg:ml-6">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Docetaxel</h3>
+            <p class="text-lg font-semibold text-gray-700">
+                Docetaxel 20 mg solución inyectable, caja c/ 1 frasco ámpula con 20 mg y 1 frasco ámpula con diluyente. ZURIXOL
+            </p>
+            <p class="text-2xl font-bold text-purple-700 my-4">$1,200.00 MXN</p>
+            <div class="flex items-center space-x-4">
+              <span
+                class="px-4 py-2 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold"
+              >
+                Tratamiento para
+              </span>
+              <span
+                class="text-lg font-medium text-gray-600"
+              >
+                Cáncer de mama
+              </span>
+            </div>
+            <p class="mt-2 text-gray-600">
+                Agente quimioterapéutico estándar para cáncer de mama avanzado.
+            </p>
+          </div>
+        </div>
+      </div>
+</div>
+
+      
+
+      <style>
+        #contenedorJ{
+            margin: 132px auto 20px; /* Margen superior ajustado para no sobreponerse al header */
+    }
+ </style>
+                
+            <!-- Comparación -->
+            <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Comparación - Keytruda</h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                    <thead>
+                      <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
+                        <th class="p-4">Medicamento</th>
+                        <th class="p-4">Precio</th>
+                        <th class="p-4">mg/ml</th>
+                        <th class="p-4">Presentación</th>
+                        <th class="p-4">Tratamiento</th>
+                        <th class="p-4"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-t">
+                        <td class="p-4 flex items-center">
+                          <img src="https://www.farmalisto.com.mx/104595-large_default/comprar-keytruda-100-mg-caja-con-un-frasco-ampula-4-ml-rx3-precio.jpg" alt="Keytruda" class="w-8 h-8 rounded-lg mr-2" />
+                          Keytruda
+                        </td>
+                        <td class="p-4">$65,000.00 MXN</td>
+                        <td class="p-4">100mg/4ml</td>
+                        <td class="p-4">Inyección</td>
+                        <td class="p-4">Cáncer de pulmón</td>
+                        <td class="p-4">
+                          <a href="https://cima.aemps.es/cima/dochtml/ft/1151024001/" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                            Ver más
+                          </a>
+                        </td>
+                      </tr>
+                      <tr class="border-t bg-gray-50">
+                        <td class="p-4 flex items-center">
+                          <img src="https://www.farmalisto.com.mx/104268-large_default/comprar-opdivo-inyectable-40-mg4-ml-caja-con-1-frasco-ampula-melanoma-rx3-precio.jpg" alt="Opdivo" class="w-8 h-8 rounded-lg mr-2" />
+                          Opdivo
+                        </td>
+                        <td class="p-4">$80,000.00 MXN</td>
+                        <td class="p-4">100mg/10ml</td>
+                        <td class="p-4">Inyección</td>
+                        <td class="p-4">Cáncer de pulmón</td>
+                        <td class="p-4">
+                          <a href="https://cima.aemps.es/cima/dochtml/ft/1151014002/FT_1151014002.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                            Ver más
+                          </a>
+                        </td>
+                      </tr>
+                      <tr class="border-t">
+                        <td class="p-4 flex items-center">
+                          <img src="https://perset-farma.com/wp-content/uploads/2021/09/BAVENCIO-ID-50.jpg" alt="Bavencio" class="w-8 h-8 rounded-lg mr-2" />
+                          Bavencio
+                        </td>
+                        <td class="p-4">$70,000.00 MXN</td>
+                        <td class="p-4">20mg/ml</td>
+                        <td class="p-4">Inyección</td>
+                        <td class="p-4">Cáncer urotelial</td>
+                        <td class="p-4">
+                          <a href="https://cima.aemps.es/cima/dochtml/ft/1171214001/FT_1171214001.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                            Ver más
+                          </a>
+                        </td>
+                      </tr>
+                      <tr class="border-t bg-gray-50">
+                        <td class="p-4 flex items-center">
+                          <img src="https://es.everyone.org/media/wysiwyg/cms/Product_landing/Imfinzi/imfinzi-image-icons.png" alt="Imfinzi" class="w-8 h-8 rounded-lg mr-2" />
+                          Imfinzi
+                        </td>
+                        <td class="p-4">$85,000.00 MXN</td>
+                        <td class="p-4">120mg/2.4ml</td>
+                        <td class="p-4">Inyección</td>
+                        <td class="p-4">Cáncer de pulmón</td>
+                        <td class="p-4">
+                          <a href="https://cima.aemps.es/cima/dochtml/ft/1181322001/FT_1181322001.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                            Ver más
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              
+            </div>
+            <script>
+              const searchBarMedicamentos = document.getElementById('searchBarMedicamentos');
+              const medicineCards = document.querySelectorAll('[data-medicamento]');
+        
+              searchBarMedicamentos.addEventListener('input', (event) => {
+                const searchText = event.target.value.toLowerCase();
+        
+                medicineCards.forEach((card) => {
+                  const medicineName = card.getAttribute('data-medicamento').toLowerCase();
+        
+                  if (medicineName.includes(searchText)) {
+                    card.style.display = '';
+                  } else {
+                    card.style.display = 'none';
+                  }
+                });
+              });
+            </script>
+        </div>
+        
+       
+  <!--Botones-->
+  <!-- start footer -->
+<footer class="bg-gray-900 text-white">
+    <!-- Sección superior con degradado -->
+    <div class="footer-top py-4 text-center" style="background: linear-gradient(to right, #DBB6EE, #83C9DD, #CDFFFF);">
+      <span class="block text-sm sm:text-lg font-semibold">
+        ¡PONTE EN CONTACTO CON NOSOTROS! LLÁMANOS HOY +52 443 733 2074
+      
+    </span>
+    </div>
+  
+    <!-- Sección principal -->
+    <div id="footer" class="footer-main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-12 px-8 lg:px-16">
+      <!-- Primera parte -->
+      <div class="footer-section">
+        <h1 class="text-2xl font-bold mb-4">OncoCare</h1>
+        <p class="text-sm text-gray-400 mb-6 text-justify pr-6">
+          Infórmate con nosotros sobre lo último en medicamentos, 
+          noticias, tratamientos y todo sobre el cáncer.
+  
+        </p>
+        <p class="text-gray-300 font-semibold">SUSCRÍBETE PARA RECIBIR NOTICIAS</p>
+        <div class="subscribe-form mt-4 flex">
+          <input type="email" placeholder="Ingresa tu E-mail" class="flex-1 px-4 py-2 rounded-l bg-gray-200 text-gray-900 focus:outline-none" />
+          <button class="bg-purple-300 text-white text-xs font-bold px-5 py-2 rounded-r transition-all duration-300 ease-in-out hover:bg-purple-700 hover:scale-110">
+            SUSCRÍBETE
+          </button>
+        </div>
+      </div>
+  
+      <!-- Segunda parte -->
+      <div class="footer-section">
+        <h2 class="text-xl font-semibold mb-4">Términos y Condiciones</h2>
+        <ul class="space-y-2 text-center">
+          <li><a href="terminos.html" class="opacity-75 hover:opacity-100">Terminos de Uso</a></li>
+          <li><a href="privacidad.html" class="opacity-75 hover:opacity-100">Aviso de Privacidad</a></li>
+          <li><a href="FAQ.html" class="opacity-75 hover:opacity-100">Preguntas Frecuentes</a></li>
+          <li><a href="recomendaciones.html" class="opacity-75 hover:opacity-100">Recomendaciones</a></li>
+        </ul>
+      </div>
+  
+      <!-- Tercera parte -->
+      <div class="footer-section">
+        <h2 class="text-xl font-semibold mb-4">Contacto</h2>
+        <p>📍 de La Paz S/N, 58048 Morelia, Michoacán de Ocampo .</p>
+        <p>⏰︎ Lunes - Viernes 07:00 - 18:00</p>
+        <p>🕿 +52 443 733 2074</p>
+        <p>✉ l21121544@morelia.tecnm.mx</p>
+      </div>
+  
+      <!-- Cuarta parte -->
+      <div class="footer-section">
+        <h2 class="text-xl font-semibold mb-4">Nuestras cuentas</h2>
+        <div class="social-icons space-x-4">
+          <div class="flex items-center space-x-4">
+            <a href="https://facebook.com" target="_blank" class="hover:text-gray-300" title="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
+              </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="hover:text-gray-300" title="X">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
+              </svg>
+          </div>
+         
+        </div>
+        <p class="text-sm text-gray-400 mt-6">© 2024 OncoCare. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- end footer -->
+  
+    </main>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131505823-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+  
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-131505823-4');
+    </script>
+    <script>
+      
+      // Solicita los datos de la API
+      fetch('http://localhost:3000/api/medicamentos')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.querySelector('#medicamentos-table tbody');
+          tableBody.innerHTML = ''; // Limpia el contenido previo
+  
+          data.forEach(medicamento => {
+            const row = `
+              <tr>
+                <td>${medicamento.id}</td>
+                <td>${medicamento.nombre}</td>
+                <td>${medicamento.tipo_medicamento}</td>
+                <td>${medicamento.ingrediente_activo}</td>
+                <td>${medicamento.tipo_cancer_id}</td>
+                <td>${medicamento.laboratorio}</td>
+                <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
+                <td>${medicamento.precio}</td>
+              </tr>
+            `;
+            tableBody.innerHTML += row;
+          });
+        })
+        .catch(error => console.error('Error al cargar los datos:', error));
+    </script>
+    <script>
+    const API_BASE = "http://localhost:3000/api";
+  
+  const buscadorTipos = document.getElementById("buscadorTipos");
+  const listaTipos = document.getElementById("listaTipos");
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalContent = document.getElementById("modalContent");
+  const closeModal = document.getElementById("closeModal");
+  const verTratamientos = document.getElementById("verTratamientos");
+  const tratamientosContenido = document.getElementById("tratamientosContenido");
+  const listaTratamientos = document.getElementById("listaTratamientos");
+  const regresarInfo = document.getElementById("regresarInfo");
+  
+  let tiposCancerData = [];
+  
+  // Cargar tipos de cáncer
+  async function cargarTiposCancer() {
+    try {
+      const response = await fetch(`${API_BASE}/tiposcancer`);
+      tiposCancerData = await response.json();
+      mostrarTiposCancer(tiposCancerData);
+    } catch (error) {
+      console.error("Error al cargar tipos de cáncer:", error);
+    }
+  }
+  
+  // Mostrar tipos de cáncer en tarjetas
+  function mostrarTiposCancer(tipos) {
+    listaTipos.innerHTML = "";
+    tipos.forEach((tipo) => {
+      const card = document.createElement("div");
+      card.className =
+        "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+      card.innerHTML = `
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
+          <p class="text-gray-600 text-sm">${tipo.descripcion.substring(0, 100)}...</p>
+        </div>`;
+      card.addEventListener("click", () => mostrarModal(tipo.id));
+      listaTipos.appendChild(card);
+    });
+  }
+  
+  // Mostrar modal con información detallada
+  async function mostrarModal(id) {
+    try {
+      const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
+      const tipo = await response.json();
+  
+      modalTitle.textContent = tipo.nombre;
+      modalContent.innerHTML = `
+        <p>${tipo.descripcion}</p>
+        <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
+  
+      tratamientosContenido.classList.add("hidden");
+      modal.classList.remove("hidden");
+    } catch (error) {
+      console.error("Error al mostrar detalles:", error);
+    }
+  }
+  
+  // Manejo del modal
+  closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+  document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+  
+  </script>
+  
+  </body>
+  
+  </html>

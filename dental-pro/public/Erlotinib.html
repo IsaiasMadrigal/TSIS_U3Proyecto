@@ -86,6 +86,19 @@
         border-bottom-right-radius: 256px;
       }
     } */
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -93,98 +106,82 @@
 
   <main class="w-full">
 
- <!-- start header -->
-<header class="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
+<!-- start header -->
+<header class="absolute top-0 left-0 h-32 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64" style="background: linear-gradient(to right, #7B5DA6, #A382C4, #A987C8, #9A7DBB, #21294C);">
   <div class="flex">
     <div class="flex items-center justify-center mr-10">
-      <div class="">
-        <!-- Contenedor de la imagen -->
-        <div class="group relative w-20 h-20">
-          <!-- Imagen estática -->
-          <img 
-            src="./images/logo.png" 
-            alt="Estático" 
-            class="absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"
-          >
-          <!-- GIF -->
-          <img 
-            id="gifImage" 
-            src="./images/oncocaregif.png" 
-            alt="GIF" 
-            class="absolute inset-0 object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 persistent-gif"
-          >
-        </div>
-      
-        <script>
-          const gifImage = document.getElementById('gifImage');
-          const gifDuration = 3000; // Duración aproximada del GIF en milisegundos
-      
-          // Reinicia el GIF al colocar el cursor sobre el contenedor
-          gifImage.parentElement.addEventListener('mouseenter', () => {
-            const currentSrc = gifImage.src;
-            gifImage.src = ''; // Limpia la fuente para reiniciar el GIF
-            gifImage.src = currentSrc; // Restaura la fuente para reiniciar la animación
-      
-            // Reinicia después de que termine el GIF
-            setTimeout(() => {
-              gifImage.src = ''; // Limpia la fuente
-              gifImage.src = currentSrc; // Restaura la fuente nuevamente
-            }, gifDuration);
-          });
-        </script>
+      <!-- Logo dinámico -->
+      <div class="group relative w-20 h-20">
+        <!-- Imagen inicial -->
+        <img 
+          id="headerImage" 
+          src="./images/logo.png" 
+          alt="Logo estático" 
+          class="absolute inset-0 object-cover transition-opacity duration-300 persistent-gif"
+        >
       </div>
     </div> 
-    <div>  
-      <div>
 
-        <!-- Menú inferior -->
-        <div class="flex flex-col md:flex-row items-center justify-center h-32">
-          <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
-            <a href="index.html" class="hover:underline">Inicio</a>
-            <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
-            <a href="investigacion.html" class="hover:underline">Investigación</a>
-            <a href="noticias.html" class="hover:underline">Noticias</a>
-            <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
-            <a href="glosario.html" class="hover:underline">Glosario</a>
-            <a href="gruposAyuda.html" class="text-white hover:underline">Apoyo</a>
-          </nav>
-          <div class="md:hidden flex items-center">
-            <button id="menu-toggle" class="text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-              </svg>
-            </button>
-          </div>
-          <div class="text-white text-2xl font-bold ml-16">OncoCare</div>
-        </div>  
-        <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
-          <a href="index.html" class="text-white hover:underline">Inicio</a>
-          <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
-          <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
-          <a href="noticias.html" class="text-white hover:underline">Noticias</a>
-          <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
-          <a href="glosario.html" class="text-white hover:underline">Glosario</a>
+    <script>
+      const headerImage = document.getElementById('headerImage');
+      const gifUrl = './images/oncocaregif.png';
+      const staticUrl = './images/logo.png';
+
+      headerImage.addEventListener('mouseover', () => {
+        headerImage.src = gifUrl + '?t=' + new Date().getTime(); // Añade timestamp para forzar la recarga
+      });
+
+      headerImage.addEventListener('mouseout', () => {
+        headerImage.src = staticUrl;
+      });
+    </script>
+
+    <div>
+      <!-- Menú -->
+      <div class="flex flex-col md:flex-row items-center justify-center h-32 ">
+        <nav class="hidden md:flex items-center space-x-8 text-white font-montserrat text-lg">
+          <a href="index.html" class="hover:underline">Inicio</a>
+          <a href="tratamientos.html" class="hover:underline">Tratamientos</a>
+          <a href="investigacion.html" class="hover:underline">Investigación</a>
+          <a href="noticias.html" class="hover:underline">Noticias</a>
+          <a href="medicamentos.html" class="hover:underline">Medicamentos</a>
+          <a href="glosario.html" class="hover:underline">Glosario</a>
           <a href="gruposAyuda.html" class="text-white hover:underline">Apoyo</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
         </div>
+        <div class="text-white text-2xl font-bold ml-16">OncoCare</div>
       </div>
-    
-      <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      </script>
-        
+      <div id="mobile-menu" class="hidden flex-col space-y-2 text-center p-2">
+        <a href="index.html" class="text-white hover:underline">Inicio</a>
+        <a href="tratamientos.html" class="text-white hover:underline">Tratamientos</a>
+        <a href="investigacion.html" class="text-white hover:underline">Investigación</a>
+        <a href="noticias.html" class="text-white hover:underline">Noticias</a>
+        <a href="medicamentos.html" class="text-white hover:underline">Medicamentos</a>
+        <a href="glosario.html" class="text-white hover:underline">Glosario</a>
+        <a href="apoyo.html" class="text-white hover:underline">Apoyo</a>
+      </div>
     </div>
 
-  </div>  
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>        
+  </div>  
 </header>
 
 <!-- end header -->
 
 <!-- Iconos de follow -->
- <div class="fixed right-0 bottom-0 mb-16 space-y-4 z-50">
+<div class="fixed right-0 bottom-0 mb-16 space-y-4 z-50">
   <!-- Facebook -->
    <a href="https://facebook.com" target="_blank" class="relative block p-2 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition">
      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
@@ -242,36 +239,27 @@
  }
  </style>
 
-    <div class="p-6 bg-gray-100">
-      <div>
-              <!-- Barra de búsqueda de Medicamentos -->
-            <div class="flex justify-end mt-8">
-              <input
-                type="text"
-                id="searchBarMedicamentos"
-                placeholder="Buscar por medicamento..."
-                class="border border-gray-300 rounded-lg px-6 py-3 w-full max-w-md shadow-sm focus:ring-teal-500 focus:border-teal-500 mb-4"
-              />
-            </div>
-      
-      <!-- Tarjeta del Medicamento -->
+<div id="contenedorJ">
+        <!-- Tarjeta del Medicamento -->
       <div class="bg-purple-100 p-6 rounded-lg shadow-md" data-medicamento="perjeta cáncer de mama inyección">
         <div class="flex flex-col lg:flex-row items-center lg:items-start">
           <!-- Imagen del Medicamento -->
           <div class="lg:w-1/4 flex justify-center mb-4 lg:mb-0">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqSCpwjJ8FIxnqYx4mgpFDAeHcJtwcYT7FLQ&s"
+            <a href="https://www.farmaciasespecializadas.com/tarceva-150mg-com-caj-c-30.html?srsltid=AfmBOoq0HWctZwJ8moU2nWyjaWIojRnrWXCCfdyBJzT9EAhUocKYI5Ru">
+              <img
+              src="images/elotinib.jpg"
               alt="Perjeta"
               class="rounded-lg shadow-md max-w-full"
             />
+            </a>
           </div>
           <!-- Información del Medicamento -->
           <div class="lg:w-3/4 lg:ml-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Medicamento</h3>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Erlotinib</h3>
             <p class="text-lg font-semibold text-gray-700">
-              Perjeta en inyección (Pertuzumab 420mg/14ml) 1 Vial
+              Tabletas
             </p>
-            <p class="text-2xl font-bold text-purple-700 my-4">$90,299.00 MXN</p>
+            <p class="text-2xl font-bold text-purple-700 my-4">$29,700.00 MXN</p>
             <div class="flex items-center space-x-4">
               <span
                 class="px-4 py-2 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold"
@@ -281,20 +269,28 @@
               <span
                 class="text-lg font-medium text-gray-600"
               >
-                Cáncer de mama
+                Cáncer de páncreas
               </span>
             </div>
             <p class="mt-2 text-gray-600">
-              Perjeta está indicado en combinación con trastuzumab y quimioterapia
+              Terapia dirigida para el tratamiento de cáncer de páncreas avanzado en combinación con gemcitabina.
             </p>
           </div>
         </div>
       </div>
+</div>
+
       
-          
+                
+      <style>
+        #contenedorJ{
+            margin: 132px auto 20px; /* Margen superior ajustado para no sobreponerse al header */
+    }
+ </style>
+
             <!-- Comparación -->
             <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-2xl font-bold text-gray-800 mb-4">Comparación</h3>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">Comparación - Keytruda</h3>
               <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                   <thead>
@@ -303,52 +299,77 @@
                       <th class="p-4">Precio</th>
                       <th class="p-4">mg/ml</th>
                       <th class="p-4">Presentación</th>
+                      <th class="p-4">Tratamiento</th>
+                      <th class="p-4"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="border-t">
                       <td class="p-4 flex items-center">
-                        <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqSCpwjJ8FIxnqYx4mgpFDAeHcJtwcYT7FLQ&s"
-                          alt="Perjeta"
-                          class="w-8 h-8 rounded-lg mr-2"
-                        />
-                        Perjeta
+                        <img src="https://www.farmalisto.com.mx/104595-large_default/comprar-keytruda-100-mg-caja-con-un-frasco-ampula-4-ml-rx3-precio.jpg" alt="Keytruda" class="w-8 h-8 rounded-lg mr-2" />
+                        Keytruda
                       </td>
-                      <td class="p-4">$90,299.00 MXN</td>
-                      <td class="p-4">420mg/14ml</td>
+                      <td class="p-4">$65,000.00 MXN</td>
+                      <td class="p-4">100mg/4ml</td>
                       <td class="p-4">Inyección</td>
+                      <td class="p-4">Cáncer de pulmón</td>
+                      <td class="p-4">
+                        <a href="https://cima.aemps.es/cima/dochtml/ft/1151024001/" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                          Ver más
+                        </a>
+                      </td>
                     </tr>
                     <tr class="border-t bg-gray-50">
                       <td class="p-4 flex items-center">
-                        <img
-                          src="https://hfprod.farmaciasanpablo.com.mx/sys-master-azureproductimages/hb2/h49/9144814305310/Fsp275Wx275H_Fsp800Wx800H_30170003_1fnc524qs"
-                          alt="Herceptin"
-                          class="w-8 h-8 rounded-lg mr-2"
-                        />
-                        Herceptin
+                        <img src="https://www.farmalisto.com.mx/104268-large_default/comprar-opdivo-inyectable-40-mg4-ml-caja-con-1-frasco-ampula-melanoma-rx3-precio.jpg" alt="Opdivo" class="w-8 h-8 rounded-lg mr-2" />
+                        Opdivo
                       </td>
-                      <td class="p-4">$56,270.00 MXN</td>
-                      <td class="p-4">440mg</td>
+                      <td class="p-4">$80,000.00 MXN</td>
+                      <td class="p-4">100mg/10ml</td>
                       <td class="p-4">Inyección</td>
+                      <td class="p-4">Cáncer de pulmón</td>
+                      <td class="p-4">
+                        <a href="https://cima.aemps.es/cima/dochtml/ft/1151014002/FT_1151014002.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                          Ver más
+                        </a>
+                      </td>
                     </tr>
                     <tr class="border-t">
                       <td class="p-4 flex items-center">
-                        <img
-                          src="https://healthsupply-online.com/wp-content/uploads/2023/03/TUKYSA.jpg"
-                          alt="Tukysa"
-                          class="w-8 h-8 rounded-lg mr-2"
-                        />
-                        Tukysa
+                        <img src="https://perset-farma.com/wp-content/uploads/2021/09/BAVENCIO-ID-50.jpg" alt="Bavencio" class="w-8 h-8 rounded-lg mr-2" />
+                        Bavencio
                       </td>
-                      <td class="p-4">$79,250.00 MXN</td>
-                      <td class="p-4">150mg</td>
-                      <td class="p-4">Tabletas</td>
+                      <td class="p-4">$70,000.00 MXN</td>
+                      <td class="p-4">20mg/ml</td>
+                      <td class="p-4">Inyección</td>
+                      <td class="p-4">Cáncer urotelial</td>
+                      <td class="p-4">
+                        <a href="https://cima.aemps.es/cima/dochtml/ft/1171214001/FT_1171214001.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                          Ver más
+                        </a>
+                      </td>
+                    </tr>
+                    <tr class="border-t bg-gray-50">
+                      <td class="p-4 flex items-center">
+                        <img src="https://es.everyone.org/media/wysiwyg/cms/Product_landing/Imfinzi/imfinzi-image-icons.png" alt="Imfinzi" class="w-8 h-8 rounded-lg mr-2" />
+                        Imfinzi
+                      </td>
+                      <td class="p-4">$85,000.00 MXN</td>
+                      <td class="p-4">120mg/2.4ml</td>
+                      <td class="p-4">Inyección</td>
+                      <td class="p-4">Cáncer de pulmón</td>
+                      <td class="p-4">
+                        <a href="https://cima.aemps.es/cima/dochtml/ft/1181322001/FT_1181322001.html" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-lg inline-block">
+                          Ver más
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
+            
+            
           </div>
           <script>
             const searchBarMedicamentos = document.getElementById('searchBarMedicamentos');
@@ -372,7 +393,6 @@
       
      
 <!--Botones-->
-
 <!-- start footer -->
 <footer class="bg-gray-900 text-white">
   <!-- Sección superior con degradado -->
@@ -446,8 +466,6 @@
 
 <!-- end footer -->
 
-
-
   </main>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -462,40 +480,100 @@
 
     gtag('config', 'UA-131505823-4');
   </script>
+  <script>
+    
+    // Solicita los datos de la API
+    fetch('http://localhost:3000/api/medicamentos')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#medicamentos-table tbody');
+        tableBody.innerHTML = ''; // Limpia el contenido previo
 
+        data.forEach(medicamento => {
+          const row = `
+            <tr>
+              <td>${medicamento.id}</td>
+              <td>${medicamento.nombre}</td>
+              <td>${medicamento.tipo_medicamento}</td>
+              <td>${medicamento.ingrediente_activo}</td>
+              <td>${medicamento.tipo_cancer_id}</td>
+              <td>${medicamento.laboratorio}</td>
+              <td><img src="${medicamento.imagen}" alt="Imagen de ${medicamento.nombre}" style="width:50px;height:auto;"></td>
+              <td>${medicamento.precio}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+        });
+      })
+      .catch(error => console.error('Error al cargar los datos:', error));
+  </script>
+  <script>
+  const API_BASE = "http://localhost:3000/api";
 
- <script>
-  // Solicita los datos de la API
-  fetch('http://localhost:3000/api/medicamentos')
-    .then(response => response.json())
-    .then(data => {
-      const tableBody = document.querySelector('#medicamentos-table tbody');
-      tableBody.innerHTML = ''; // Limpia el contenido previo
+const buscadorTipos = document.getElementById("buscadorTipos");
+const listaTipos = document.getElementById("listaTipos");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+const verTratamientos = document.getElementById("verTratamientos");
+const tratamientosContenido = document.getElementById("tratamientosContenido");
+const listaTratamientos = document.getElementById("listaTratamientos");
+const regresarInfo = document.getElementById("regresarInfo");
 
-      data.forEach(medicamento => {
-        const row = `
-          <tr>
-            <td class="text-center">
-              <button 
-                onclick="window.location.href='${medicamento.nombre}.html';"
-                style="background-color: #36c5d9; color: white; border: none; padding: 8px 12px; cursor: pointer; width: 100%;">
-                ${medicamento.nombre}
-              </button>
-            </td>
-            <td class="text-center">${medicamento.tipo_medicamento}</td>
-            <td class="text-center">${medicamento.ingrediente_activo}</td>
-            <td class="text-center">${medicamento.tipo_cancer_nombre}</td>
-                        <td class="text-center">
-              <img src="medicamentos/medicament.jpg" alt="Imagen de ${medicamento.nombre}" style="width: 60px; height: 60px; display: block; margin: 0 auto;"">
-            </td>
-          </tr>
-        `;
-        tableBody.innerHTML += row;
-      });
-    })
-    .catch(error => console.error('Error al cargar los datos:', error));
+let tiposCancerData = [];
+
+// Cargar tipos de cáncer
+async function cargarTiposCancer() {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer`);
+    tiposCancerData = await response.json();
+    mostrarTiposCancer(tiposCancerData);
+  } catch (error) {
+    console.error("Error al cargar tipos de cáncer:", error);
+  }
+}
+
+// Mostrar tipos de cáncer en tarjetas
+function mostrarTiposCancer(tipos) {
+  listaTipos.innerHTML = "";
+  tipos.forEach((tipo) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+    card.innerHTML = `
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-gray-800">${tipo.nombre}</h3>
+        <p class="text-gray-600 text-sm">${tipo.descripcion.substring(0, 100)}...</p>
+      </div>`;
+    card.addEventListener("click", () => mostrarModal(tipo.id));
+    listaTipos.appendChild(card);
+  });
+}
+
+// Mostrar modal con información detallada
+async function mostrarModal(id) {
+  try {
+    const response = await fetch(`${API_BASE}/tiposcancer/${id}`);
+    const tipo = await response.json();
+
+    modalTitle.textContent = tipo.nombre;
+    modalContent.innerHTML = `
+      <p>${tipo.descripcion}</p>
+      <p><strong>Síntomas:</strong> ${tipo.sintomas_principales}</p>`;
+
+    tratamientosContenido.classList.add("hidden");
+    modal.classList.remove("hidden");
+  } catch (error) {
+    console.error("Error al mostrar detalles:", error);
+  }
+}
+
+// Manejo del modal
+closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+document.addEventListener("DOMContentLoaded", cargarTiposCancer);
+
 </script>
-
 
 </body>
 

@@ -96,9 +96,58 @@
       background-color: #f4f4f4;
       text-align: left;
     }
+
+    .form-container {
+    width: 100%;
+    max-width: 600px; /* Set a max width for the form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 8px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Defines two columns */
+  gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+input {
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.submit-button {
+    grid-column: 1 / 3;  /* Makes the button span across both columns */
+    justify-self: center;  /* Centers the button within its grid cell */
+    margin-top: 20px;  /* Adds space above the button */
+}
+
+.gradient-overlay {
+      background: linear-gradient(to top right, rgba(174, 65, 252, 0.555), rgba(145, 228, 228, 0.6));
+    }
+
+    .faq-card {
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+    }
+    .gradient-overlay {
+      background: linear-gradient(to top right, rgba(174, 65, 252, 0.555), rgba(145, 228, 228, 0.6));
+    }
   </style>
 </head>
-<body class="antialiased bg-gray-200 font-montserrat text-gray-900">
+<body class="antialiased bg-gray-200 font-montserrat text-gray-900 gradient-overlay">
   <main class="w-full">
 
 <!-- start header -->
@@ -175,38 +224,7 @@
 
 <!-- end header -->
 
-<!-- Iconos de follow -->
-<div class="fixed right-0 bottom-0 mb-16 space-y-4 z-50">
-  <!-- Facebook -->
-   <a href="https://facebook.com" target="_blank" class="relative block p-2 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition">
-     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-       <path d="M22,12c0-5.523-4.477-10-10-10S2,6.477,2,12c0,5.228,3.973,9.5,9.091,9.954v-7.052h-2.728v-2.902h2.728V9.185 c0-2.762,1.626-4.292,4.111-4.292c1.192,0,2.437,0.214,2.437,0.214v2.676h-1.372c-1.353,0-1.771,0.844-1.771,1.707v2.092h3.016 l-0.482,2.902h-2.534v7.052C18.027,21.5,22,17.228,22,12z" />
-     </svg>
-     <span class="tooltip-text">Facebook</span>
-   </a>
- 
-   <!-- X -->
-   <a href="https://twitter.com" target="_blank" class="relative block p-2 bg-gray-800 rounded-full shadow-lg hover:bg-gray-900 transition">
-     <image src="./images/x.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
-     <span class="tooltip-text">X</span>
-   </a>
- 
-   <!-- Example (Corazón Icon) -->
-   <a href="gruposAyuda.html#mapa" target="_blank" class="relative block p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition">
-     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
-       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-       <circle cx="12" cy="25" r="2" fill="currentColor"/>
-     </svg>
-     <span class="tooltip-text">Direcciones</span>
-   </a>
- 
-   <!-- Example (Hug Icon) -->
-   <a href="gruposAyuda.html" target="_blank" class="relative block p-2 bg-purple-300 rounded-full shadow-lg hover:bg-purple-500 transition">
-     <image src="./images/hug.png" class="w-6 h-6 fill-current text-white" viewBox="0 0 27 27">
-     <span class="tooltip-text">Apoyo</span>
-   </a>
- </div>
- 
+
      <style>
        /* Oculta los tooltips inicialmente */
        .tooltip-text {
@@ -253,12 +271,12 @@
  </style>
 
 
-  <section class="mt-16 bg-gray-200">
+  <section class="mt-16">
     <br><br>
-    <h1 class="text-4xl font-bold mt-8">Panel de Administración</h1>
-    <h2 class="text-2xl font-bold mt-10">Gestión de Medicamentos</h2>
-    <section class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4 mx-auto max-w-4xl px-4 w-full">
-      <table id="medicamentos-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <h1 class="text-4xl font-bold mt-12 ml-8">Panel de Administración</h1>
+    <h2 class="text-2xl font-bold mt-8 ml-8">Gestión de Medicamentos</h2>
+    <section class="relative mt-8 overflow-x-auto shadow-md sm:rounded-lg mb-4 mx-auto max-w-4xl px-4 w-full bg-gray-100">
+      <table id="medicamentos-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-gray-200">
         <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" style="background: linear-gradient(to right, #6ce3e7, #6ce3e7, #6ce3e7);">
           <tr>
             <th scope="col" class="px-6 py-3 text-center">ID</th>
@@ -276,66 +294,50 @@
       </section>
       <!--<button id="add-medicamento">Añadir Medicamento</button>-->
 
-      <form id="form-medicamento" class="flex" onsubmit="agregarMedicamento(); return false;">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" class="" required>
-        
-        <label for="tipo_medicamento">Tipo de Medicamento:</label>
-        <input type="text" id="tipo_medicamento" required>
-        
-        <label for="ingrediente_activo">Ingrediente Activo:</label>
-        <input type="text" id="ingrediente_activo" required>
-        
-        <label for="tipo_cancer_nombre">Tipo de Cáncer:</label>
-        <input type="text" id="tipo_cancer_nombre" required>
-        
-        <label for="laboratorio">Laboratorio:</label>
-        <input type="text" id="laboratorio" required>
-        
-        <label for="imagen">URL de la Imagen:</label>
-        <input type="text" id="imagen" required>
-        
-        <label for="precio">Precio:</label>
-        <input type="number" step="0.01" id="precio" required>
-        
-        <button type="submit" class="mb-16 boton-tratamientos mb-4 ml-4">Agregar Medicamento</button>
-      </form>
-      <style>
-        .form-container {
-    width: 100%;
-    max-width: 600px; /* Set a max width for the form */
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: white;
-    border-radius: 8px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-      </style>
+      <div class="faq-card p-12 m-10 mb-4 w-auto">
+        <h2 class="text-xl font-semibold mb-6 text-purple-700">Agregar Medicamento</h2>
+        <form id="form-medicamento" class="font-bold" onsubmit="agregarMedicamento(); return false;">
+          <div class="form-row">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+            
+            <label for="tipo_medicamento">Tipo de Medicamento:</label>
+            <input type="text" id="tipo_medicamento" required>
+          </div>
+          
+          <div class="form-row">
+            <label for="ingrediente_activo">Ingrediente Activo:</label>
+            <input type="text" id="ingrediente_activo" required>
+            
+            <label for="tipo_cancer_nombre">Tipo de Cáncer:</label>
+            <input type="text" id="tipo_cancer_nombre" required>
+          </div>
+          
+          <div class="form-row">
+            <label for="laboratorio">Laboratorio:</label>
+            <input type="text" id="laboratorio" required>
+            
+            <label for="imagen">URL de la Imagen:</label>
+            <input type="text" id="imagen" required>
+          </div>
+          
+          <div class="form-row">
+            <label for="precio">Precio:</label>
+            <input type="number" step="0.01" id="precio" required>
+          </div>
+          
+          <button type="submit" class="mb-16 boton-tratamientos mb-4 ml-4 submit-button">Agregar Medicamento</button>
+          
+        </form>
+      </div>
   
     </section>
 
 
-    <section  class="mt-16 bg-gray-200">
-        <h2 class="text-4xl font-bold mt-8">Gestión de Tipos de Cáncer</h2>
-        <section class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4 mx-auto max-w-4xl px-4 w-full">
-          <table id="tiposcancer-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <section  class="mt-16">
+        <h2 class="text-2xl font-bold mt-8 mb-8 ml-8">Gestión de Tipos de Cáncer</h2>
+        <section class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4 mx-auto max-w-4xl px-4 w-full bg-gray-100">
+          <table id="tiposcancer-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-gray-200">
             <thead  class="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" style="background: linear-gradient(to right, #6ce3e7, #6ce3e7, #6ce3e7);">
               <tr>
                 <th scope="col" class="px-6 py-3 text-center">ID</th>
@@ -351,18 +353,25 @@ input {
       
       <!--<button id="add-tipocancer">Añadir Tipo de Cáncer</button>-->
 
-    <form id="form-tiposcancer" onsubmit="agregarTipocancer(); return false;">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombrecancer" required>
-      
-      <label for="descripcion">Descripción:</label>
-      <input type="text" id="descripcioncancer" required>
-      
-      <label for="sintomas">Sintomas:</label>
-      <input type="text" id="sintomascancer" required>
-      
-      <button type="submit" class="boton-tratamientos mb-4 ml-4">Agregar Cáncer</button>
-    </form>
+    <div class="faq-card p-12 m-10 mb-4 w-auto">
+      <h2 class="text-xl font-semibold mb-6 text-purple-700">Agregar Tipo de Cáncer</h2>
+      <form id="form-tiposcancer" class="font-bold" onsubmit="agregarTipocancer(); return false;">
+        <div class="form-row">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombrecancer" required>
+        
+          <label for="descripcion">Descripción:</label>
+          <input type="text" id="descripcioncancer" required>
+        </div>
+        
+        <div class="form-row">
+          <label for="sintomas">Sintomas:</label>
+          <input type="text" id="sintomascancer" required>
+        </div>
+        
+        <button type="submit" class="boton-tratamientos mb-4 ml-4 submit-button">Agregar Cáncer</button>
+      </form>
+    </div>
     </section>
 
   <section id="editar-noticia" class="hidden bg-gray-100 p-8 rounded-lg shadow-md mt-10">
@@ -456,6 +465,7 @@ input {
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
               <path d="M23.634,4.847c-0.835,0.371-1.733,0.621-2.675,0.733c0.961-0.576,1.697-1.486,2.043-2.57 c-0.9,0.533-1.896,0.921-2.957,1.13c-0.851-0.905-2.069-1.472-3.416-1.472c-2.588,0-4.682,2.092-4.682,4.683 c0,0.367,0.042,0.724,0.122,1.067C7.69,8.078,4.066,6.13,1.64,3.16C1.246,3.856,1.004,4.642,1.004,5.468 c0,1.621,0.823,3.051,2.075,3.892c-0.764-0.024-1.483-0.233-2.113-0.583v0.058c0,2.264,1.61,4.154,3.745,4.584 c-0.392,0.108-0.804,0.165-1.229,0.165c-0.3,0-0.593-0.029-0.878-0.084c0.594,1.853,2.316,3.204,4.358,3.243 c-1.596,1.249-3.609,1.993-5.798,1.993c-0.376,0-0.75-0.022-1.117-0.065c2.066,1.326,4.515,2.1,7.148,2.1 c8.574,0,13.263-7.102,13.263-13.263c0-0.202-0.005-0.404-0.014-0.606C22.17,6.589,23.002,5.772,23.634,4.847z" />
             </svg>
+</a>
         </div>
        
       </div>
